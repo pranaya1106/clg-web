@@ -1,0 +1,119 @@
+/* ===========================
+   SUCCESS STORIES — Two-Row Cinematic Scroll
+   =========================== */
+
+.ss-section {
+  background: #f7f7f5;
+  padding: 56px 0 64px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.ss-header {
+  padding: 0 1.5rem 32px;
+}
+
+/* ── Band — clips each row ── */
+.ss-band {
+  overflow: hidden;
+  position: relative;
+}
+
+.ss-band + .ss-band {
+  margin-top: 16px;
+}
+
+/* Edge fades */
+.ss-band::before,
+.ss-band::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.ss-band::before {
+  left: 0;
+  background: linear-gradient(to right, #f7f7f5, transparent);
+}
+
+.ss-band::after {
+  right: 0;
+  background: linear-gradient(to left, #f7f7f5, transparent);
+}
+
+/* ── Track — the moving strip ── */
+.ss-track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  padding: 6px 0 10px;
+  will-change: transform;
+}
+
+/* Row 1: left. 20 cards total, -50% = exactly 10 cards = one unique set */
+.ss-track--left {
+  animation: ssScrollLeft 45s linear infinite;
+}
+
+/* Row 2: right. starts at -50% so it's pre-filled from frame 0 */
+.ss-track--right {
+  animation: ssScrollRight 50s linear infinite;
+}
+
+/* Pause on section hover */
+.ss-section:hover .ss-track {
+  animation-play-state: paused;
+}
+
+@keyframes ssScrollLeft {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes ssScrollRight {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* ── Card ── */
+.ss-card {
+  flex-shrink: 0;
+  width: 210px;
+  aspect-ratio: 3 / 4;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #1a1a1a;
+  position: relative;
+  box-shadow:
+    0 2px 10px rgba(0,0,0,0.08),
+    0 0 0 1.5px rgba(24,69,59,0.2);
+  transition:
+    transform  0.35s cubic-bezier(0.4,0,0.2,1),
+    box-shadow 0.35s ease;
+}
+
+.ss-card:hover {
+  transform: scale(1.06) translateY(-5px);
+  box-shadow:
+    0 0 0 1.5px #E85D1F,
+    0 18px 44px rgba(0,0,0,0.18);
+  z-index: 5;
+}
+
+/* ── Image — contain, no crop ── */
+.ss-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .ss-track { animation: none; }
+}
