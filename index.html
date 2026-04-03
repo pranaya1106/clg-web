@@ -406,18 +406,27 @@
          ===================== -->
     <section class="events-section" id="events">
 
-      <!-- Brand Reveal -->
-      <div class="events-brand-reveal" id="eventsBrandReveal">
-        <span class="events-brand-reveal__text">MLRIT</span>
+      <!-- Ambient background particles -->
+      <div class="events-bg">
+        <div class="events-bg__glow events-bg__glow--1"></div>
+        <div class="events-bg__glow events-bg__glow--2"></div>
       </div>
 
-      <!-- Content -->
+      <!-- MLRIT Brand Reveal -->
+      <div class="events-brand-reveal" id="eventsBrandReveal">
+        <span class="events-brand-reveal__eyebrow">Marri Laxman Reddy Institute of Technology</span>
+        <span class="events-brand-reveal__text">MLRIT</span>
+        <span class="events-brand-reveal__sub">Events &amp; Experiences</span>
+      </div>
+
+      <!-- Main Content -->
       <div class="events-content" id="eventsContent">
 
         <div class="events-header">
-          <div>
-            <span class="section-label">Events</span>
-            <h2 class="events-header__title">What's Happening at MLRIT</h2>
+          <div class="events-header__left">
+            <span class="events-header__label">Events</span>
+            <h2 class="events-header__title">Life at MLRIT</h2>
+            <p class="events-header__sub">Where every moment becomes a memory.</p>
           </div>
           <div class="events-nav">
             <button class="events-nav__btn" id="eventsPrev" aria-label="Previous">&#8592;</button>
@@ -428,43 +437,51 @@
         <div class="events-row-wrap">
           <div class="events-row" id="eventsRow">
 
-            <div class="event-card">
-              <div class="event-card__thumb">
+            <div class="event-card" style="--i:0">
+              <div class="event-card__media">
                 <video src="events/e1.mp4" muted loop playsinline></video>
+                <div class="event-card__overlay"></div>
               </div>
               <div class="event-card__body">
                 <span class="event-card__tag">Technical Fest</span>
-                <h3 class="event-card__title">Zignasa — The Quest for Knowledge</h3>
+                <h3 class="event-card__title">Zignasa</h3>
+                <p class="event-card__desc">The Quest for Knowledge</p>
               </div>
             </div>
 
-            <div class="event-card">
-              <div class="event-card__thumb">
+            <div class="event-card" style="--i:1">
+              <div class="event-card__media">
                 <video src="events/e2.mp4" muted loop playsinline></video>
+                <div class="event-card__overlay"></div>
               </div>
               <div class="event-card__body">
                 <span class="event-card__tag">Industry Connect</span>
-                <h3 class="event-card__title">IC — Bridging Campus and Corporate</h3>
+                <h3 class="event-card__title">IC</h3>
+                <p class="event-card__desc">Bridging Campus and Corporate</p>
               </div>
             </div>
 
-            <div class="event-card">
-              <div class="event-card__thumb">
+            <div class="event-card" style="--i:2">
+              <div class="event-card__media">
                 <video src="events/e3.mp4" muted loop playsinline></video>
+                <div class="event-card__overlay"></div>
               </div>
               <div class="event-card__body">
                 <span class="event-card__tag">Sports Meet</span>
-                <h3 class="event-card__title">Zenith — The Annual Sports Championship</h3>
+                <h3 class="event-card__title">Zenith</h3>
+                <p class="event-card__desc">The Annual Sports Championship</p>
               </div>
             </div>
 
-            <div class="event-card">
-              <div class="event-card__thumb">
+            <div class="event-card" style="--i:3">
+              <div class="event-card__media">
                 <video src="events/e4.mp4" muted loop playsinline></video>
+                <div class="event-card__overlay"></div>
               </div>
               <div class="event-card__body">
                 <span class="event-card__tag">Cultural Fest</span>
-                <h3 class="event-card__title">Navrat Naveli — MLRIT's Annual Cultural Extravaganza</h3>
+                <h3 class="event-card__title">Navrat Naveli</h3>
+                <p class="event-card__desc">MLRIT's Annual Cultural Extravaganza</p>
               </div>
             </div>
 
@@ -472,7 +489,10 @@
         </div>
 
         <div class="events-cta">
-          <a href="#" class="events-cta__btn">Explore More Events</a>
+          <a href="#" class="events-cta__btn">
+            <span>Explore More Events</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
         </div>
 
       </div>
@@ -600,33 +620,50 @@
       const btnNext  = document.getElementById('eventsNext');
       if (!section || !reveal || !content) return;
 
-      // Brand reveal on scroll into view
+      // Brand reveal → staggered card entry
       let triggered = false;
       const observer = new IntersectionObserver((entries) => {
         if (triggered || !entries[0].isIntersecting) return;
         triggered = true;
         observer.disconnect();
+
+        // Phase 1: MLRIT slams in
         reveal.classList.add('is-active');
+        section.classList.add('is-revealed');
+
+        // Phase 2: MLRIT exits, content fades in
         setTimeout(() => {
-          reveal.classList.remove('is-active');
           reveal.classList.add('is-exit');
           content.classList.add('is-visible');
-        }, 750);
-        setTimeout(() => { reveal.style.display = 'none'; }, 1250);
-      }, { threshold: 0.25 });
+          // Stagger cards
+          document.querySelectorAll('.event-card').forEach((card, i) => {
+            setTimeout(() => card.classList.add('is-visible'), i * 100);
+          });
+        }, 800);
+
+        setTimeout(() => { reveal.style.display = 'none'; }, 1350);
+      }, { threshold: 0.2 });
       observer.observe(section);
 
-      // Card video hover
-      document.querySelectorAll('.event-card').forEach(card => {
+      // Focus effect: dim siblings on hover
+      const cards = document.querySelectorAll('.event-card');
+      cards.forEach(card => {
         const video = card.querySelector('video');
-        if (!video) return;
-        card.addEventListener('mouseenter', () => { video.currentTime = 0; video.play().catch(() => {}); });
-        card.addEventListener('mouseleave', () => { video.pause(); });
+
+        card.addEventListener('mouseenter', () => {
+          cards.forEach(c => { if (c !== card) c.classList.add('is-dimmed'); });
+          if (video) { video.currentTime = 0; video.play().catch(() => {}); }
+        });
+
+        card.addEventListener('mouseleave', () => {
+          cards.forEach(c => c.classList.remove('is-dimmed'));
+          if (video) video.pause();
+        });
       });
 
       // Arrow navigation
       if (!row || !btnPrev || !btnNext) return;
-      const SCROLL = 320;
+      const SCROLL = 340;
       btnNext.addEventListener('click', () => row.scrollBy({ left: SCROLL, behavior: 'smooth' }));
       btnPrev.addEventListener('click', () => row.scrollBy({ left: -SCROLL, behavior: 'smooth' }));
     })();
