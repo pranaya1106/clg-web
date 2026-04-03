@@ -226,10 +226,21 @@
       <div class="section-wrap">
         <div class="achievements__grid">
 
-          <div>
+          <div class="accred-keyboard-wrapper">
+            <div class="accred-keyboard">
+              <div class="accred-key"><img src="nirf/aicte.svg" alt="AICTE"></div>
+              <div class="accred-key"><img src="nirf/naac.svg" alt="NAAC"></div>
+              <div class="accred-key"><img src="nirf/nba.svg" alt="NBA"></div>
+              <div class="accred-key"><img src="nirf/arha.svg" alt="ARIIA"></div>
+              <div class="accred-key"><img src="nirf/the week.svg" alt="The Week"></div>
+              <div class="accred-key"><img src="nirf/dataquest.svg" alt="Dataquest"></div>
+            </div>
+          </div>
+
+          <div style="padding-left: 40px;">
             <span class="section-label">Recognition</span>
-            <h2 class="section-heading">Telangana's Top Ranked Engineering Institute</h2>
-            <p class="section-sub">Consistently recognised for academic excellence, research output, and graduate outcomes.</p>
+            <h2 class="section-heading">Accreditations &amp; Approvals</h2>
+            <p class="section-sub">AICTE, NAAC, NBA, ARIIA and more — recognised by leading national bodies for academic excellence and quality education.</p>
 
             <div class="achievements__ranks">
               <div class="rank-row">
@@ -256,21 +267,7 @@
             </div>
           </div>
 
-          <div>
-            <p class="accred-label">Accreditations &amp; Approvals</p>
-            <div class="accred-grid">
-              <div class="glare-hover"><img src="nirf/aicte.svg" alt="AICTE"></div>
-              <div class="glare-hover"><img src="nirf/naac.svg" alt="NAAC"></div>
-              <div class="glare-hover"><img src="nirf/nba.svg" alt="NBA"></div>
-              <div class="glare-hover"><img src="nirf/arha.svg" alt="ARIIA"></div>
-              <div class="glare-hover"><img src="nirf/gyaanvigyan.svg" alt="Gyaan Vigyan"></div>
-              <div class="glare-hover"><img src="nirf/the week.svg" alt="The Week"></div>
-              <div class="glare-hover"><img src="nirf/dataquest.svg" alt="Dataquest"></div>
-            </div>
-          </div>
-
         </div>
-
 
       </div>
     </section>
@@ -890,14 +887,13 @@
       const band  = document.getElementById('recruiterBand');
       if (!track || !band) return;
 
-      const GAP   = 20;   // must match CSS gap
-      const SPEED = 0.9;  // px per frame (~54px/s at 60fps)
+      const GAP   = 20;
+      const SPEED = 0.9;
 
       let offset  = 0;
       let paused  = false;
       let cardW   = 0;
 
-      // Measure after first paint
       requestAnimationFrame(() => {
         const first = track.firstElementChild;
         cardW = first ? first.getBoundingClientRect().width + GAP : 216;
@@ -911,7 +907,6 @@
         function tick() {
           if (!paused) {
             offset += SPEED;
-            // When first card fully exits left edge, move it to end
             if (offset >= cardW) {
               offset -= cardW;
               track.appendChild(track.firstElementChild);
@@ -922,6 +917,38 @@
         }
         requestAnimationFrame(tick);
       }
+
+      // 4-direction tilt on individual cards
+      function applyTilt(card, e) {
+        const rect   = card.getBoundingClientRect();
+        const cx     = rect.left + rect.width  / 2;
+        const cy     = rect.top  + rect.height / 2;
+        const dx     = (e.clientX - cx) / (rect.width  / 2); // -1 to 1
+        const dy     = (e.clientY - cy) / (rect.height / 2); // -1 to 1
+        const rotY   =  dx * 12;   // tilt left/right
+        const rotX   = -dy * 8;    // tilt up/down
+        card.style.transform = `perspective(500px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.06)`;
+      }
+
+      // Delegate tilt to all current and future cards
+      track.addEventListener('mousemove', e => {
+        const card = e.target.closest('.recruiter-band__item');
+        if (card) applyTilt(card, e);
+      });
+
+      track.addEventListener('mouseleave', e => {
+        const card = e.target.closest('.recruiter-band__item');
+        if (card) card.style.transform = '';
+      }, true);
+
+      // Reset when cursor leaves a card
+      track.addEventListener('mouseout', e => {
+        const card = e.target.closest('.recruiter-band__item');
+        if (card && !card.contains(e.relatedTarget)) {
+          card.style.transform = '';
+        }
+      });
+
     })();
 
     // ── Photo Section ──────────────────────────────
