@@ -140,7 +140,7 @@
   font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.03em;
-  border-radius: 6px;
+  border-radius: 10px;
   text-decoration: none;
   transition: filter 0.2s ease, transform 0.2s ease;
 }
@@ -426,7 +426,7 @@
   font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.03em;
-  border-radius: 6px;
+  border-radius: 10px;
   text-decoration: none;
   transition: filter 0.2s ease, transform 0.2s ease;
 }

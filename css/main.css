@@ -7,7 +7,7 @@
   --text-mid:    #444;
   --text-muted:  #888;
   --border:      #e8e8e8;
-  --radius:      6px;
+  --radius:      14px;
   --serif:       Georgia, "Times New Roman", serif;
   --sans:        'Segoe UI', Arial, sans-serif;
 }
@@ -51,7 +51,7 @@
   padding: 0.65rem 1.5rem;
   font-size: 0.875rem;
   font-weight: 600;
-  border-radius: var(--radius);
+  border-radius: 10px;
   transition: all 0.2s ease;
   cursor: pointer;
   text-decoration: none;
@@ -406,7 +406,7 @@
 .program-card {
   background: #fff;
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 14px;
   padding: 24px 20px;
   transition: box-shadow 0.25s ease, transform 0.25s ease;
   cursor: pointer;
@@ -468,7 +468,7 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 2px;
   background: rgba(255,255,255,0.1);
-  border-radius: var(--radius);
+  border-radius: 16px;
   overflow: hidden;
   margin-bottom: 40px;
 }
@@ -552,7 +552,7 @@
   width: 200px;
   height: 100px;
   background: #fff;
-  border-radius: 8px;
+  border-radius: 14px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -599,7 +599,7 @@
 
 .testimonial-card {
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 16px;
   padding: 32px 28px;
   position: relative;
   overflow: hidden;
