@@ -402,266 +402,79 @@
     </section>
 
     <!-- =====================
-         8. EVENTS — REEL PROJECTOR
+         8. EVENTS
          ===================== -->
-    <section class="events-disc" id="events">
+    <section class="events-section" id="events">
 
-      <!-- MLRIT Brand Reveal -->
+      <!-- Brand Reveal -->
       <div class="events-brand-reveal" id="eventsBrandReveal">
         <span class="events-brand-reveal__text">MLRIT</span>
       </div>
 
-      <div class="events-disc__inner events-disc__content" id="eventsContent">
+      <!-- Content -->
+      <div class="events-content" id="eventsContent">
 
-        <!-- Header -->
-        <div class="events-camera-scene">
-          <div class="events-camera-scene__header">
+        <div class="events-header">
+          <div>
             <span class="section-label">Events</span>
-            <h2>What's Happening<br>at MLRIT</h2>
+            <h2 class="events-header__title">What's Happening at MLRIT</h2>
+          </div>
+          <div class="events-nav">
+            <button class="events-nav__btn" id="eventsPrev" aria-label="Previous">&#8592;</button>
+            <button class="events-nav__btn" id="eventsNext" aria-label="Next">&#8594;</button>
           </div>
         </div>
 
-        <!-- LEFT: Mechanical projector — camera + reels on rod + tripod (single SVG) -->
-        <div class="events-camera-col">
-          <div class="projector-wrapper">
+        <div class="events-row-wrap">
+          <div class="events-row" id="eventsRow">
 
-            <!--
-              SVG coordinate system: 500 wide × 480 tall
-              Camera body:  x=120, y=200, w=200, h=110  (center of scene)
-              Rod:          y=195, x=145 to x=355
-              Left reel:    cx=175, cy=145, r=60
-              Right reel:   cx=325, cy=145, r=60
-              Lens:         right side of camera, cx=330, cy=255
-              Tripod:       below camera, legs from x=220,y=310
-            -->
-            <svg class="projector-svg" id="projectorSvg"
-                 viewBox="0 0 500 480"
-                 overflow="visible"
-                 xmlns="http://www.w3.org/2000/svg">
-
-              <!-- ── PROJECTION BEAM — layered cone for cinematic light spread ── -->
-              <!-- Lens right edge x=372, center y=255. All layers share same origin. -->
-              <defs>
-                <linearGradient id="beamOuter" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%"   stop-color="#ffdc64" stop-opacity="0.28"/>
-                  <stop offset="40%"  stop-color="#ffdc64" stop-opacity="0.10"/>
-                  <stop offset="100%" stop-color="#ffdc64" stop-opacity="0.0"/>
-                </linearGradient>
-                <linearGradient id="beamMid" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%"   stop-color="#ffe080" stop-opacity="0.45"/>
-                  <stop offset="35%"  stop-color="#ffe080" stop-opacity="0.18"/>
-                  <stop offset="100%" stop-color="#ffe080" stop-opacity="0.0"/>
-                </linearGradient>
-                <linearGradient id="beamCore" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%"   stop-color="#fff4b0" stop-opacity="0.70"/>
-                  <stop offset="25%"  stop-color="#ffe080" stop-opacity="0.35"/>
-                  <stop offset="100%" stop-color="#ffe080" stop-opacity="0.0"/>
-                </linearGradient>
-                <filter id="blurHeavy" x="-20%" y="-50%" width="140%" height="200%">
-                  <feGaussianBlur stdDeviation="28"/>
-                </filter>
-                <filter id="blurMed" x="-10%" y="-25%" width="120%" height="150%">
-                  <feGaussianBlur stdDeviation="16"/>
-                </filter>
-                <filter id="blurLight" x="-5%" y="-10%" width="110%" height="120%">
-                  <feGaussianBlur stdDeviation="7"/>
-                </filter>
-              </defs>
-              <!-- Layer 1: wide outer glow — very soft, very spread -->
-              <polygon class="beam-layer" id="projBeamOuter"
-                       points="372,254 372,256 1100,-120 1100,630"
-                       fill="url(#beamOuter)" filter="url(#blurHeavy)"
-                       opacity="0" style="transition:opacity 0.5s ease;pointer-events:none;"/>
-              <!-- Layer 2: mid cone -->
-              <polygon class="beam-layer" id="projBeamMid"
-                       points="372,253 372,257 1100,30 1100,480"
-                       fill="url(#beamMid)" filter="url(#blurMed)"
-                       opacity="0" style="transition:opacity 0.5s ease;pointer-events:none;"/>
-              <!-- Layer 3: bright core -->
-              <polygon class="beam-layer" id="projBeam"
-                       points="372,251 372,259 1100,140 1100,370"
-                       fill="url(#beamCore)" filter="url(#blurLight)"
-                       opacity="0" style="transition:opacity 0.5s ease;pointer-events:none;"/>
-
-              <!-- ── TRIPOD ── -->
-              <line x1="220" y1="312" x2="140" y2="460" stroke="#222" stroke-width="7" stroke-linecap="round"/>
-              <line x1="220" y1="312" x2="220" y2="460" stroke="#222" stroke-width="7" stroke-linecap="round"/>
-              <line x1="220" y1="312" x2="300" y2="460" stroke="#222" stroke-width="7" stroke-linecap="round"/>
-              <!-- Tripod foot bar -->
-              <line x1="130" y1="460" x2="310" y2="460" stroke="#2a2a2a" stroke-width="4" stroke-linecap="round"/>
-              <!-- Tripod mount block -->
-              <rect x="205" y="305" width="30" height="14" rx="3" fill="#1e1e1e" stroke="#333" stroke-width="1"/>
-
-              <!-- ── CAMERA BODY ── -->
-              <rect x="120" y="200" width="200" height="110" rx="8" fill="#1c1c1c" stroke="#333" stroke-width="1.5"/>
-              <!-- Body panel lines -->
-              <line x1="120" y1="230" x2="320" y2="230" stroke="#252525" stroke-width="1"/>
-              <!-- Vents left side -->
-              <rect x="132" y="212" width="20" height="5" rx="2" fill="#252525"/>
-              <rect x="132" y="222" width="20" height="5" rx="2" fill="#252525"/>
-              <rect x="132" y="232" width="20" height="5" rx="2" fill="#252525"/>
-              <rect x="132" y="242" width="20" height="5" rx="2" fill="#252525"/>
-              <rect x="132" y="252" width="20" height="5" rx="2" fill="#252525"/>
-              <rect x="132" y="262" width="20" height="5" rx="2" fill="#252525"/>
-              <rect x="132" y="272" width="20" height="5" rx="2" fill="#252525"/>
-              <rect x="132" y="282" width="20" height="5" rx="2" fill="#252525"/>
-              <!-- Film gate slots bottom of body -->
-              <rect x="168" y="295" width="12" height="7" rx="2" fill="#252525"/>
-              <rect x="186" y="295" width="12" height="7" rx="2" fill="#252525"/>
-              <rect x="204" y="295" width="12" height="7" rx="2" fill="#252525"/>
-              <rect x="222" y="295" width="12" height="7" rx="2" fill="#252525"/>
-              <rect x="240" y="295" width="12" height="7" rx="2" fill="#252525"/>
-              <!-- Rec indicator -->
-              <circle cx="300" cy="212" r="5" fill="#E85D1F" opacity="0.9"/>
-
-              <!-- ── LENS HOUSING (right side of camera) ── -->
-              <rect x="320" y="218" width="48" height="74" rx="6" fill="#222" stroke="#333" stroke-width="1"/>
-              <!-- Lens rings -->
-              <circle cx="344" cy="255" r="28" fill="#1a1a1a" stroke="#3a3a3a" stroke-width="1.5"/>
-              <circle cx="344" cy="255" r="20" fill="#111" stroke="#2a2a2a" stroke-width="1"/>
-              <circle cx="344" cy="255" r="13" fill="#0a0a0a" stroke="#222" stroke-width="1"/>
-              <circle cx="344" cy="255" r="7"  fill="#050508"/>
-              <!-- Lens reflection -->
-              <circle cx="339" cy="250" r="3" fill="rgba(120,160,255,0.18)"/>
-
-              <!-- ── HORIZONTAL ROD on top of camera ── -->
-              <rect x="140" y="192" width="220" height="10" rx="5" fill="#2a2a2a" stroke="#3a3a3a" stroke-width="1"/>
-              <!-- Rod end caps -->
-              <circle cx="140" cy="197" r="6" fill="#333" stroke="#444" stroke-width="1"/>
-              <circle cx="360" cy="197" r="6" fill="#333" stroke="#444" stroke-width="1"/>
-              <!-- Reel axle stubs -->
-              <circle cx="185" cy="197" r="5" fill="#3a3a3a" stroke="#444" stroke-width="1"/>
-              <circle cx="315" cy="197" r="5" fill="#3a3a3a" stroke="#444" stroke-width="1"/>
-
-              <!-- ── LEFT REEL (feed) — rotates via CSS ── -->
-              <g id="reelLeft" class="reel-group" style="transform-origin:185px 140px">
-                <!-- Outer disc -->
-                <circle cx="185" cy="140" r="58" fill="#181818" stroke="#2e2e2e" stroke-width="2"/>
-                <!-- Inner ring -->
-                <circle cx="185" cy="140" r="42" fill="none" stroke="#252525" stroke-width="1"/>
-                <!-- Cutout slots -->
-                <!-- Slot 1: top — event 1 lives here -->
-                <path id="slotL1"
-                      class="reel-cutout"
-                      d="M185,100 A40,40 0 0,1 213,120 L205,132 A28,28 0 0,0 185,112 Z"
-                      fill="#0d0d0d" stroke="#222" stroke-width="1"
-                      data-tag="Technical Fest"
-                      data-title="Zignasa — The Quest for Knowledge"
-                      data-meta="Workshops · Paper Presentations · Hackathon"
-                      data-video="events/e1.mp4"/>
-                <!-- Slot 2: right — no event -->
-                <path d="M225,140 A40,40 0 0,1 205,168 L193,160 A28,28 0 0,0 213,140 Z" fill="#0d0d0d" stroke="#222" stroke-width="1"/>
-                <!-- Slot 3: bottom — event 2 lives here -->
-                <path id="slotL3"
-                      class="reel-cutout"
-                      d="M185,180 A40,40 0 0,1 157,160 L165,148 A28,28 0 0,0 185,168 Z"
-                      fill="#0d0d0d" stroke="#222" stroke-width="1"
-                      data-tag="Industry Connect"
-                      data-title="IC — Bridging Campus and Corporate"
-                      data-meta="MoUs · Guest Lectures · Placement Drives"
-                      data-video="events/e2.mp4"/>
-                <!-- Slot 4: left — no event -->
-                <path d="M145,140 A40,40 0 0,1 165,112 L173,124 A28,28 0 0,0 157,140 Z" fill="#0d0d0d" stroke="#222" stroke-width="1"/>
-                <!-- Spokes -->
-                <line x1="185" y1="140" x2="185" y2="100" stroke="#2a2a2a" stroke-width="2"/>
-                <line x1="185" y1="140" x2="225" y2="140" stroke="#2a2a2a" stroke-width="2"/>
-                <line x1="185" y1="140" x2="185" y2="180" stroke="#2a2a2a" stroke-width="2"/>
-                <line x1="185" y1="140" x2="145" y2="140" stroke="#2a2a2a" stroke-width="2"/>
-                <!-- Hub -->
-                <circle cx="185" cy="140" r="10" fill="#222" stroke="#3a3a3a" stroke-width="1.5"/>
-                <circle cx="185" cy="140" r="4"  fill="#2e2e2e"/>
-                <!-- Event fill circles — centered inside active cutouts -->
-                <!-- Slot 1 center: arc from (185,100) to (213,120), inner arc (185,112) — visual center ≈ (197,112) -->
-                <circle class="reel-event-fill" id="fillL1" cx="197" cy="112" r="9" fill="#1e1e1e" stroke="#3a3a3a" stroke-width="1" pointer-events="none"/>
-                <!-- Slot 3 center: arc from (185,180) to (157,160), inner arc (185,168) — visual center ≈ (173,168) -->
-                <circle class="reel-event-fill" id="fillL3" cx="173" cy="168" r="9" fill="#1e1e1e" stroke="#3a3a3a" stroke-width="1" pointer-events="none"/>
-              </g>
-
-              <!-- ── RIGHT REEL (take-up) — counter-rotates ── -->
-              <g id="reelRight" class="reel-group reel-group--reverse" style="transform-origin:315px 140px">
-                <circle cx="315" cy="140" r="58" fill="#181818" stroke="#2e2e2e" stroke-width="2"/>
-                <circle cx="315" cy="140" r="42" fill="none" stroke="#252525" stroke-width="1"/>
-                <!-- Slot 1: top — event 3 lives here -->
-                <path id="slotR1"
-                      class="reel-cutout"
-                      d="M315,100 A40,40 0 0,1 343,120 L335,132 A28,28 0 0,0 315,112 Z"
-                      fill="#0d0d0d" stroke="#222" stroke-width="1"
-                      data-tag="Sports Meet"
-                      data-title="Zenith — The Annual Sports Championship"
-                      data-meta="Athletics · Team Sports · Inter-College"
-                      data-video="events/e3.mp4"/>
-                <!-- Slot 2: right — no event -->
-                <path d="M355,140 A40,40 0 0,1 335,168 L323,160 A28,28 0 0,0 343,140 Z" fill="#0d0d0d" stroke="#222" stroke-width="1"/>
-                <!-- Slot 3: bottom — event 4 lives here -->
-                <path id="slotR3"
-                      class="reel-cutout"
-                      d="M315,180 A40,40 0 0,1 287,160 L295,148 A28,28 0 0,0 315,168 Z"
-                      fill="#0d0d0d" stroke="#222" stroke-width="1"
-                      data-tag="Cultural Fest"
-                      data-title="Navrat Naveli — MLRIT's Annual Cultural Extravaganza"
-                      data-meta="Dance · Music · Drama · 3000+ Students"
-                      data-video="events/e4.mp4"/>
-                <!-- Slot 4: left — no event -->
-                <path d="M275,140 A40,40 0 0,1 295,112 L303,124 A28,28 0 0,0 287,140 Z" fill="#0d0d0d" stroke="#222" stroke-width="1"/>
-                <line x1="315" y1="140" x2="315" y2="100" stroke="#2a2a2a" stroke-width="2"/>
-                <line x1="315" y1="140" x2="355" y2="140" stroke="#2a2a2a" stroke-width="2"/>
-                <line x1="315" y1="140" x2="315" y2="180" stroke="#2a2a2a" stroke-width="2"/>
-                <line x1="315" y1="140" x2="275" y2="140" stroke="#2a2a2a" stroke-width="2"/>
-                <circle cx="315" cy="140" r="10" fill="#222" stroke="#3a3a3a" stroke-width="1.5"/>
-                <circle cx="315" cy="140" r="4"  fill="#2e2e2e"/>
-                <!-- Event fill circles — centered inside active cutouts -->
-                <!-- Slot 1 center ≈ (327,112) -->
-                <circle class="reel-event-fill" id="fillR1" cx="327" cy="112" r="9" fill="#1e1e1e" stroke="#3a3a3a" stroke-width="1" pointer-events="none"/>
-                <!-- Slot 3 center ≈ (303,168) -->
-                <circle class="reel-event-fill" id="fillR3" cx="303" cy="168" r="9" fill="#1e1e1e" stroke="#3a3a3a" stroke-width="1" pointer-events="none"/>
-              </g>
-
-            </svg>
-
-            <!-- Helper text below camera -->
-            <p class="reel-hint">Hover to display</p>
-          </div>
-        </div>
-
-        <!-- RIGHT: Screen -->
-        <div class="events-projector">
-          <div class="projector-screen" id="projectorScreen">
-            <div class="projector-screen__surface"></div>
-            <div class="projector-screen__filmframe"></div>
-            <video class="projector-screen__video" id="projectorVideo" muted loop playsinline></video>
-            <div class="projector-screen__idle" id="projectorIdle">
-              <span class="projector-screen__idle-icon">📽</span>
-              <span class="projector-screen__idle-text">Hover a reel cutout to project</span>
-            </div>
-            <div class="projector-hud">
-              <div class="projector-hud__rec" id="projectorRec">
-                <div class="projector-hud__rec-dot"></div>
-                <span>LIVE</span>
+            <div class="event-card">
+              <div class="event-card__thumb">
+                <video src="events/e1.mp4" muted loop playsinline></video>
               </div>
-              <div class="projector-hud__tc" id="projectorTc">00:00:00:00</div>
-              <div class="projector-hud__corner projector-hud__corner--tl"></div>
-              <div class="projector-hud__corner projector-hud__corner--tr"></div>
-              <div class="projector-hud__corner projector-hud__corner--bl"></div>
-              <div class="projector-hud__corner projector-hud__corner--br"></div>
+              <div class="event-card__body">
+                <span class="event-card__tag">Technical Fest</span>
+                <h3 class="event-card__title">Zignasa — The Quest for Knowledge</h3>
+              </div>
             </div>
-          </div>
-          <div class="projector-info" id="projectorInfo">
-            <div class="projector-info__default" id="projectorDefault">
-              <div class="projector-info__default-dot"></div>
-              <span>Click the circles to watch events</span>
+
+            <div class="event-card">
+              <div class="event-card__thumb">
+                <video src="events/e2.mp4" muted loop playsinline></video>
+              </div>
+              <div class="event-card__body">
+                <span class="event-card__tag">Industry Connect</span>
+                <h3 class="event-card__title">IC — Bridging Campus and Corporate</h3>
+              </div>
             </div>
-            <div class="projector-info__content" id="projectorContent">
-              <div class="projector-info__tag" id="projectorTag"></div>
-              <div class="projector-info__title" id="projectorTitle"></div>
-              <div class="projector-info__meta" id="projectorMeta"></div>
+
+            <div class="event-card">
+              <div class="event-card__thumb">
+                <video src="events/e3.mp4" muted loop playsinline></video>
+              </div>
+              <div class="event-card__body">
+                <span class="event-card__tag">Sports Meet</span>
+                <h3 class="event-card__title">Zenith — The Annual Sports Championship</h3>
+              </div>
             </div>
+
+            <div class="event-card">
+              <div class="event-card__thumb">
+                <video src="events/e4.mp4" muted loop playsinline></video>
+              </div>
+              <div class="event-card__body">
+                <span class="event-card__tag">Cultural Fest</span>
+                <h3 class="event-card__title">Navrat Naveli — MLRIT's Annual Cultural Extravaganza</h3>
+              </div>
+            </div>
+
           </div>
         </div>
 
-      </div>
+        <div class="events-cta">
+          <a href="#" class="events-cta__btn">Explore More Events</a>
+        </div>
 
-      <div class="events-cta">
-        <a href="#" class="events-cta__btn">Explore More Events</a>
       </div>
 
     </section>
@@ -777,114 +590,45 @@
       });
     });
 
-    // ── Events Reel Projector ───────────────────
+    // ── Events Section ──────────────────────────────
     (function () {
-      const reelLeft    = document.getElementById('reelLeft');
-      const reelRight   = document.getElementById('reelRight');
-      const cutouts     = document.querySelectorAll('.reel-cutout');
-      const projVideo   = document.getElementById('projectorVideo');
-      const projIdle    = document.getElementById('projectorIdle');
-      const projRec     = document.getElementById('projectorRec');
-      const projTc      = document.getElementById('projectorTc');
-      const projTag     = document.getElementById('projectorTag');
-      const projTitle   = document.getElementById('projectorTitle');
-      const projMeta    = document.getElementById('projectorMeta');
-      const projDefault = document.getElementById('projectorDefault');
-      const projContent = document.getElementById('projectorContent');
-      const projBeam      = document.getElementById('projBeam');
-      const projBeamMid   = document.getElementById('projBeamMid');
-      const projBeamOuter = document.getElementById('projBeamOuter');
+      const section  = document.getElementById('events');
+      const reveal   = document.getElementById('eventsBrandReveal');
+      const content  = document.getElementById('eventsContent');
+      const row      = document.getElementById('eventsRow');
+      const btnPrev  = document.getElementById('eventsPrev');
+      const btnNext  = document.getElementById('eventsNext');
+      if (!section || !reveal || !content) return;
 
-      if (!reelLeft) return;
+      // Brand reveal on scroll into view
+      let triggered = false;
+      const observer = new IntersectionObserver((entries) => {
+        if (triggered || !entries[0].isIntersecting) return;
+        triggered = true;
+        observer.disconnect();
+        reveal.classList.add('is-active');
+        setTimeout(() => {
+          reveal.classList.remove('is-active');
+          reveal.classList.add('is-exit');
+          content.classList.add('is-visible');
+        }, 750);
+        setTimeout(() => { reveal.style.display = 'none'; }, 1250);
+      }, { threshold: 0.25 });
+      observer.observe(section);
 
-      // Smooth eased rotation — lerp speed toward target
-      let angle       = 0;
-      let speed       = 0.25;
-      let targetSpeed = 0.25;
-      const MAX_SPEED = 0.25;
-      const EASE      = 0.06;
-
-      function tick() {
-        speed += (targetSpeed - speed) * EASE;
-        angle  = (angle + speed) % 360;
-        reelLeft.style.transform  = `rotate(${angle}deg)`;
-        if (reelRight) reelRight.style.transform = `rotate(${-angle}deg)`;
-        requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-
-      // Timecode ticker
-      let tcFrame = 0;
-      setInterval(() => {
-        tcFrame++;
-        const ff = String(tcFrame % 30).padStart(2,'0');
-        const ss = String(Math.floor(tcFrame / 30) % 60).padStart(2,'0');
-        const mm = String(Math.floor(tcFrame / 1800) % 60).padStart(2,'0');
-        const hh = String(Math.floor(tcFrame / 108000)).padStart(2,'0');
-        if (projTc) projTc.textContent = `${hh}:${mm}:${ss}:${ff}`;
-      }, 33);
-
-      // Map cutout id → fill circle id
-      const fillMap = { slotL1: 'fillL1', slotL3: 'fillL3', slotR1: 'fillR1', slotR3: 'fillR3' };
-
-      function activateCutout(cutout) {
-        // Reset all fills
-        Object.values(fillMap).forEach(fid => {
-          const el = document.getElementById(fid);
-          if (el) { el.setAttribute('fill', '#1e1e1e'); el.setAttribute('stroke', '#3a3a3a'); }
-        });
-        // Highlight this cutout's fill
-        const fid = fillMap[cutout.id];
-        if (fid) {
-          const el = document.getElementById(fid);
-          if (el) { el.setAttribute('fill', '#c94a10'); el.setAttribute('stroke', '#E85D1F'); }
-        }
-
-        projVideo.src = cutout.dataset.video;
-        projVideo.play().catch(() => {});
-        projVideo.classList.add('is-playing');
-        projIdle.classList.add('is-hidden');
-        projRec.classList.add('is-visible');
-        if (projBeam)      projBeam.setAttribute('opacity', '1');
-        if (projBeamMid)   projBeamMid.setAttribute('opacity', '1');
-        if (projBeamOuter) projBeamOuter.setAttribute('opacity', '1');
-
-        projTag.textContent   = cutout.dataset.tag;
-        projTitle.textContent = cutout.dataset.title;
-        projMeta.textContent  = cutout.dataset.meta;
-        if (projDefault) projDefault.classList.add('is-hidden');
-        if (projContent) projContent.classList.add('is-visible');
-      }
-
-      function deactivate() {
-        Object.values(fillMap).forEach(fid => {
-          const el = document.getElementById(fid);
-          if (el) { el.setAttribute('fill', '#1e1e1e'); el.setAttribute('stroke', '#3a3a3a'); }
-        });
-        projVideo.pause();
-        projVideo.classList.remove('is-playing');
-        projIdle.classList.remove('is-hidden');
-        projRec.classList.remove('is-visible');
-        if (projBeam)      projBeam.setAttribute('opacity', '0');
-        if (projBeamMid)   projBeamMid.setAttribute('opacity', '0');
-        if (projBeamOuter) projBeamOuter.setAttribute('opacity', '0');
-        if (projDefault) projDefault.classList.remove('is-hidden');
-        if (projContent) projContent.classList.remove('is-visible');
-      }
-
-      // Hover on cutout paths — hover only, no click
-      cutouts.forEach(cutout => {
-        cutout.style.cursor = 'pointer';
-        cutout.addEventListener('mouseenter', () => {
-          targetSpeed = 0;
-          activateCutout(cutout);
-        });
-        cutout.addEventListener('mouseleave', () => {
-          targetSpeed = MAX_SPEED;
-          deactivate();
-        });
+      // Card video hover
+      document.querySelectorAll('.event-card').forEach(card => {
+        const video = card.querySelector('video');
+        if (!video) return;
+        card.addEventListener('mouseenter', () => { video.currentTime = 0; video.play().catch(() => {}); });
+        card.addEventListener('mouseleave', () => { video.pause(); });
       });
 
+      // Arrow navigation
+      if (!row || !btnPrev || !btnNext) return;
+      const SCROLL = 320;
+      btnNext.addEventListener('click', () => row.scrollBy({ left: SCROLL, behavior: 'smooth' }));
+      btnPrev.addEventListener('click', () => row.scrollBy({ left: -SCROLL, behavior: 'smooth' }));
     })();
 
     // ── Recruiter Band ──────────────────────────────
