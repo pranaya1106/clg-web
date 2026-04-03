@@ -6,9 +6,9 @@ a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 /* ===== Top Bar ===== */
@@ -21,10 +21,15 @@ ul { list-style: none; }
   padding: 0.75rem 0;
 }
 
+.masthead .container {
+  padding-left: 0.5rem;
+}
+
 .masthead__inner {
   display: flex;
   align-items: center;
   gap: 1.25rem;
+  justify-content: flex-start;
 }
 
 .masthead__logo img {
@@ -46,6 +51,10 @@ ul { list-style: none; }
   position: relative;
   z-index: 100;
   box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+
+.main-nav .container {
+  padding-left: 0.5rem;
 }
 
 .main-nav__inner {
