@@ -26,12 +26,12 @@
 }
 
 .film-reel-section__copy .section-label {
-  color: #E85D1F;
+  color: #E8500A;
 }
 
 .film-reel-section__copy h2 {
-  font-family: Georgia, serif;
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-family: 'Poppins', sans-serif;
+  font-size: var(--fs-h2);
   font-weight: 700;
   color: #111;
   line-height: 1.15;
@@ -249,7 +249,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #E85D1F;
+  background: #E8500A;
   flex-shrink: 0;
 }
 

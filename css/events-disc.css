@@ -105,7 +105,7 @@
   pointer-events: none;
   margin: 0;
 
-  font-family: 'Sora', 'Segoe UI', Arial, sans-serif;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
   font-weight: 800;
   letter-spacing: 0.04em;
   white-space: nowrap;
@@ -140,7 +140,7 @@
 .ev-tagline__accent {
   font-style: normal;
   font-weight: 800;
-  color: #E85D1F;
+  color: #E8500A;
   text-shadow: 0 0 20px rgba(232,93,31,0.5);
 }
 
@@ -243,7 +243,7 @@
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 3px;
-  background: linear-gradient(to right, transparent, #E85D1F 40%, #E85D1F 60%, transparent);
+  background: linear-gradient(to right, transparent, #E8500A 40%, #E8500A 60%, transparent);
 }
 
 /* ── Text info ── */
@@ -269,13 +269,13 @@
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #E85D1F;
+  color: #E8500A;
   margin-bottom: 0;
 }
 
 .ev-item__title {
-  font-family: 'Sora', 'Segoe UI', Arial, sans-serif;
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  font-size: var(--fs-h2);
   font-weight: 800;
   color: #fff;
   line-height: 1.0;
@@ -285,7 +285,7 @@
 }
 
 .ev-item__sub {
-  font-size: 0.88rem;
+  font-size: var(--fs-caption);
   color: rgba(255,255,255,0.45);
   margin: 0;
   font-style: italic;
@@ -351,7 +351,7 @@
 }
 
 .ev-dot.is-active {
-  background: #E85D1F;
+  background: #E8500A;
   width: 28px;
   border-radius: 4px;
 }
@@ -375,7 +375,7 @@
   align-items: center;
   gap: 12px;
   padding: 0.9rem 2.6rem;
-  background: linear-gradient(135deg, #ff6b2b 0%, #E85D1F 50%, #c94a10 100%);
+  background: linear-gradient(135deg, #E8500A 0%, #E8500A 50%, #b83d08 100%);
   color: #fff;
   font-size: 0.85rem;
   font-weight: 700;

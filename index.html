@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -6,10 +6,11 @@
   <title>MLRIT — Marri Laxman Reddy Institute of Technology</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/navbar.css" />
   <link rel="stylesheet" href="css/hero.css" />
   <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/rankings.css" />
   <link rel="stylesheet" href="css/photo-section.css" />
   <link rel="stylesheet" href="css/success-stories.css" />
   <link rel="stylesheet" href="css/why-mlrit.css" />
@@ -29,12 +30,16 @@
         <div class="masthead__tagline">
           <span>Marri Laxman Reddy Institute of Technology</span>
         </div>
+        <a href="#" class="eapcet-badge" aria-label="EAPCET Code MLID">
+          EAPCET CODE&nbsp;:&nbsp;MLID
+        </a>
       </div>
     </div>
 
     <nav class="main-nav" aria-label="Main navigation">
       <div class="container main-nav__inner">
-        <ul class="main-nav__list">
+        <ul class="main-nav__list" id="mainNavList">
+          <div class="nav-indicator" id="navIndicator"></div>
 
           <li class="main-nav__item">
             <a href="#" class="main-nav__link">About <span class="chevron"></span></a>
@@ -186,7 +191,7 @@
               <div class="support-panel__call-row">
                 <a href="tel:18005724363" class="support-panel__call-btn" aria-label="Call toll free">
                   <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                    <circle cx="16" cy="16" r="16" fill="#18453B"/>
+                    <circle cx="16" cy="16" r="16" fill="#2E7D32"/>
                     <path d="M11.5 10h2.8l1.2 3-1.6 1a9.1 9.1 0 0 0 4.1 4.1l1-1.6 3 1.2v2.8A1.5 1.5 0 0 1 20.5 22C13.6 22 10 18.4 10 11.5A1.5 1.5 0 0 1 11.5 10Z" fill="#fff"/>
                   </svg>
                 </a>
@@ -240,29 +245,45 @@
   <main>
 
     <!-- =====================
-         1. HERO
+         1. HERO — utexas.edu style
          ===================== -->
-    <section class="hero">
-      <video class="hero__bg hero__bg--a is-active" id="heroA" autoplay muted loop playsinline>
-        <source src="hero1_hq.mp4" type="video/mp4" />
-      </video>
+    <div class="hero-scene">
 
-      <div class="hero__content">
-        <div class="hero__headline">
-          <div class="container">
-            <h1>Where<br>Innovation<span>Meets <em>Excellence.</em></span></h1>
-            <p>MLRIT shapes engineers, thinkers, and leaders ready to solve tomorrow's challenges — right here in Hyderabad.</p>
-            <div class="hero__ctas">
-              <a href="#" class="btn-primary">Explore Programs</a>
-            </div>
-          </div>
+      <!-- z1: Image — 300vh, sticks then scrolls off with scene -->
+      <div class="hero-layer--image">
+        <div class="hero-sticky">
+          <img src="DJI_0755.JPG" alt="MLRIT Campus aerial view" />
+          <div class="hero__overlay"></div>
         </div>
       </div>
 
-      <a href="#stats" class="hero__scroll" aria-label="Scroll down">
-        <span class="hero__scroll-line"></span>
-      </a>
-    </section>
+      <!-- z3: Video — only 200vh, exits first revealing image -->
+      <div class="hero-layer--video-wrap">
+        <div class="hero-layer--video">
+          <video class="hero__bg is-active" id="heroA" autoplay muted loop playsinline>
+            <source src="hero1_hq.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+
+      <!-- z4: Text — 300vh, always on top of both video AND image -->
+      <div class="hero-layer--text">
+        <div class="hero-sticky">
+          <div class="hero__headline">
+            <h1>
+              <span class="hero__line hero__line--1">Where</span>
+              <span class="hero__line hero__line--2">Innovation</span>
+              <span class="hero__line hero__line--3">Meets <em class="hero__gold">Excellence.</em></span>
+            </h1>
+            <p class="hero__sub">MLRIT shapes engineers, thinkers, and leaders ready to solve tomorrow's challenges — right here in Hyderabad.</p>
+          </div>
+          <a href="#stats" class="hero__scroll" aria-label="Scroll down">
+            <span class="hero__scroll-line"></span>
+          </a>
+        </div>
+      </div>
+
+    </div>
 
     <!-- =====================
          2. STATS STRIP
@@ -271,19 +292,27 @@
       <div class="section-wrap">
         <div class="stats-strip__inner">
           <div class="stat-item">
-            <div class="stat-item__number">20<span>+</span></div>
+            <div class="stat-item__number">
+              <span class="stat-count" data-target="20">0</span><span class="stat-suffix">+</span>
+            </div>
             <div class="stat-item__label">Years of Excellence</div>
           </div>
           <div class="stat-item">
-            <div class="stat-item__number">11<span>K+</span></div>
+            <div class="stat-item__number">
+              <span class="stat-count" data-target="11">0</span><span class="stat-suffix">K+</span>
+            </div>
             <div class="stat-item__label">Students Enrolled</div>
           </div>
           <div class="stat-item">
-            <div class="stat-item__number">98<span>%</span></div>
+            <div class="stat-item__number">
+              <span class="stat-count" data-target="98">0</span><span class="stat-suffix">%</span>
+            </div>
             <div class="stat-item__label">Placement Rate</div>
           </div>
           <div class="stat-item">
-            <div class="stat-item__number">200<span>+</span></div>
+            <div class="stat-item__number">
+              <span class="stat-count" data-target="200">0</span><span class="stat-suffix">+</span>
+            </div>
             <div class="stat-item__label">Recruiting Companies</div>
           </div>
         </div>
@@ -294,31 +323,33 @@
          3. ACHIEVEMENTS + PROGRAMS (About)
          ===================== -->
     <section class="achievements" id="achievements">
+
+      <!-- Background blobs -->
+      <div class="accred-blob accred-blob--green" aria-hidden="true"></div>
+      <div class="accred-blob accred-blob--gold"  aria-hidden="true"></div>
+      <div class="accred-blob accred-blob--orange" aria-hidden="true"></div>
+
+      <!-- Grid texture -->
+      <div class="accred-grid-bg" aria-hidden="true"></div>
+
+      <!-- Top/bottom fade transitions -->
+      <div class="accred-fade accred-fade--top"    aria-hidden="true"></div>
+      <div class="accred-fade accred-fade--bottom" aria-hidden="true"></div>
+
       <div class="section-wrap">
         <div class="achievements__grid">
 
-          <div class="accred-keyboard-wrapper">
-            <div class="accred-keyboard">
-              <div class="accred-key"><img src="nirf/aicte.svg" alt="AICTE"></div>
-              <div class="accred-key"><img src="nirf/naac.svg" alt="NAAC"></div>
-              <div class="accred-key"><img src="nirf/nba.svg" alt="NBA"></div>
-              <div class="accred-key"><img src="nirf/arha.svg" alt="ARIIA"></div>
-              <div class="accred-key"><img src="nirf/the week.svg" alt="The Week"></div>
-              <div class="accred-key"><img src="nirf/dataquest.svg" alt="Dataquest"></div>
-            </div>
-          </div>
-
-          <div style="padding-left: 40px;">
+          <div style="padding-right: 40px; position:relative; z-index:2;">
             <span class="section-label">Recognition</span>
             <h2 class="section-heading">Accreditations &amp; Approvals</h2>
-            <p class="section-sub">AICTE, NAAC, NBA, ARIIA and more — recognised by leading national bodies for academic excellence and quality education.</p>
+            <p class="section-sub">AICTE, NAAC, NBA, ARIIA and more &mdash; recognised by leading national bodies for academic excellence and quality education.</p>
 
             <div class="achievements__ranks">
               <div class="rank-row">
                 <div class="rank-row__num">201</div>
                 <div class="rank-row__info">
                   <strong>NIRF Rankings 2024</strong>
-                  <span>201–300 Band, Engineering Category</span>
+                  <span>201&ndash;300 Band, Engineering Category</span>
                 </div>
               </div>
               <div class="rank-row">
@@ -338,8 +369,48 @@
             </div>
           </div>
 
-        </div>
+          <div class="logo-cluster-wrap" style="position:relative; z-index:2;">
+            <svg class="accred-constellation" viewBox="0 0 520 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <line x1="260" y1="240" x2="90"  y2="90"  />
+              <line x1="260" y1="240" x2="405" y2="75"  />
+              <line x1="260" y1="240" x2="445" y2="220" />
+              <line x1="260" y1="240" x2="410" y2="395" />
+              <line x1="260" y1="240" x2="205" y2="420" />
+              <line x1="260" y1="240" x2="75"  y2="295" />
+              <line x1="90"  y1="90"  x2="405" y2="75"  />
+              <line x1="405" y1="75"  x2="445" y2="220" />
+              <line x1="445" y1="220" x2="410" y2="395" />
+              <line x1="410" y1="395" x2="205" y2="420" />
+              <line x1="205" y1="420" x2="75"  y2="295" />
+              <line x1="75"  y1="295" x2="90"  y2="90"  />
+            </svg>
 
+            <div class="logo-cluster" id="logoCluster">
+              <div class="lc-bubble lc-bubble--center" data-idx="0">
+                <img src="nirf/naac.svg" alt="NAAC">
+              </div>
+              <div class="lc-bubble lc-bubble--md" data-idx="1" style="--lx:-170px;--ly:-150px;">
+                <img src="nirf/aicte.svg" alt="AICTE">
+              </div>
+              <div class="lc-bubble lc-bubble--md" data-idx="2" style="--lx:145px;--ly:-165px;">
+                <img src="nirf/the week.svg" alt="The Week">
+              </div>
+              <div class="lc-bubble lc-bubble--sm" data-idx="3" style="--lx:185px;--ly:-20px;">
+                <img src="nirf/arha.svg" alt="ARIIA">
+              </div>
+              <div class="lc-bubble lc-bubble--md" data-idx="4" style="--lx:150px;--ly:155px;">
+                <img src="nirf/nba.svg" alt="NBA">
+              </div>
+              <div class="lc-bubble lc-bubble--md" data-idx="5" style="--lx:-55px;--ly:180px;">
+                <img src="nirf/dataquest.svg" alt="Dataquest">
+              </div>
+              <div class="lc-bubble lc-bubble--sm" data-idx="6" style="--lx:-185px;--ly:55px;">
+                <img src="nirf/gyaanvigyan.svg" alt="Gyaan Vigyan">
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 
@@ -353,7 +424,7 @@
         <div class="why-section__left">
           <span class="section-label">Why MLRIT</span>
           <h2 class="why-section__heading">
-            <span class="why-section__dropcap">I</span>ndustry Integrated Curriculum Blended With Sports
+            <span class="why-quote">&ldquo;</span><span class="why-section__dropcap">I</span>ndustry Integrated Curriculum Blended With Sports<span class="why-quote">&rdquo;</span>
           </h2>
           <p class="why-section__body">MLR Institute of Technology is known for its integrated curriculum with equal importance to academics, employable skills &amp; sports. MLR Institute of Technology (MLRIT) is located at Dundigal, Hyderabad, Telangana, India. The institution was started in 2005 by the KMR Education Trust, headed by Mr. Marri Laxman Reddy. The Institute has Eleven UG courses along with Five PG Courses. The Institute is affiliated with Jawaharlal Nehru Technological University, Hyderabad (JNTUH). It was granted Autonomous status by University Grants Commission (India) in the year 2015.</p>
         </div>
@@ -434,73 +505,27 @@
          ===================== -->
     <section class="testimonials" id="testimonials">
       <div class="section-wrap">
-        <span class="section-label">Alumni Voices</span>
-        <h2 class="section-heading">What Our Graduates Say</h2>
-
-        <div class="testimonials__grid">
-          <div class="testimonial-card">
-            <video class="testimonial-card__video" src="av1.mp4" muted loop playsinline></video>
-            <div class="testimonial-card__sweep"></div>
-            <div class="testimonial-card__overlay"></div>
-            <div class="testimonial-card__body">
-              <div class="testimonial-card__quote">"</div>
-              <p class="testimonial-card__text">Every student has a story. Sathvika's journey reflects growth through learning, leadership, and campus experiences that shape future-ready individuals.</p>
-              <div class="testimonial-card__author">
-                <div class="testimonial-card__avatar">S</div>
-                <div>
-                  <div class="testimonial-card__name">Sathvika</div>
-                  <div class="testimonial-card__role">CSIT · MLRIT</div>
-                </div>
-              </div>
-            </div>
-            <div class="testimonial-card__caption">
-              <span class="testimonial-card__caption-title">A Journey of Learning and Growth</span>
-              <span class="testimonial-card__caption-name">Sathvika · CSIT</span>
-            </div>
-          </div>
-
-          <div class="testimonial-card">
-            <video class="testimonial-card__video" src="av2.mp4" muted loop playsinline></video>
-            <div class="testimonial-card__sweep"></div>
-            <div class="testimonial-card__overlay"></div>
-            <div class="testimonial-card__body">
-              <div class="testimonial-card__quote">"</div>
-              <p class="testimonial-card__text">Sharing his experience at MLRIT, Dasam Pranay highlights the supportive environment and sense of belonging that makes campus life truly memorable.</p>
-              <div class="testimonial-card__author">
-                <div class="testimonial-card__avatar">DP</div>
-                <div>
-                  <div class="testimonial-card__name">Dasam Pranay</div>
-                  <div class="testimonial-card__role">Aeronautical Engineering · MLRIT</div>
-                </div>
-              </div>
-            </div>
-            <div class="testimonial-card__caption">
-              <span class="testimonial-card__caption-title">A Home Away From Home</span>
-              <span class="testimonial-card__caption-name">Dasam Pranay · Aeronautical Engineering</span>
-            </div>
-          </div>
-
-          <div class="testimonial-card">
-            <video class="testimonial-card__video" src="av3.mp4" muted loop playsinline></video>
-            <div class="testimonial-card__sweep"></div>
-            <div class="testimonial-card__overlay"></div>
-            <div class="testimonial-card__body">
-              <div class="testimonial-card__quote">"</div>
-              <p class="testimonial-card__text">Gopi Pavani has secured a position at Safran, a global leader in aerospace technology, marking a significant milestone and a proud moment for MLRIT.</p>
-              <div class="testimonial-card__author">
-                <div class="testimonial-card__avatar">GP</div>
-                <div>
-                  <div class="testimonial-card__name">Gopi Pavani</div>
-                  <div class="testimonial-card__role">Aeronautical Engineering · MLRIT</div>
-                </div>
-              </div>
-            </div>
-            <div class="testimonial-card__caption">
-              <span class="testimonial-card__caption-title">A Proud Placement Achievement</span>
-              <span class="testimonial-card__caption-name">Gopi Pavani · Safran</span>
-            </div>
-          </div>
+        <div class="testi-header">
+          <span class="section-label">Alumni Voices</span>
+          <h2 class="section-heading">What Our Graduates Say</h2>
+          <p class="section-sub">Hover over the deck to explore their stories.</p>
         </div>
+
+        <!-- Desktop deck -->
+        <div class="desktop-deck">
+          <div class="deck-zone" id="deckZone">
+            <div class="stack-wrapper" id="stackWrapper"></div>
+            <div class="scatter-row"  id="scatterRow"  style="display:none;"></div>
+            <div class="deck-hint"    id="deckHint">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+              Hover to explore
+            </div>
+          </div>
+          <div class="deck-dots" id="deckDots"></div>
+        </div>
+
+        <!-- Mobile scroll -->
+        <div class="mobile-deck" id="mobileDeck"></div>
       </div>
     </section>
 
@@ -753,23 +778,124 @@
   </main>
 
   <script src="js/navbar.js"></script>
+  <script src="js/hero-scroll.js"></script>
   <script>
-    // Hero video — single loop (dual-video system reserved for future)
+    // ── Stats Counter Animation ──────────────────────────────────────────
+    (function () {
+      const strip    = document.getElementById('stats');
+      const counters = document.querySelectorAll('.stat-count');
+      if (!counters.length) return;
 
-    // Testimonial card video hover
-    document.querySelectorAll('.testimonial-card').forEach(card => {
-      const video = card.querySelector('.testimonial-card__video');
-      if (!video) return;
-      card.addEventListener('mouseenter', () => { video.currentTime = 0; video.play().catch(() => {}); });
-      card.addEventListener('mouseleave', () => { video.pause(); });
-    });
+      // Mouse-tracking ambient glow
+      strip.addEventListener('mousemove', e => {
+        const rect = strip.getBoundingClientRect();
+        const pct  = ((e.clientX - rect.left) / rect.width * 100).toFixed(1);
+        strip.style.setProperty('--mx', pct + '%');
+      });
+
+      function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+
+      function spawnSparkles(el) {
+        const item = el.closest('.stat-item');
+        for (let i = 0; i < 8; i++) {
+          const s  = document.createElement('span');
+          s.className = 'stat-sparkle';
+          const angle = (i / 8) * 360;
+          const dist  = 28 + Math.random() * 20;
+          s.style.setProperty('--sx', `${Math.cos(angle * Math.PI / 180) * dist}px`);
+          s.style.setProperty('--sy', `${Math.sin(angle * Math.PI / 180) * dist}px`);
+          s.style.top  = '40%';
+          s.style.left = '50%';
+          item.appendChild(s);
+          requestAnimationFrame(() => s.classList.add('burst'));
+          setTimeout(() => s.remove(), 750);
+        }
+      }
+
+      function animateCounter(el) {
+        const target   = +el.dataset.target;
+        const duration = 1800;
+        const start    = performance.now();
+
+        function step(now) {
+          const elapsed  = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          el.textContent = Math.floor(easeOutQuart(progress) * target);
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            el.textContent = target;
+            el.classList.add('done');
+            spawnSparkles(el);
+          }
+        }
+        requestAnimationFrame(step);
+      }
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            counters.forEach((el, i) =>
+              setTimeout(() => animateCounter(el), i * 120)
+            );
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.1 });
+
+      observer.observe(strip);
+
+      // Fallback: fire immediately if already in view
+      const r = strip.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) {
+        counters.forEach((el, i) => setTimeout(() => animateCounter(el), i * 120));
+        observer.disconnect();
+      }
+    })();
+
 
     // Why MLRIT video — autoplay on scroll into view
     (function () {
       const vid     = document.getElementById('whyVideo');
       const section = document.getElementById('why-mlrit');
       if (!vid || !section) return;
+    // ── Logo Cluster — repulsion on hover ────────────────────────────────
+    (function () {
+      const cluster = document.getElementById('logoCluster');
+      if (!cluster) return;
+      const bubbles = Array.from(cluster.querySelectorAll('.lc-bubble'));
+      const orig = {
+        1: {x:-155, y:-140}, 2: {x:130,  y:-155}, 3: {x:175,  y:-30},
+        4: {x:140,  y:140},  5: {x:-50,  y:165},  6: {x:-175, y:60},
+        7: {x:-140, y:-30}
+      };
 
+      bubbles.forEach(function(hovered) {
+        hovered.addEventListener('mouseenter', function() {
+          bubbles.forEach(function(b) {
+            if (b === hovered) return;
+            const bi = parseInt(b.dataset.idx);
+            if (!orig[bi]) return;
+            const mag = Math.sqrt(orig[bi].x * orig[bi].x + orig[bi].y * orig[bi].y) || 1;
+            b.style.setProperty('--lx', (orig[bi].x + (orig[bi].x / mag) * 18) + 'px');
+            b.style.setProperty('--ly', (orig[bi].y + (orig[bi].y / mag) * 18) + 'px');
+            b.style.opacity = '0.55';
+          });
+        });
+        hovered.addEventListener('mouseleave', function() {
+          bubbles.forEach(function(b) {
+            if (b === hovered) return;
+            const bi = parseInt(b.dataset.idx);
+            if (!orig[bi]) return;
+            b.style.setProperty('--lx', orig[bi].x + 'px');
+            b.style.setProperty('--ly', orig[bi].y + 'px');
+            b.style.opacity = '1';
+          });
+        });
+      });
+    })();
+
+    // Why MLRIT video — autoplay on scroll into view
       const io = new IntersectionObserver(entries => {
         if (entries[0].isIntersecting) {
           vid.play().catch(() => {});
@@ -779,7 +905,51 @@
           vid.classList.remove('is-playing');
         }
       }, { threshold: 0.5 });
+    // ── Logo Cluster — repulsion on hover ────────────────────────────────
+    (function () {
+      const cluster = document.getElementById('logoCluster');
+      if (!cluster) return;
+      const bubbles = Array.from(cluster.querySelectorAll('.lc-bubble'));
 
+      bubbles.forEach(function(hovered) {
+        hovered.addEventListener('mouseenter', function() {
+          const hi = parseInt(hovered.dataset.idx);
+          bubbles.forEach(function(b) {
+            if (b === hovered) return;
+            const bi = parseInt(b.dataset.idx);
+            // nudge others slightly away
+            const lx = parseFloat(getComputedStyle(b).getPropertyValue('--lx') || '0');
+            const ly = parseFloat(getComputedStyle(b).getPropertyValue('--ly') || '0');
+            const mag = Math.sqrt(lx*lx + ly*ly) || 1;
+            const nx = lx + (lx/mag) * 12;
+            const ny = ly + (ly/mag) * 12;
+            b.style.setProperty('--lx', nx + '%');
+            b.style.setProperty('--ly', ny + '%');
+            b.style.opacity = '0.6';
+          });
+        });
+
+        hovered.addEventListener('mouseleave', function() {
+          // restore original positions from data attributes
+          const origPositions = {
+            1: {x:-38, y:-52}, 2: {x:42,  y:-58}, 3: {x:68,  y:-18},
+            4: {x:52,  y:48},  5: {x:-18, y:62},  6: {x:-68, y:22},
+            7: {x:-55, y:-20}
+          };
+          bubbles.forEach(function(b) {
+            if (b === hovered) return;
+            const bi = parseInt(b.dataset.idx);
+            if (origPositions[bi]) {
+              b.style.setProperty('--lx', origPositions[bi].x + '%');
+              b.style.setProperty('--ly', origPositions[bi].y + '%');
+            }
+            b.style.opacity = '1';
+          });
+        });
+      });
+    })();
+
+    // Why MLRIT video — autoplay on scroll into view
       io.observe(section);
     })();
 
@@ -1066,6 +1236,132 @@
         document.querySelectorAll('.tile.caption-visible').forEach(t => t.classList.remove('caption-visible'));
       }
     });
+
+    // ── Story Deck ──────────────────────────────────────────────────────────
+    (function () {
+      const stories = [
+        { name: 'Sathvika',      role: 'CSIT · MLRIT',                    batch: 'B.Tech CSE · 2023', src: 'av1.mp4', accent: '#2E7D32' },
+        { name: 'Dasam Pranay',  role: 'Aeronautical Engineering · MLRIT', batch: 'B.Tech AE · 2023',  src: 'av2.mp4', accent: '#0668E1' },
+        { name: 'Gopi Pavani',   role: 'Placed at Safran',                 batch: 'B.Tech AE · 2022',  src: 'av3.mp4', accent: '#E8500A' },
+        { name: 'Ravi Teja',     role: 'SDE at TCS · MLRIT',              batch: 'B.Tech ECE · 2024',  src: 'av1.mp4', accent: '#9B59B6' },
+        { name: 'Ananya Reddy',  role: 'Data Analyst at Infosys',          batch: 'M.Tech AI · 2024',   src: 'av2.mp4', accent: '#E67E22' },
+      ];
+
+      const stackWrapper = document.getElementById('stackWrapper');
+      const scatterRow   = document.getElementById('scatterRow');
+      const deckHint     = document.getElementById('deckHint');
+      const deckDots     = document.getElementById('deckDots');
+      const deckZone     = document.getElementById('deckZone');
+      const mobileDeck   = document.getElementById('mobileDeck');
+      if (!stackWrapper) return;
+
+      function buildCard(story) {
+        const card = document.createElement('div');
+        card.className = 'sv-card';
+        card.innerHTML = `
+          <video class="sv-card__video" src="${story.src}" muted loop playsinline preload="metadata"></video>
+          <div class="sv-card__overlay"></div>
+          <div class="sv-card__accent" style="background:${story.accent}"></div>
+          <div class="sv-card__content">
+            <div class="sv-card__badge" style="background:${story.accent}22;border:1px solid ${story.accent}55;color:${story.accent}">
+              <span class="sv-card__badge-dot" style="background:${story.accent}"></span>${story.role.split('·')[0].trim()}
+            </div>
+            <div class="sv-card__name">${story.name}</div>
+            <div class="sv-card__role">${story.role}</div>
+            <div class="sv-card__batch">${story.batch}</div>
+          </div>`;
+        return card;
+      }
+
+      // ── Stack ──
+      stories.forEach((story, i) => {
+        const card  = buildCard(story);
+        const total = stories.length;
+        card.style.transform = `translateY(${-i * 7}px) scale(${1 - i * 0.045})`;
+        card.style.opacity   = i === 0 ? '1' : String(Math.max(0.25, 0.7 - i * 0.12));
+        card.style.zIndex    = String(total - i);
+        stackWrapper.appendChild(card);
+      });
+
+      // ── Dots ──
+      stories.forEach((story, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'deck-dot';
+        dot.setAttribute('aria-label', `Story ${i + 1}`);
+        dot.dataset.idx = i;
+        deckDots.appendChild(dot);
+      });
+
+      // ── Scatter / unscatter ──
+      let scattered = false;
+
+      function scatter() {
+        if (scattered) return;
+        scattered = true;
+        deckHint.classList.add('hidden');
+        stackWrapper.style.display = 'none';
+        scatterRow.style.display   = 'flex';
+        scatterRow.innerHTML       = '';
+
+        stories.forEach((story, i) => {
+          const card   = buildCard(story);
+          const n      = stories.length > 1 ? (i / (stories.length - 1)) * 2 - 1 : 0;
+          const rotate = n * 5;
+
+          card.style.transform  = 'rotate(0deg) scale(0.72)';
+          card.style.opacity    = '0';
+          card.style.transition = 'none';
+          scatterRow.appendChild(card);
+
+          const vid = card.querySelector('video');
+
+          setTimeout(() => {
+            card.style.transition = 'transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.45s ease, box-shadow 0.3s ease, filter 0.28s ease';
+            card.style.transform  = `rotate(${rotate}deg) scale(1)`;
+            card.style.opacity    = '1';
+            // do NOT autoplay — wait for hover
+          }, i * 65);
+
+          // dot sync + play/pause on hover
+          const dot = deckDots.children[i];
+          card.addEventListener('mouseenter', () => {
+            if (dot) { dot.style.width = '22px'; dot.style.background = story.accent; }
+            card.style.boxShadow = `0 28px 56px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.1), 0 0 28px ${story.accent}55`;
+            if (vid) { vid.currentTime = 0; vid.play().catch(() => {}); }
+          });
+          card.addEventListener('mouseleave', () => {
+            if (dot) { dot.style.width = '6px'; dot.style.background = ''; }
+            card.style.boxShadow = '';
+            if (vid) { vid.pause(); vid.currentTime = 0; }
+          });
+        });
+
+        deckDots.classList.add('visible');
+      }
+
+      function unscatter() {
+        if (!scattered) return;
+        scattered = false;
+        deckDots.classList.remove('visible');
+        Array.from(deckDots.children).forEach(d => { d.style.width = ''; d.style.background = ''; });
+        scatterRow.querySelectorAll('video').forEach(v => v.pause());
+        scatterRow.style.display   = 'none';
+        stackWrapper.style.display = 'block';
+        deckHint.classList.remove('hidden');
+      }
+
+      deckZone.addEventListener('mouseenter', scatter);
+      deckZone.addEventListener('mouseleave', unscatter);
+
+      // ── Mobile ──
+      stories.forEach(story => {
+        const card = buildCard(story);
+        card.querySelector('.sv-card__badge').style.cssText += 'opacity:1;transform:none;';
+        card.querySelector('.sv-card__batch').style.cssText += 'opacity:1;transform:none;';
+        mobileDeck.appendChild(card);
+      });
+    })();
+
   </script>
 </body>
 </html>

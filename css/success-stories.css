@@ -9,7 +9,7 @@
 }
 
 .ss-header {
-  padding: 0 1.5rem 36px;
+  padding: 0 var(--page-pad) 36px;
 }
 
 .ss-header .section-label {
@@ -17,7 +17,7 @@
   font-weight: 800;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--green, #18453B);
+  color: var(--green, #2E7D32);
 }
 
 /* ── Band — clips each row ── */
@@ -118,7 +118,7 @@
 .ss-card:hover {
   transform: scale(1.05) translateY(-4px);
   box-shadow:
-    0 0 0 1.5px #E85D1F,
+    0 0 0 1.5px #E8500A,
     0 16px 40px rgba(0,0,0,0.16);
   z-index: 5;
 }
