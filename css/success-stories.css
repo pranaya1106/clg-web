@@ -52,21 +52,12 @@
   display: flex;
   width: max-content;
   gap: 24px;
-  animation: ss-scroll 28s linear infinite;
-  animation-play-state: paused;
-  opacity: 0;
-  transition: opacity 0.4s ease;
+  animation: ss-scroll 40s linear infinite;
   will-change: transform;
 }
 
-/* Triggered by JS after 700ms delay */
-.ss-track.is-active {
-  animation-play-state: running;
-  opacity: 1;
-}
-
 /* Pause entire belt on hover */
-.ss-track.is-active:hover {
+.ss-track:hover {
   animation-play-state: paused;
 }
 
