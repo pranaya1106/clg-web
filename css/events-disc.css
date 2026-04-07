@@ -106,24 +106,24 @@
 
 .ev-tagline__accent { font-style: normal; font-weight: 700; color: #E85D1F; }
 
-/* ── Explore prompt — centered, exits upward on scroll ── */
+/* ── Explore prompt — centered, moves to top-left on scroll ── */
 .ev-explore {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1.2);
   z-index: 6;
   font-family: 'Sora', sans-serif;
-  font-size: 12px;
+  font-size: 18px;
   font-weight: 600;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   text-transform: uppercase;
   color: #fff;
-  opacity: 0.7;
+  opacity: 1;
   pointer-events: none;
   white-space: nowrap;
   text-shadow: 0 1px 8px rgba(0,0,0,0.5);
-  transition: transform 0.6s ease, opacity 0.4s ease;
+  transition: transform 0.5s ease, opacity 0.3s ease;
   will-change: transform, opacity;
 }
 
@@ -133,8 +133,8 @@
 }
 
 .ev-explore.is-settled {
-  transform: translate(-50%, -150vh);
-  opacity: 0;
+  transform: translate(-120%, -220%) scale(0.7);
+  opacity: 0.8;
 }
 
 /* ── Content wrap ── */

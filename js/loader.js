@@ -65,15 +65,13 @@ function initEvents() {
 
   if (!section || !bgVideo) return;
 
-  // ── Explore prompt: settle (exit upward) when section scrolls into view ──
+  // ── Explore prompt: settle to top-left when section enters viewport ──
   if (evExplore) {
     var exploreIO = new IntersectionObserver(function (entries) {
       if (entries[0].isIntersecting) {
         evExplore.classList.add('is-settled');
-      } else {
-        evExplore.classList.remove('is-settled');
       }
-    }, { threshold: 0.3 });
+    }, { threshold: 0.4 });
     exploreIO.observe(section);
   }
 
