@@ -111,7 +111,7 @@
 
 .hero__headline h1 {
   font-family: 'Sora', 'Segoe UI', Arial, sans-serif;
-  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
   color: #fff;
   line-height: 0.95;

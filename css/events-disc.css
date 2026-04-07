@@ -212,23 +212,36 @@
   pointer-events: none;
 }
 
-/* Play icon overlay */
+/* Play overlay */
 .ev-main-thumb__play {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0,0,0,0.25);
-  color: rgba(255,255,255,0.9);
-  font-size: 1.4rem;
+  gap: 6px;
+  background: rgba(0,0,0,0.15);
   opacity: 1;
   transition: opacity 0.25s ease, background 0.25s ease;
 }
 
 .ev-main-thumb:hover .ev-main-thumb__play {
-  background: rgba(0,0,0,0.1);
-  opacity: 0.6;
+  background: rgba(0,0,0,0.05);
+  opacity: 0;
+}
+
+.ev-main-thumb__play-text {
+  font-family: 'Segoe Script', 'Brush Script MT', 'Dancing Script', cursive;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #E85D1F;
+  line-height: 1.15;
+  text-align: right;
+}
+
+.ev-main-thumb__play-icon {
+  color: rgba(255,255,255,0.9);
+  font-size: 1.4rem;
 }
 
 /* ?????? Controls row ?????? */

@@ -463,6 +463,10 @@
               <p class="alumni-company">Microsoft</p>
             </div>
             <video class="alumni-video" src="av1.mp4" muted loop playsinline></video>
+            <button class="alumni-mute-btn" aria-label="Toggle mute">
+              <svg class="alumni-mute-btn__off" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <svg class="alumni-mute-btn__on" width="14" height="14" viewBox="0 0 24 24" fill="none" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
           </div>
 
           <div class="alumni-card">
@@ -478,6 +482,10 @@
               <p class="alumni-company">HAL</p>
             </div>
             <video class="alumni-video" src="av2.mp4" muted loop playsinline></video>
+            <button class="alumni-mute-btn" aria-label="Toggle mute">
+              <svg class="alumni-mute-btn__off" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <svg class="alumni-mute-btn__on" width="14" height="14" viewBox="0 0 24 24" fill="none" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
           </div>
 
           <div class="alumni-card">
@@ -493,6 +501,10 @@
               <p class="alumni-company">Safran</p>
             </div>
             <video class="alumni-video" src="av3.mp4" muted loop playsinline></video>
+            <button class="alumni-mute-btn" aria-label="Toggle mute">
+              <svg class="alumni-mute-btn__off" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <svg class="alumni-mute-btn__on" width="14" height="14" viewBox="0 0 24 24" fill="none" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
           </div>
 
 
@@ -591,7 +603,10 @@
           <!-- Main hover player -->
           <div class="ev-main-thumb" id="evMainThumb">
             <video class="ev-main-thumb__video" id="evThumbVid" muted loop playsinline></video>
-            <div class="ev-main-thumb__play">&#9654;</div>
+            <div class="ev-main-thumb__play">
+              <span class="ev-main-thumb__play-text">hover to<br>play</span>
+              <span class="ev-main-thumb__play-icon">&#9654;</span>
+            </div>
           </div>
 
           <!-- Controls + mini queue -->
@@ -714,12 +729,14 @@
       });
     })();
 
-    // Alumni hover ΓÇö video play/pause + sweep (250ms delay matches orange+blue sequence)
+    // Alumni hover — video play/pause + mute toggle
     (function () {
       document.querySelectorAll('.alumni-card').forEach(function(card) {
         var vid = card.querySelector('.alumni-video');
+        var btn = card.querySelector('.alumni-mute-btn');
         var playTimer = null;
         if (!vid) return;
+
         card.addEventListener('mouseenter', function() {
           playTimer = setTimeout(function() { vid.play().catch(function(){}); }, 450);
         });
@@ -728,6 +745,17 @@
           vid.pause();
           vid.currentTime = 0;
         });
+
+        if (btn) {
+          btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            vid.muted = !vid.muted;
+            var off = btn.querySelector('.alumni-mute-btn__off');
+            var on  = btn.querySelector('.alumni-mute-btn__on');
+            if (off) off.style.display = vid.muted ? '' : 'none';
+            if (on)  on.style.display  = vid.muted ? 'none' : '';
+          });
+        }
       });
     })();
 
@@ -896,7 +924,7 @@
       io.observe(strip);
     })();
 
-    // ΓöÇΓöÇ Success Stories ΓÇö per-card step scroll ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    // ── Success Stories — per-card step scroll ──────────────
     (function () {
       var track = document.querySelector('.ss-track');
       var cards = document.querySelectorAll('.ss-card');
