@@ -8,15 +8,15 @@
   <!-- Beam sweep -->
   <div class="ev-beam" id="evBeam" aria-hidden="true"></div>
 
-  <!-- Section label top-left -->
+  <!-- Top-left label (animates from centre hero → settles top-left) -->
   <p class="ev-tagline" id="evTagline">
     Explore the real&nbsp;<em class="ev-tagline__accent">MLRIT</em>
   </p>
 
-  <!-- Content wrap — revealed after intro -->
+  <!-- Bottom content row (revealed after intro) -->
   <div class="ev-content" id="evContent">
 
-    <!-- Bottom-left: event text -->
+    <!-- Bottom-left: quote + name -->
     <div class="ev-text" id="evText">
       <p class="ev-text__quote" id="evQuote"></p>
       <div class="ev-text__meta">
@@ -25,16 +25,16 @@
       </div>
     </div>
 
-    <!-- Bottom-right: sidebar -->
+    <!-- Bottom-right: mini player + queue -->
     <div class="ev-sidebar">
 
-      <!-- Main hover player -->
+      <!-- Mini hover player -->
       <div class="ev-main-thumb" id="evMainThumb">
         <video class="ev-main-thumb__video" id="evThumbVid" muted loop playsinline></video>
         <div class="ev-main-thumb__play">&#9654;</div>
       </div>
 
-      <!-- Controls + mini queue -->
+      <!-- Prev / thumbnails / Next -->
       <div class="ev-controls-row">
         <button class="ev-ctrl-btn" id="evPrev" aria-label="Previous">&#8592;</button>
 
@@ -50,12 +50,19 @@
 
       <!-- Mute toggle -->
       <button class="ev-mute-btn" id="evMuteBtn" aria-label="Toggle mute">
-        <svg class="ev-mute-btn__off" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        <svg class="ev-mute-btn__on" width="14" height="14" viewBox="0 0 24 24" fill="none" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg class="ev-mute-btn__off" width="14" height="14" viewBox="0 0 24 24" fill="none">
+          <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <svg class="ev-mute-btn__on" width="14" height="14" viewBox="0 0 24 24" fill="none" style="display:none">
+          <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
       </button>
 
     </div>
-
   </div>
 
 </section>

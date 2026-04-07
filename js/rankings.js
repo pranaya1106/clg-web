@@ -18,8 +18,8 @@
   });
 
   // Easing function
-  function easeOutCubic(t) {
-    return 1 - Math.pow(1 - t, 3);
+  function easeOutQuart(t) {
+    return 1 - Math.pow(1 - t, 4);
   }
 
   // Animate a single rank
@@ -33,7 +33,7 @@
       function tick(now) {
         const elapsed = now - start;
         const progress = Math.min(elapsed / duration, 1);
-        const eased = easeOutCubic(progress);
+        const eased = easeOutQuart(progress);
         const current = Math.round(eased * rank.value);
 
         rank.el.textContent = current;

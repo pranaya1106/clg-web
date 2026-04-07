@@ -1,32 +1,31 @@
 // ═══════════════════════════════════════════════════════════════
-// ALUMNI (TESTIMONIALS) — Dual sweep animation + hover polish
+// ALUMNI — Exact sequence: sweep (0–200ms) → overlay (200–240ms) → video (250ms+)
+// Video visibility is JS-controlled (no CSS transition = no fade delay)
 // ═══════════════════════════════════════════════════════════════
 
 (function () {
   'use strict';
 
-  const cards = document.querySelectorAll('.testimonial-card');
+  document.querySelectorAll('.alumni-card').forEach(function (card) {
+    var vid = card.querySelector('.alumni-card__video');
+    if (!vid) return;
 
-  cards.forEach((card) => {
-    const video = card.querySelector('.testimonial-card__video');
-    const sweep = card.querySelector('.testimonial-card__sweep');
+    var playTimer = null;
 
-    if (!video || !sweep) return;
-
-    // Hover: play video + trigger sweep
-    card.addEventListener('mouseenter', () => {
-      video.currentTime = 0;
-      video.play().catch(() => {});
-
-      // Trigger dual sweep animation
-      sweep.classList.remove('is-sweeping');
-      void sweep.offsetWidth; // Force reflow
-      sweep.classList.add('is-sweeping');
+    card.addEventListener('mouseenter', function () {
+      // Sweep completes at 200ms, overlay fully opaque by ~240ms.
+      // Fire at 250ms — no overlap, no early play.
+      playTimer = setTimeout(function () {
+        vid.style.opacity = '1';
+        vid.currentTime = 0;
+        vid.play().catch(function () {});
+      }, 250);
     });
 
-    // Leave: pause video
-    card.addEventListener('mouseleave', () => {
-      video.pause();
+    card.addEventListener('mouseleave', function () {
+      clearTimeout(playTimer);
+      vid.pause();
+      vid.style.opacity = '0';
     });
   });
 })();

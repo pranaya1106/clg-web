@@ -115,6 +115,10 @@ body {
   z-index: 1;
 }
 
+.stat-item:hover .stat-item__number {
+  text-shadow: 0 0 28px rgba(255,255,255,0.4);
+}
+
 .stat-item:last-child { border-right: none; }
 
 .stat-item__number {
@@ -527,6 +531,10 @@ body {
 
 .placement-stat__num .unit { color: var(--gold); font-size: 1.2rem; }
 
+.placement-stat:hover .placement-stat__num {
+  text-shadow: 0 0 32px rgba(255,255,255,0.3);
+}
+
 .placement-stat__label {
   font-size: 0.75rem;
   color: rgba(255,255,255,0.55);
@@ -573,15 +581,30 @@ body {
 
 .recruiter-band__track {
   display: flex;
-  gap: 20px;
+  gap: 0;
   will-change: transform;
   padding: 4px 0;
+  animation: recruiter-scroll 30s linear infinite;
+}
+
+.recruiter-band:hover .recruiter-band__track {
+  animation-play-state: paused;
+}
+
+@keyframes recruiter-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .recruiter-band__list {
   display: flex;
   flex-shrink: 0;
   gap: 20px;
+  padding-right: 20px; /* match gap between lists */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .recruiter-band__track { animation: none; }
 }
 
 .recruiter-band__item {
@@ -643,13 +666,74 @@ body {
   gap: 14px;
   border: 1px solid rgba(255,255,255,0.06);
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-  cursor: default;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
 }
 
 .alumni-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 12px 30px rgba(0,0,0,0.2);
   border-color: rgba(232,93,31,0.4);
+}
+
+/* ── Cinematic layers: content above all cinematic layers ── */
+.alumni-card > .alumni-avatar,
+.alumni-card > .alumni-info,
+.alumni-card > .alumni-meta {
+  position: relative;
+  z-index: 5;
+  transition: opacity 0.22s ease;
+}
+
+.alumni-card:hover > .alumni-avatar,
+.alumni-card:hover > .alumni-info,
+.alumni-card:hover > .alumni-meta {
+  opacity: 0;
+}
+
+/* ── ::before — orange sweep (top-right → bottom-left, 200ms linear) ── */
+.alumni-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #E85D1F;
+  z-index: 2;
+  transform: translate(101%, -101%);
+  transition: transform 0.2s linear;
+  pointer-events: none;
+}
+
+.alumni-card:hover::before {
+  transform: translate(0, 0);
+}
+
+/* ── ::after — blue overlay (instant, fires only after sweep completes at 200ms) ── */
+.alumni-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 16, 72, 0.95);
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.04s linear 0.2s;
+  pointer-events: none;
+}
+
+.alumni-card:hover::after {
+  opacity: 1;
+}
+
+/* ── Video (JS-controlled: no CSS transition, instant appear via style.opacity) ── */
+.alumni-card__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 4;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .alumni-avatar {

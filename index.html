@@ -389,6 +389,7 @@
               <span>2023</span>
               <span>CSIT</span>
             </div>
+            <video class="alumni-card__video" src="av1.mp4" muted loop playsinline preload="none"></video>
           </div>
 
           <div class="alumni-card">
@@ -402,6 +403,7 @@
               <span>2022</span>
               <span>Aeronautical</span>
             </div>
+            <video class="alumni-card__video" src="av2.mp4" muted loop playsinline preload="none"></video>
           </div>
 
           <div class="alumni-card">
@@ -415,6 +417,7 @@
               <span>2022</span>
               <span>Aeronautical</span>
             </div>
+            <video class="alumni-card__video" src="av3.mp4" muted loop playsinline preload="none"></video>
           </div>
 
           <div class="alumni-card">
@@ -428,6 +431,7 @@
               <span>2021</span>
               <span>CSE</span>
             </div>
+            <video class="alumni-card__video" src="av1.mp4" muted loop playsinline preload="none"></video>
           </div>
 
           <div class="alumni-card">
@@ -441,12 +445,14 @@
               <span>2020</span>
               <span>CSE</span>
             </div>
+            <video class="alumni-card__video" src="av2.mp4" muted loop playsinline preload="none"></video>
           </div>
 
           <div class="alumni-card">
             <div class="alumni-avatar" style="background:#E85D1F">AP</div>
             <div class="alumni-info">
               <h3>Arjun Patel</h3>
+
               <p class="alumni-role">Data Scientist</p>
               <p class="alumni-company">Infosys</p>
             </div>
@@ -454,6 +460,7 @@
               <span>2021</span>
               <span>IT</span>
             </div>
+            <video class="alumni-card__video" src="av3.mp4" muted loop playsinline preload="none"></video>
           </div>
 
         </div>
@@ -498,25 +505,50 @@
         <p class="placements__logos-label">Recent Recruiters</p>
       </div>
 
-      <!-- Full-bleed scrolling band — outside section-wrap -->
+      <!-- Full-bleed scrolling band — CSS infinite scroll, dual-list for seamless loop -->
       <div class="recruiter-band" id="recruiterBand">
         <div class="recruiter-band__track" id="recruiterTrack">
-          <div class="recruiter-band__item"><img src="placements/p1.jpg"  alt="Recruiter"></div>
-          <div class="recruiter-band__item"><img src="placements/p2.jpg"  alt="Recruiter"></div>
-          <div class="recruiter-band__item"><img src="placements/p3.jpg"  alt="Recruiter"></div>
-          <div class="recruiter-band__item"><img src="placements/p4.jpg"  alt="Recruiter"></div>
-          <div class="recruiter-band__item"><img src="placements/p5.jpg"  alt="Recruiter"></div>
-          <div class="recruiter-band__item"><img src="placements/p6.jpg"  alt="Recruiter"></div>
-          <div class="recruiter-band__item"><img src="placements/p7.png"  alt="Recruiter"></div>
-          <div class="recruiter-band__item"><img src="placements/p8.png"  alt="Recruiter"></div>
-          <div class="recruiter-band__item"><img src="placements/p9.png"  alt="Recruiter"></div>
-          <div class="recruiter-band__item"><img src="placements/p10.png" alt="Recruiter"></div>
-          <div class="recruiter-band__item"><img src="placements/p11.png" alt="Recruiter"></div>
-          <div class="recruiter-band__item"><img src="placements/p12.png" alt="Recruiter"></div>
-          <div class="recruiter-band__item"><img src="placements/p13.png" alt="Recruiter"></div>
-          <div class="recruiter-band__item"><img src="placements/p14.png" alt="Recruiter"></div>
-          <div class="recruiter-band__item"><img src="placements/p15.png" alt="Recruiter"></div>
-          <div class="recruiter-band__item"><img src="placements/p16.png" alt="Recruiter"></div>
+
+          <!-- List 1 — original -->
+          <div class="recruiter-band__list">
+            <div class="recruiter-band__item"><img src="placements/p1.jpg"  alt="Recruiter"></div>
+            <div class="recruiter-band__item"><img src="placements/p2.jpg"  alt="Recruiter"></div>
+            <div class="recruiter-band__item"><img src="placements/p3.jpg"  alt="Recruiter"></div>
+            <div class="recruiter-band__item"><img src="placements/p4.jpg"  alt="Recruiter"></div>
+            <div class="recruiter-band__item"><img src="placements/p5.jpg"  alt="Recruiter"></div>
+            <div class="recruiter-band__item"><img src="placements/p6.jpg"  alt="Recruiter"></div>
+            <div class="recruiter-band__item"><img src="placements/p7.png"  alt="Recruiter"></div>
+            <div class="recruiter-band__item"><img src="placements/p8.png"  alt="Recruiter"></div>
+            <div class="recruiter-band__item"><img src="placements/p9.png"  alt="Recruiter"></div>
+            <div class="recruiter-band__item"><img src="placements/p10.png" alt="Recruiter"></div>
+            <div class="recruiter-band__item"><img src="placements/p11.png" alt="Recruiter"></div>
+            <div class="recruiter-band__item"><img src="placements/p12.png" alt="Recruiter"></div>
+            <div class="recruiter-band__item"><img src="placements/p13.png" alt="Recruiter"></div>
+            <div class="recruiter-band__item"><img src="placements/p14.png" alt="Recruiter"></div>
+            <div class="recruiter-band__item"><img src="placements/p15.png" alt="Recruiter"></div>
+            <div class="recruiter-band__item"><img src="placements/p16.png" alt="Recruiter"></div>
+          </div>
+
+          <!-- List 2 — exact duplicate for seamless CSS loop -->
+          <div class="recruiter-band__list" aria-hidden="true">
+            <div class="recruiter-band__item"><img src="placements/p1.jpg"  alt=""></div>
+            <div class="recruiter-band__item"><img src="placements/p2.jpg"  alt=""></div>
+            <div class="recruiter-band__item"><img src="placements/p3.jpg"  alt=""></div>
+            <div class="recruiter-band__item"><img src="placements/p4.jpg"  alt=""></div>
+            <div class="recruiter-band__item"><img src="placements/p5.jpg"  alt=""></div>
+            <div class="recruiter-band__item"><img src="placements/p6.jpg"  alt=""></div>
+            <div class="recruiter-band__item"><img src="placements/p7.png"  alt=""></div>
+            <div class="recruiter-band__item"><img src="placements/p8.png"  alt=""></div>
+            <div class="recruiter-band__item"><img src="placements/p9.png"  alt=""></div>
+            <div class="recruiter-band__item"><img src="placements/p10.png" alt=""></div>
+            <div class="recruiter-band__item"><img src="placements/p11.png" alt=""></div>
+            <div class="recruiter-band__item"><img src="placements/p12.png" alt=""></div>
+            <div class="recruiter-band__item"><img src="placements/p13.png" alt=""></div>
+            <div class="recruiter-band__item"><img src="placements/p14.png" alt=""></div>
+            <div class="recruiter-band__item"><img src="placements/p15.png" alt=""></div>
+            <div class="recruiter-band__item"><img src="placements/p16.png" alt=""></div>
+          </div>
+
         </div>
       </div>
 
@@ -603,18 +635,18 @@
   <script src="js/rankings.js"></script>
   <script src="js/placements.js"></script>
   <script src="js/success-stories.js"></script>
+  <script src="js/alumni.js"></script>
   <script src="js/footer.js"></script>
   <script>
-    // Hero video — single loop
 
-    // Why MLRIT video mute button
+    // ── Why MLRIT mute button ───────────────────────────────────
     (function () {
-      const btn = document.getElementById('whyMute');
-      const vid = document.getElementById('whyVideo');
+      var btn    = document.getElementById('whyMute');
+      var vid    = document.getElementById('whyVideo');
       if (!btn || !vid) return;
-      const iconOff = btn.querySelector('.vid-mute-btn__off');
-      const iconOn  = btn.querySelector('.vid-mute-btn__on');
-      btn.addEventListener('click', e => {
+      var iconOff = btn.querySelector('.vid-mute-btn__off');
+      var iconOn  = btn.querySelector('.vid-mute-btn__on');
+      btn.addEventListener('click', function (e) {
         e.stopPropagation();
         vid.muted = !vid.muted;
         if (iconOff) iconOff.style.display = vid.muted ? '' : 'none';
@@ -687,83 +719,91 @@
       io.observe(rows[0].closest('.achievements') || rows[0]);
     })();
 
-    // Stats strip — count-up animation
+    // ── Stats Strip — count-up on scroll ────────────────────────
     (function () {
-      const section  = document.getElementById('events');
-      const beam     = document.getElementById('evBeam');
-      const tagline  = document.getElementById('evTagline');
-      const carousel = document.getElementById('evCarousel');
-      const items    = document.querySelectorAll('.ev-item');
-      const dots     = document.querySelectorAll('.ev-dot');
-      const bgVideos = document.querySelectorAll('.ev-bg__video');
-      const btnPrev  = document.getElementById('evPrev');
-      const btnNext  = document.getElementById('evNext');
-      if (!section || !items.length) return;
+      const strip = document.getElementById('stats');
+      if (!strip) return;
 
-      // Cinematic bg — single reusable video
-      const cinematicVid = document.getElementById('evCinematicVid');
-      const eventSrcs    = ['events/e1.mp4','events/e2.mp4','events/e3.mp4','events/e4.mp4'];
-      let cinematicTimer = null;
+      const items = strip.querySelectorAll('.stat-item__number');
+      const stats = Array.from(items).map(function (el) {
+        var textNode = el.childNodes[0];
+        var num = parseFloat(textNode ? textNode.textContent.trim() : 0);
+        return { el: el, textNode: textNode, num: num };
+      });
 
-      // ── Layout helper ──
-      function layout(active) {
-        items.forEach((item, i) => {
-          item.classList.remove('is-active', 'is-prev', 'is-next', 'is-far');
-          const rel = ((i - active) % COUNT + COUNT) % COUNT;
-          if      (rel === 0)         item.classList.add('is-active');
-          else if (rel === 1)         item.classList.add('is-next');
-          else if (rel === COUNT - 1) item.classList.add('is-prev');
-          else                        item.classList.add('is-far');
-        });
-        dots.forEach((d, i) => d.classList.toggle('is-active', i === active));
-        bgVideos.forEach((v, i) => {
-          const on = i === active;
-          v.classList.toggle('is-active', on);
-          if (on) { v.currentTime = 0; v.play().catch(() => {}); }
-          else    { v.pause(); }
-        });
-        items.forEach((item, i) => {
-          const vid = item.querySelector('.ev-item__video');
-          if (!vid) return;
-          if (i === active) { vid.currentTime = 0; vid.play().catch(() => {}); }
-          else              { vid.pause(); }
-        });
+      function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
 
-        // Cinematic bg — swap to active event's video
-        setCinematicBg(active);
-      }     const progress = Math.min((now - start) / duration, 1);
-            const current  = Math.round(easeOut(progress) * stat.num);
-            stat.el.childNodes[0].textContent = current;
-            if (progress < 1) requestAnimationFrame(tick);
+      function animateStat(stat, delay) {
+        setTimeout(function () {
+          var start = performance.now();
+          var dur   = 1400;
+          function tick(now) {
+            var p = Math.min((now - start) / dur, 1);
+            if (stat.textNode) stat.textNode.textContent = Math.round(easeOut(p) * stat.num);
+            if (p < 1) requestAnimationFrame(tick);
           }
           requestAnimationFrame(tick);
         }, delay);
       }
 
-      const io = new IntersectionObserver(entries => {
+      var io = new IntersectionObserver(function (entries) {
         if (!entries[0].isIntersecting) return;
         io.disconnect();
-        stats.forEach((stat, i) => {
-          stat.el.childNodes[0].textContent = '0';
-          animateStat(stat, i * 120);
+        stats.forEach(function (s, i) {
+          if (s.textNode) s.textNode.textContent = '0';
+          animateStat(s, i * 150);
         });
       }, { threshold: 0.5 });
 
       io.observe(strip);
     })();
 
-    // ── Events Section — cinematic carousel ──────────────────────────────
+    // ── Placements — count-up on scroll ─────────────────────────
     (function () {
-      const section  = document.getElementById('events');
-      const beam     = document.getElementById('evBeam');
-      const tagline  = document.getElementById('evTagline');
-      const carousel = document.getElementById('evCarousel');
-      const items    = document.querySelectorAll('.ev-item');
-      const dots     = document.querySelectorAll('.ev-dot');
-      const bgVideos = document.querySelectorAll('.ev-bg__video');
-      const btnPrev  = document.getElementById('evPrev');
-      const btnNext  = document.getElementById('evNext');
-      if (!section || !items.length) return;
+      var section = document.getElementById('placements');
+      if (!section) return;
+
+      var items = section.querySelectorAll('.placement-stat__num');
+      var stats = Array.from(items).map(function (el) {
+        var textNode = el.childNodes[0];
+        var num = parseFloat(textNode ? textNode.textContent.trim() : 0);
+        return { el: el, textNode: textNode, num: num };
+      });
+
+      function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+      function animateStat(stat, delay) {
+        setTimeout(function () {
+          var start = performance.now();
+          var dur   = 1200;
+          function tick(now) {
+            var p = Math.min((now - start) / dur, 1);
+            if (stat.textNode) stat.textNode.textContent = Math.round(easeOut(p) * stat.num);
+            if (p < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+        }, delay);
+      }
+
+      var io = new IntersectionObserver(function (entries) {
+        if (!entries[0].isIntersecting) return;
+        io.disconnect();
+        stats.forEach(function (s, i) {
+          if (s.textNode) s.textNode.textContent = '0';
+          animateStat(s, i * 120);
+        });
+      }, { threshold: 0.4 });
+
+      io.observe(section);
+    })();
+
+    // Events interaction handled entirely by loader.js > initEvents() — no inline code needed.
+
+
+
+    // ── Events Section handled by loader.js > initEvents() ──────────────────
+    (function () {
+      if (true) return; // no-op placeholder
 
       const COUNT = items.length;
       let current = 0;
@@ -916,74 +956,30 @@
 
     
 
-        // ── Recruiter Band ──────────────────────────────
+    // ── Recruiter Band — 3D tilt (scroll is CSS @keyframes) ────────────────
     (function () {
-      const track = document.getElementById('recruiterTrack');
-      const band  = document.getElementById('recruiterBand');
-      if (!track || !band) return;
+      var track = document.getElementById('recruiterTrack');
+      if (!track) return;
 
-      const GAP   = 20;
-      const SPEED = 0.9;
-
-      let offset  = 0;
-      let paused  = false;
-      let cardW   = 0;
-
-      requestAnimationFrame(() => {
-        const first = track.firstElementChild;
-        cardW = first ? first.getBoundingClientRect().width + GAP : 216;
-        run();
-      });
-
-      band.addEventListener('mouseenter', () => { paused = true; });
-      band.addEventListener('mouseleave', () => { paused = false; });
-
-      function run() {
-        function tick() {
-          if (!paused) {
-            offset += SPEED;
-            if (offset >= cardW) {
-              offset -= cardW;
-              track.appendChild(track.firstElementChild);
-            }
-            track.style.transform = `translateX(-${offset}px)`;
-          }
-          requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-      }
-
-      // 4-direction tilt on individual cards
+      // 4-direction 3D tilt — rotateX / rotateY
       function applyTilt(card, e) {
-        const rect   = card.getBoundingClientRect();
-        const cx     = rect.left + rect.width  / 2;
-        const cy     = rect.top  + rect.height / 2;
-        const dx     = (e.clientX - cx) / (rect.width  / 2); // -1 to 1
-        const dy     = (e.clientY - cy) / (rect.height / 2); // -1 to 1
-        const rotY   =  dx * 12;   // tilt left/right
-        const rotX   = -dy * 8;    // tilt up/down
-        card.style.transform = `perspective(500px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.06)`;
+        var rect = card.getBoundingClientRect();
+        var cx   = rect.left + rect.width  / 2;
+        var cy   = rect.top  + rect.height / 2;
+        var dx   = (e.clientX - cx) / (rect.width  / 2);
+        var dy   = (e.clientY - cy) / (rect.height / 2);
+        card.style.transform = 'perspective(500px) rotateX(' + (-dy * 8) + 'deg) rotateY(' + (dx * 12) + 'deg) scale(1.06)';
       }
 
-      // Delegate tilt to all current and future cards
-      track.addEventListener('mousemove', e => {
-        const card = e.target.closest('.recruiter-band__item');
+      track.addEventListener('mousemove', function (e) {
+        var card = e.target.closest('.recruiter-band__item');
         if (card) applyTilt(card, e);
       });
 
-      track.addEventListener('mouseleave', e => {
-        const card = e.target.closest('.recruiter-band__item');
-        if (card) card.style.transform = '';
-      }, true);
-
-      // Reset when cursor leaves a card
-      track.addEventListener('mouseout', e => {
-        const card = e.target.closest('.recruiter-band__item');
-        if (card && !card.contains(e.relatedTarget)) {
-          card.style.transform = '';
-        }
+      track.addEventListener('mouseout', function (e) {
+        var card = e.target.closest('.recruiter-band__item');
+        if (card && !card.contains(e.relatedTarget)) card.style.transform = '';
       });
-
     })();
 
     // ── Photo Section ──────────────────────────────
