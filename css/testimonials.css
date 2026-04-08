@@ -5,7 +5,7 @@
 /* ── Section background with soft gradient + node network ── */
 .testimonials {
   position: relative;
-  padding: 80px 0 120px;
+  padding: 56px 0 56px;
   background: linear-gradient(160deg, #f0f2f0 0%, #e8ede9 40%, #eef0ee 100%);
   overflow: hidden;
 }
@@ -51,7 +51,7 @@
 /* ── Header ── */
 .testi-header {
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 40px;
 }
 
 .testi-header .section-label {
@@ -273,7 +273,7 @@
   display: flex;
   justify-content: center;
   gap: 8px;
-  margin-top: 60px;
+  margin-top: 32px;
   opacity: 0;
   transition: opacity 0.3s ease;
 }

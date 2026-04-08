@@ -32,8 +32,8 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(46,125,50,0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46,125,50,0.12) 1px, transparent 1px);
   background-size: 40px 40px;
   pointer-events: none;
   z-index: 0;
@@ -59,17 +59,17 @@
 }
 .accred-blob--green {
   width: 420px; height: 420px;
-  background: rgba(46,125,50,0.10);
+  background: rgba(46,125,50,0.22);
   top: -80px; left: -60px;
 }
 .accred-blob--gold {
   width: 360px; height: 360px;
-  background: rgba(245,197,24,0.12);
+  background: rgba(245,197,24,0.22);
   bottom: -60px; right: 10%;
 }
 .accred-blob--orange {
   width: 280px; height: 280px;
-  background: rgba(232,80,10,0.08);
+  background: rgba(232,80,10,0.18);
   top: 30%; right: 30%;
 }
 
