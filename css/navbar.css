@@ -23,6 +23,7 @@ ul { list-style: none; }
 
 .masthead .container {
   padding-left: 0.5rem;
+  padding-right: 1.5rem;
 }
 
 .masthead__inner {
@@ -30,6 +31,26 @@ ul { list-style: none; }
   align-items: center;
   gap: 1.25rem;
   justify-content: flex-start;
+}
+
+.masthead__eapcet {
+  margin-left: auto;
+  padding: 7px 18px;
+  background: #E85D1F;
+  color: #fff;
+  font-family: var(--display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  white-space: nowrap;
+  transition: background 0.3s ease;
+}
+
+.masthead__eapcet:hover {
+  background: #d04f15;
 }
 
 .masthead__logo img {
