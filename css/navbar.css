@@ -17,6 +17,7 @@ ul { list-style: none; }
   right: 0;
   z-index: 1000;
   width: 100%;
+  overflow: clip;
 }
 
 /* =====================
@@ -40,7 +41,7 @@ ul { list-style: none; }
 
 .eapcet-badge {
   margin-left: auto;
-  margin-right: 2rem;
+  margin-right: 0;
   display: inline-flex;
   align-items: center;
   padding: 0.45rem 1.1rem;

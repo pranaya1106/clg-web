@@ -33,6 +33,8 @@
 /* ===== Base ===== */
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 body {
@@ -41,6 +43,9 @@ body {
   line-height: var(--lh-body);
   color: var(--text-dark);
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  max-width: 100%;
+  width: 100%;
 }
 
 /* ===== Shared utilities ===== */
@@ -344,119 +349,6 @@ body {
 
 @media (max-width: 600px) {
   .achievements__ranks { grid-template-columns: 1fr; }
-}
-
-/* ===========================
-   ACCREDITATIONS — Floating Logo Cluster
-   =========================== */
-
-.logo-cluster {
-  position: relative;
-  width: 500px;
-  height: 500px;
-  flex-shrink: 0;
-  animation: clusterIn 0.9s cubic-bezier(0.22,1,0.36,1) both;
-}
-
-@keyframes clusterIn {
-  from { opacity: 0; transform: scale(0.7); }
-  to   { opacity: 1; transform: scale(1); }
-}
-
-/* Each bubble is absolutely centered, then offset via CSS vars */
-.lc-bubble {
-  position: absolute;
-  top: 50%; left: 50%;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.10);
-  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1),
-              box-shadow 0.35s ease, opacity 0.3s ease;
-  will-change: transform;
-  background: transparent;
-}
-
-/* Position offset from center */
-.lc-bubble:not(.lc-bubble--center) {
-  transform: translate(calc(-50% + var(--lx, 0px)), calc(-50% + var(--ly, 0px)));
-}
-
-.lc-bubble--center {
-  transform: translate(-50%, -50%);
-  z-index: 5;
-}
-
-/* Size variants */
-.lc-bubble--center { width: 170px; height: 170px; }
-.lc-bubble--md     { width: 130px; height: 130px; z-index: 4; }
-.lc-bubble--sm     { width: 100px; height: 100px; z-index: 3; }
-.lc-bubble--xs     { width: 80px;  height: 80px;  z-index: 2; }
-
-/* No gradient backgrounds — transparent */
-.lc-bubble[data-idx="0"],
-.lc-bubble[data-idx="1"],
-.lc-bubble[data-idx="2"],
-.lc-bubble[data-idx="3"],
-.lc-bubble[data-idx="4"],
-.lc-bubble[data-idx="5"],
-.lc-bubble[data-idx="6"],
-.lc-bubble[data-idx="7"] { background: transparent; box-shadow: none; }
-
-/* Independent float animations */
-.lc-bubble {
-  transition: transform 0.25s ease, opacity 0.25s ease, box-shadow 0.25s ease;
-}
-
-.lc-bubble img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  pointer-events: none;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.15));
-  transition: filter 0.25s ease;
-}
-
-.lc-bubble:hover {
-  z-index: 10 !important;
-}
-
-.lc-bubble--center:hover {
-  transform: translate(-50%, -50%) scale(1.08);
-}
-
-.lc-bubble:not(.lc-bubble--center):hover {
-  transform: translate(calc(-50% + var(--lx, 0px)), calc(-50% + var(--ly, 0px))) scale(1.1);
-}
-
-.lc-bubble:hover img {
-  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.25));
-}
-
-/* Dim siblings on hover */
-.logo-cluster:has(.lc-bubble:hover) .lc-bubble:not(:hover) {
-  opacity: 0.25;
-}
-
-.lc-bubble::after { display: none; }
-
-/* Responsive */
-@media (max-width: 1100px) {
-  .logo-cluster { width: 400px; height: 400px; }
-  .lc-bubble--center { width: 130px; height: 130px; }
-  .lc-bubble--md     { width: 100px; height: 100px; }
-  .lc-bubble--sm     { width: 80px;  height: 80px;  }
-  .lc-bubble--xs     { width: 64px;  height: 64px;  }
-}
-
-@media (max-width: 768px) {
-  .logo-cluster { width: 300px; height: 300px; margin: 0 auto; }
-  .lc-bubble--center { width: 100px; height: 100px; }
-  .lc-bubble--md     { width: 76px;  height: 76px;  }
-  .lc-bubble--sm     { width: 60px;  height: 60px;  }
-  .lc-bubble--xs     { width: 48px;  height: 48px;  }
 }
 
 /* ===========================

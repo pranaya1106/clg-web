@@ -253,7 +253,7 @@
       <!-- z1: Image — 300vh, sticks then scrolls off with scene -->
       <div class="hero-layer--image">
         <div class="hero-sticky">
-          <img src="DJI_0755.JPG" alt="MLRIT Campus aerial view" />
+          <img src="college.jpeg" alt="MLRIT Campus aerial view" />
           <div class="hero__overlay"></div>
         </div>
       </div>
@@ -370,7 +370,7 @@
             </div>
           </div>
 
-          <div class="logo-cluster-wrap" style="position:relative; z-index:2;">
+          <div class="logo-cluster-wrap" style="position:relative; z-index:2; margin-top: -60px;">
             <svg class="accred-constellation" viewBox="0 0 520 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <line x1="260" y1="240" x2="90"  y2="90"  />
               <line x1="260" y1="240" x2="405" y2="75"  />
@@ -387,25 +387,32 @@
             </svg>
 
             <div class="logo-cluster" id="logoCluster">
+              <!-- Center: NAAC -->
               <div class="lc-bubble lc-bubble--center" data-idx="0">
                 <img src="nirf/naac.svg" alt="NAAC">
               </div>
-              <div class="lc-bubble lc-bubble--md" data-idx="1" style="--lx:-210px;--ly:-180px;">
+              <!-- Top-left: AICTE -->
+              <div class="lc-bubble lc-bubble--md" data-idx="1" style="--lx:-120px;--ly:-120px;">
                 <img src="nirf/aicte.svg" alt="AICTE">
               </div>
-              <div class="lc-bubble lc-bubble--md" data-idx="2" style="--lx:210px;--ly:-180px;">
+              <!-- Top-right: The Week -->
+              <div class="lc-bubble lc-bubble--md" data-idx="2" style="--lx:120px;--ly:-120px;">
                 <img src="nirf/the week.svg" alt="The Week">
               </div>
-              <div class="lc-bubble lc-bubble--sm" data-idx="3" style="--lx:230px;--ly:30px;">
+              <!-- Right: ARIIA -->
+              <div class="lc-bubble lc-bubble--sm" data-idx="3" style="--lx:155px;--ly:20px;">
                 <img src="nirf/arha.svg" alt="ARIIA">
               </div>
-              <div class="lc-bubble lc-bubble--md" data-idx="4" style="--lx:160px;--ly:200px;">
+              <!-- Bottom-right: NBA -->
+              <div class="lc-bubble lc-bubble--md" data-idx="4" style="--lx:90px;--ly:145px;">
                 <img src="nirf/nba.svg" alt="NBA">
               </div>
-              <div class="lc-bubble lc-bubble--md" data-idx="5" style="--lx:-160px;--ly:200px;">
+              <!-- Bottom-left: Dataquest -->
+              <div class="lc-bubble lc-bubble--md" data-idx="5" style="--lx:-90px;--ly:145px;">
                 <img src="nirf/dataquest.svg" alt="Dataquest">
               </div>
-              <div class="lc-bubble lc-bubble--sm" data-idx="6" style="--lx:-230px;--ly:30px;">
+              <!-- Left: Gyaan Vigyan -->
+              <div class="lc-bubble lc-bubble--sm" data-idx="6" style="--lx:-155px;--ly:20px;">
                 <img src="nirf/gyaanvigyan.svg" alt="Gyaan Vigyan">
               </div>
             </div>
@@ -952,42 +959,6 @@
       const vid     = document.getElementById('whyVideo');
       const section = document.getElementById('why-mlrit');
       if (!vid || !section) return;
-    // ── Logo Cluster — repulsion on hover ────────────────────────────────
-    (function () {
-      const cluster = document.getElementById('logoCluster');
-      if (!cluster) return;
-      const bubbles = Array.from(cluster.querySelectorAll('.lc-bubble'));
-      const orig = {
-        1: {x:-155, y:-140}, 2: {x:130,  y:-155}, 3: {x:175,  y:-30},
-        4: {x:140,  y:140},  5: {x:-50,  y:165},  6: {x:-175, y:60},
-        7: {x:-140, y:-30}
-      };
-
-      bubbles.forEach(function(hovered) {
-        hovered.addEventListener('mouseenter', function() {
-          bubbles.forEach(function(b) {
-            if (b === hovered) return;
-            const bi = parseInt(b.dataset.idx);
-            if (!orig[bi]) return;
-            const mag = Math.sqrt(orig[bi].x * orig[bi].x + orig[bi].y * orig[bi].y) || 1;
-            b.style.setProperty('--lx', (orig[bi].x + (orig[bi].x / mag) * 18) + 'px');
-            b.style.setProperty('--ly', (orig[bi].y + (orig[bi].y / mag) * 18) + 'px');
-            b.style.opacity = '0.55';
-          });
-        });
-        hovered.addEventListener('mouseleave', function() {
-          bubbles.forEach(function(b) {
-            if (b === hovered) return;
-            const bi = parseInt(b.dataset.idx);
-            if (!orig[bi]) return;
-            b.style.setProperty('--lx', orig[bi].x + 'px');
-            b.style.setProperty('--ly', orig[bi].y + 'px');
-            b.style.opacity = '1';
-          });
-        });
-      });
-    })();
-
     // Why MLRIT video — autoplay on scroll into view
       const io = new IntersectionObserver(entries => {
         if (entries[0].isIntersecting) {
@@ -998,50 +969,6 @@
           vid.classList.remove('is-playing');
         }
       }, { threshold: 0.5 });
-    // ── Logo Cluster — repulsion on hover ────────────────────────────────
-    (function () {
-      const cluster = document.getElementById('logoCluster');
-      if (!cluster) return;
-      const bubbles = Array.from(cluster.querySelectorAll('.lc-bubble'));
-
-      bubbles.forEach(function(hovered) {
-        hovered.addEventListener('mouseenter', function() {
-          const hi = parseInt(hovered.dataset.idx);
-          bubbles.forEach(function(b) {
-            if (b === hovered) return;
-            const bi = parseInt(b.dataset.idx);
-            // nudge others slightly away
-            const lx = parseFloat(getComputedStyle(b).getPropertyValue('--lx') || '0');
-            const ly = parseFloat(getComputedStyle(b).getPropertyValue('--ly') || '0');
-            const mag = Math.sqrt(lx*lx + ly*ly) || 1;
-            const nx = lx + (lx/mag) * 12;
-            const ny = ly + (ly/mag) * 12;
-            b.style.setProperty('--lx', nx + '%');
-            b.style.setProperty('--ly', ny + '%');
-            b.style.opacity = '0.6';
-          });
-        });
-
-        hovered.addEventListener('mouseleave', function() {
-          // restore original positions from data attributes
-          const origPositions = {
-            1: {x:-38, y:-52}, 2: {x:42,  y:-58}, 3: {x:68,  y:-18},
-            4: {x:52,  y:48},  5: {x:-18, y:62},  6: {x:-68, y:22},
-            7: {x:-55, y:-20}
-          };
-          bubbles.forEach(function(b) {
-            if (b === hovered) return;
-            const bi = parseInt(b.dataset.idx);
-            if (origPositions[bi]) {
-              b.style.setProperty('--lx', origPositions[bi].x + '%');
-              b.style.setProperty('--ly', origPositions[bi].y + '%');
-            }
-            b.style.opacity = '1';
-          });
-        });
-      });
-    })();
-
     // Why MLRIT video — autoplay on scroll into view
       io.observe(section);
     })();
