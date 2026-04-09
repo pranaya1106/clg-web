@@ -21,7 +21,6 @@
   color: var(--green, #2E7D32);
 }
 
-/* ── Band ── */
 .ss-band {
   overflow: hidden;
   position: relative;
@@ -31,7 +30,6 @@
   margin-top: 12px;
 }
 
-/* Edge fades */
 .ss-band::before,
 .ss-band::after {
   content: '';
@@ -52,7 +50,6 @@
   background: linear-gradient(to left, #f2f0ed, transparent);
 }
 
-/* ── Track ── */
 .ss-track {
   display: flex;
   gap: 12px;
@@ -76,7 +73,6 @@
   to   { transform: translateX(0); }
 }
 
-/* ── Card ── */
 .ss-card {
   flex-shrink: 0;
   border-radius: 12px;
@@ -85,17 +81,14 @@
   position: relative;
   transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
               box-shadow 0.35s ease;
-  /* subtle white border + shadow */
   box-shadow: 0 2px 10px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.06);
 }
 
-/* Row 1 — same size as row 2 */
 .ss-track--left .ss-card {
   width: 150px;
   aspect-ratio: 3 / 4;
 }
 
-/* Row 2 — same size as row 1 */
 .ss-track--right .ss-card {
   width: 150px;
   aspect-ratio: 3 / 4;
@@ -109,7 +102,6 @@
   z-index: 5;
 }
 
-/* ── Image ── */
 .ss-card img {
   width: 100%;
   height: 100%;
@@ -125,7 +117,6 @@
   transform: scale(1.04);
 }
 
-/* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
   .ss-track { animation: none; }
   .ss-card, .ss-card img { transition: none; }

@@ -1,5 +1,5 @@
 /* ===========================
-   TESTIMONIALS — Story Deck
+   TESTIMONIALS — Fan Card Layout
    =========================== */
 
 /* ── Section background with soft gradient + node network ── */
@@ -75,237 +75,166 @@
   color: #777;
 }
 
-/* ── Desktop deck wrapper ── */
-.desktop-deck {
+/* ── Fan Container ── */
+.testi-fan {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* ── Deck zone — sized to contain the fanned stack ── */
-.deck-zone {
-  position: relative;
-  width: 260px;
-  height: 380px;
-  margin: 0 auto;
-  cursor: pointer;
-  /* soft directional shadow under the whole deck */
-  filter: drop-shadow(0 28px 48px rgba(0,0,0,0.22)) drop-shadow(0 8px 16px rgba(0,0,0,0.12));
-}
-
-.stack-wrapper {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.scatter-row {
-  display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 20px;
-  width: max-content;
-  position: absolute;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
-  height: 100%;
-}
-
-/* ── Card base ── */
-.sv-card {
-  position: absolute;
-  width: 260px;
-  height: 370px;
-  border-radius: 18px;
-  overflow: hidden;
-  background: #1a1a1a;
-  box-shadow:
-    0 2px 8px rgba(0,0,0,0.18),
-    0 0 0 1px rgba(255,255,255,0.07);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  flex-shrink: 0;
-  transform-origin: center bottom;
-}
-
-.scatter-row .sv-card {
+  align-items: flex-end;
+  padding: 60px 20px 40px;
   position: relative;
 }
 
-/* ── Fanned stack — cards 1-4 peek behind card 0 ── */
-/* These are applied via JS inline styles, but we define
-   the transition so they animate smoothly on unscatter */
-.stack-wrapper .sv-card {
-  transition: transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94),
-              opacity  0.35s ease,
-              box-shadow 0.3s ease;
+/* ── Card ── */
+.testi-card {
+  width: 220px;
+  height: 320px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  transform: rotate(var(--rotate)) translateY(var(--ty));
+  transform-origin: center bottom;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.4s ease,
+              z-index 0s;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15),
+              0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  z-index: 1;
+  margin: 0 -20px;
+  background: #1a1a1a;
 }
 
-/* ── Video / media ── */
-.sv-card__video {
+.testi-card--center {
+  transform: rotate(0deg) translateY(0px) scale(1.08);
+  z-index: 3;
+}
+
+/* ── Video ── */
+.testi-card__video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.88;
+  display: block;
+  pointer-events: none;
+  transition: filter 0.4s ease, opacity 0.4s ease;
 }
 
-/* Blurred overlay on background cards */
-.sv-card--bg .sv-card__video {
-  filter: blur(3px) brightness(0.7);
-  opacity: 0.6;
+/* Paused / thumbnail state — dim + desaturate */
+.testi-card:not(.testi-card--active) .testi-card__video {
+  filter: brightness(0.6) saturate(0.4);
+  opacity: 0.85;
 }
 
-.sv-card__overlay {
+.testi-card--active .testi-card__video {
+  filter: none;
+  opacity: 1;
+}
+
+/* ── Gradient overlay ── */
+.testi-card__overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(0,0,0,0.82) 0%,
-    rgba(0,0,0,0.15) 50%,
+    rgba(0, 0, 0, 0.78) 0%,
+    rgba(0, 0, 0, 0.1) 50%,
     transparent 100%
   );
-}
-
-.sv-card__accent {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-}
-
-/* Soft inner light on top card */
-.sv-card--top::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 60%);
   pointer-events: none;
+  z-index: 1;
 }
 
-.sv-card__content {
+/* ── Card Label ── */
+.testi-card-label {
   position: absolute;
-  bottom: 0; left: 0; right: 0;
-  padding: 20px 18px 18px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 18px 14px;
+  z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 3px;
 }
 
-.sv-card__badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 3px 9px;
-  border-radius: 20px;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  width: fit-content;
-  opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 0.35s ease 0.1s, transform 0.35s ease 0.1s;
-}
-
-.sv-card__badge-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.sv-card__name {
-  font-size: 1.25rem;
-  font-weight: 700;
+.testi-card-name {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: #fff;
   line-height: 1.2;
 }
 
-.sv-card__role {
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.65);
+.testi-card-role {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.3;
 }
 
-.sv-card__batch {
-  font-size: 0.7rem;
-  color: rgba(255,255,255,0.4);
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity 0.35s ease 0.15s, transform 0.35s ease 0.15s;
+/* ── Hover: bring to front, straighten, scale up ── */
+.testi-card:hover {
+  transform: rotate(0deg) translateY(-10px) scale(1.12);
+  z-index: 10;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25),
+              0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* On top card, always show name/role; badge/batch on hover */
-.sv-card--top .sv-card__badge {
-  opacity: 1;
-  transform: none;
+.testi-card--center:hover {
+  transform: rotate(0deg) translateY(-10px) scale(1.15);
 }
 
-.sv-card:hover .sv-card__badge,
-.sv-card:hover .sv-card__batch {
-  opacity: 1;
-  transform: none;
+/* ── Mobile: horizontal scroll ── */
+@media (max-width: 768px) {
+  .testi-fan {
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    padding: 20px 20px 30px;
+  }
+
+  .testi-card {
+    transform: none;
+    margin: 0;
+    width: 200px;
+    height: 290px;
+    scroll-snap-align: center;
+  }
+
+  .testi-card--center {
+    transform: none;
+  }
+
+  .testi-card:hover {
+    transform: translateY(-6px) scale(1.03);
+  }
+
+  .testi-card--center:hover {
+    transform: translateY(-6px) scale(1.03);
+  }
+
+  /* Hide scrollbar */
+  .testi-fan::-webkit-scrollbar {
+    display: none;
+  }
+
+  .testi-fan {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
-/* ── Hint ── */
-.deck-hint {
-  position: absolute;
-  bottom: -38px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.75rem;
-  color: #888;
-  white-space: nowrap;
-  transition: opacity 0.3s ease;
-}
-
-.deck-hint svg { opacity: 0.6; }
-
-.deck-hint.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* ── Dots ── */
-.deck-dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 32px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.deck-dots.visible { opacity: 1; }
-
-.deck-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 10px;
-  background: #bbb;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: width 0.3s ease, background 0.3s ease;
-}
-
-/* ── Mobile ── */
-.mobile-deck {
-  display: none;
-  flex-direction: column;
-  gap: 20px;
-  padding: 0 20px;
-}
-
-.mobile-deck .sv-card {
-  position: relative;
-  width: 100%;
-  height: 300px;
-}
-
-@media (max-width: 640px) {
-  .desktop-deck { display: none; }
-  .mobile-deck   { display: flex; }
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .testi-card {
+    transition: none;
+  }
 }

@@ -341,9 +341,9 @@
         <div class="achievements__grid">
 
           <div style="padding-right: 40px; position:relative; z-index:2;">
-            <span class="section-label">Recognition</span>
-            <h2 class="section-heading">Accreditations &amp; Approvals</h2>
-            <p class="section-sub">AICTE, NAAC, NBA, ARIIA and more &mdash; recognised by leading national bodies for academic excellence and quality education.</p>
+            <span class="section-label reveal">Recognition</span>
+            <h2 class="section-heading reveal" data-delay="1">Accreditations &amp; Approvals</h2>
+            <p class="section-sub reveal" data-delay="2">AICTE, NAAC, NBA, ARIIA and more &mdash; recognised by leading national bodies for academic excellence and quality education.</p>
 
             <div class="achievements__ranks">
               <div class="rank-row">
@@ -430,11 +430,11 @@
       <div class="why-section__inner">
 
         <div class="why-section__left">
-          <span class="section-label">Why MLRIT</span>
-          <h2 class="why-section__heading">
+          <span class="section-label reveal">Why MLRIT</span>
+          <h2 class="why-section__heading reveal" data-delay="1">
             <span class="why-quote">&ldquo;</span><span class="why-section__dropcap">I</span>ndustry Integrated Curriculum Blended With Sports<span class="why-quote">&rdquo;</span>
           </h2>
-          <p class="why-section__body">MLR Institute of Technology is known for its integrated curriculum with equal importance to academics, employable skills &amp; sports. MLR Institute of Technology (MLRIT) is located at Dundigal, Hyderabad, Telangana, India. The institution was started in 2005 by the KMR Education Trust, headed by Mr. Marri Laxman Reddy. The Institute has Eleven UG courses along with Five PG Courses. The Institute is affiliated with Jawaharlal Nehru Technological University, Hyderabad (JNTUH). It was granted Autonomous status by University Grants Commission (India) in the year 2015.</p>
+          <p class="why-section__body reveal" data-delay="2">MLR Institute of Technology is known for its integrated curriculum with equal importance to academics, employable skills &amp; sports. MLR Institute of Technology (MLRIT) is located at Dundigal, Hyderabad, Telangana, India. The institution was started in 2005 by the KMR Education Trust, headed by Mr. Marri Laxman Reddy. The Institute has Eleven UG courses along with Five PG Courses. The Institute is affiliated with Jawaharlal Nehru Technological University, Hyderabad (JNTUH). It was granted Autonomous status by University Grants Commission (India) in the year 2015.</p>
         </div>
 
         <div class="why-section__right">
@@ -465,7 +465,6 @@
           <div class="ss-card"><img src="success stories/8.jpeg" alt="Success Story"></div>
           <div class="ss-card"><img src="success stories/9"      alt="Success Story"></div>
           <div class="ss-card"><img src="success stories/10"     alt="Success Story"></div>
-          <!-- loop duplicates -->
           <div class="ss-card" aria-hidden="true"><img src="success stories/1.jpg"  alt=""></div>
           <div class="ss-card" aria-hidden="true"><img src="success stories/2.jpg"  alt=""></div>
           <div class="ss-card" aria-hidden="true"><img src="success stories/3.jpg"  alt=""></div>
@@ -492,7 +491,6 @@
           <div class="ss-card"><img src="success stories/18"      alt="Success Story"></div>
           <div class="ss-card"><img src="success stories/19"      alt="Success Story"></div>
           <div class="ss-card"><img src="success stories/20"      alt="Success Story"></div>
-          <!-- loop duplicates -->
           <div class="ss-card" aria-hidden="true"><img src="success stories/11.jpg"  alt=""></div>
           <div class="ss-card" aria-hidden="true"><img src="success stories/12.jpg"  alt=""></div>
           <div class="ss-card" aria-hidden="true"><img src="success stories/13.jpeg" alt=""></div>
@@ -515,26 +513,59 @@
       <div class="testi-topbar"></div>
       <div class="section-wrap">
         <div class="testi-header">
-          <span class="section-label">Alumni Voices</span>
-          <h2 class="section-heading">What Our Graduates Say</h2>
-          <p class="section-sub">Hover over the deck to explore their stories.</p>
+          <span class="section-label reveal">Alumni Voices</span>
+          <h2 class="section-heading reveal" data-delay="1">What Our Graduates Say</h2>
+          <p class="section-sub reveal" data-delay="2">Hover over the deck to explore their stories.</p>
         </div>
 
-        <!-- Desktop deck -->
-        <div class="desktop-deck">
-          <div class="deck-zone" id="deckZone">
-            <div class="stack-wrapper" id="stackWrapper"></div>
-            <div class="scatter-row"  id="scatterRow"  style="display:none;"></div>
-            <div class="deck-hint"    id="deckHint">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
-              Hover to explore
+        <!-- Fan card layout -->
+        <div class="testi-fan">
+          <!-- Card 1 -->
+          <div class="testi-card" style="--rotate: -18deg; --ty: 40px;">
+            <video class="testi-card__video" src="av1.mp4" muted loop playsinline preload="metadata"></video>
+            <div class="testi-card__overlay"></div>
+            <div class="testi-card-label">
+              <span class="testi-card-name">Arjun Reddy</span>
+              <span class="testi-card-role">SDE @ Amazon</span>
             </div>
           </div>
-          <div class="deck-dots" id="deckDots"></div>
+          <!-- Card 2 -->
+          <div class="testi-card" style="--rotate: -9deg; --ty: 15px;">
+            <video class="testi-card__video" src="av2.mp4" muted loop playsinline preload="metadata"></video>
+            <div class="testi-card__overlay"></div>
+            <div class="testi-card-label">
+              <span class="testi-card-name">Priya Sharma</span>
+              <span class="testi-card-role">Data Scientist @ Microsoft</span>
+            </div>
+          </div>
+          <!-- Card 3 — center (plays by default) -->
+          <div class="testi-card testi-card--center testi-card--active" style="--rotate: 0deg; --ty: 0px;">
+            <video class="testi-card__video" src="av3.mp4" autoplay muted loop playsinline></video>
+            <div class="testi-card__overlay"></div>
+            <div class="testi-card-label">
+              <span class="testi-card-name">Kiran Kumar</span>
+              <span class="testi-card-role">DevOps @ Google</span>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="testi-card" style="--rotate: 9deg; --ty: 15px;">
+            <video class="testi-card__video" src="av1.mp4" muted loop playsinline preload="metadata"></video>
+            <div class="testi-card__overlay"></div>
+            <div class="testi-card-label">
+              <span class="testi-card-name">Sneha Patel</span>
+              <span class="testi-card-role">Product Manager @ Flipkart</span>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="testi-card" style="--rotate: 18deg; --ty: 40px;">
+            <video class="testi-card__video" src="av2.mp4" muted loop playsinline preload="metadata"></video>
+            <div class="testi-card__overlay"></div>
+            <div class="testi-card-label">
+              <span class="testi-card-name">Rohit Verma</span>
+              <span class="testi-card-role">ML Engineer @ Meta</span>
+            </div>
+          </div>
         </div>
-
-        <!-- Mobile scroll -->
-        <div class="mobile-deck" id="mobileDeck"></div>
       </div>
     </section>
 
@@ -569,9 +600,9 @@
 
         <!-- Header -->
         <div class="placements__header">
-          <span class="placements__label">Placements</span>
-          <h2 class="placements__title">From Campus to Corporate</h2>
-          <p class="placements__sub">Our placement records reflect the quality of education and industry readiness we build in every student.</p>
+          <span class="placements__label reveal">Placements</span>
+          <h2 class="placements__title reveal" data-delay="1">From Campus to Corporate</h2>
+          <p class="placements__sub reveal" data-delay="2">Our placement records reflect the quality of education and industry readiness we build in every student.</p>
         </div>
 
         <!-- Gold divider line -->
@@ -656,136 +687,75 @@
          ===================== -->
     <section class="ev-section" id="events">
 
-      <!-- Section header -->
+      <!-- Header sits above the sticky scroll area -->
       <div class="ev-header">
-        <div class="ev-header__left">
-          <span class="ev-header__label">Events</span>
-          <h2 class="ev-header__title">Explore the Real <em>MLRIT</em></h2>
-        </div>
-        <div class="ev-header__right">
-          <p class="ev-header__sub">From technical fests to cultural nights — every event is an experience.</p>
-        </div>
+        <span class="ev-header__label reveal">Events</span>
+        <h2 class="ev-header__title reveal" data-delay="1">Discover Events</h2>
+        <p class="ev-header__sub reveal" data-delay="2">From technical fests to cultural nights — every event is an experience.</p>
       </div>
 
-      <!-- Scrollable cards track -->
-      <div class="ev-track-wrap">
-        <div class="ev-track" id="evTrack">
+      <!-- Scroll runway: tall container that creates the scroll distance -->
+      <div class="ev-runway" id="evRunway">
+        <!-- Sticky frame: locks to viewport while user scrolls -->
+        <div class="ev-frame">
 
-          <div class="ev-card-tilt">
-          <article class="ev-card" data-index="0">
-            <div class="ev-card__shine"></div>
-            <div class="ev-card__frame">
-              <video class="ev-card__video" src="av1.mp4#t=0.1" muted loop playsinline preload="metadata"></video>
-              <div class="ev-card__video-overlay"></div>
-              <div class="ev-card__play-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 6l8 4-8 4V6z" fill="#E8500A" opacity="0.9"/></svg>
-              </div>
-            </div>
-            <div class="ev-card__body">
+          <article class="ev-card" data-ev="0">
+            <video class="ev-card__video" src="av1.mp4#t=0.1" autoplay muted loop playsinline></video>
+            <div class="ev-card__overlay"></div>
+            <div class="ev-card__content">
               <span class="ev-card__tag">Technical Fest</span>
               <h3 class="ev-card__title">Zignasa</h3>
               <p class="ev-card__sub">The Quest for Knowledge</p>
               <div class="ev-card__meta">
-                <span class="ev-card__date">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="2" width="10" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4 1v2M8 1v2M1 5h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-                  Apr 28–29, 2026
-                </span>
-                <span class="ev-card__badge">12 days left</span>
+                <span class="ev-card__date">Apr 28–29, 2026</span>
+                <a href="#events" class="ev-card__cta">Explore More &rarr;</a>
               </div>
             </div>
           </article>
-          </div>
 
-          <div class="ev-card-tilt">
-          <article class="ev-card" data-index="1">
-            <div class="ev-card__shine"></div>
-            <div class="ev-card__frame">
-              <video class="ev-card__video" src="av2.mp4#t=0.1" muted loop playsinline preload="metadata"></video>
-              <div class="ev-card__video-overlay"></div>
-              <div class="ev-card__play-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 6l8 4-8 4V6z" fill="#E8500A" opacity="0.9"/></svg>
-              </div>
-            </div>
-            <div class="ev-card__body">
+          <article class="ev-card" data-ev="1">
+            <video class="ev-card__video" src="av2.mp4#t=0.1" autoplay muted loop playsinline></video>
+            <div class="ev-card__overlay"></div>
+            <div class="ev-card__content">
               <span class="ev-card__tag">Innovation Challenge</span>
               <h3 class="ev-card__title">IC 2026</h3>
               <p class="ev-card__sub">Where Ideas Become Solutions</p>
               <div class="ev-card__meta">
-                <span class="ev-card__date">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="2" width="10" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4 1v2M8 1v2M1 5h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-                  May 10, 2026
-                </span>
-                <span class="ev-card__badge">34 days left</span>
+                <span class="ev-card__date">May 10, 2026</span>
+                <a href="#events" class="ev-card__cta">Explore More &rarr;</a>
               </div>
             </div>
           </article>
-          </div>
 
-          <div class="ev-card-tilt">
-          <article class="ev-card" data-index="2">
-            <div class="ev-card__shine"></div>
-            <div class="ev-card__frame">
-              <video class="ev-card__video" src="av3.mp4#t=0.1" muted loop playsinline preload="metadata"></video>
-              <div class="ev-card__video-overlay"></div>
-              <div class="ev-card__play-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 6l8 4-8 4V6z" fill="#E8500A" opacity="0.9"/></svg>
-              </div>
-            </div>
-            <div class="ev-card__body">
+          <article class="ev-card" data-ev="2">
+            <video class="ev-card__video" src="av3.mp4#t=0.1" autoplay muted loop playsinline></video>
+            <div class="ev-card__overlay"></div>
+            <div class="ev-card__content">
               <span class="ev-card__tag">Technical Fest</span>
               <h3 class="ev-card__title">Zenith</h3>
               <p class="ev-card__sub">The Annual Technical Championship</p>
               <div class="ev-card__meta">
-                <span class="ev-card__date">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="2" width="10" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4 1v2M8 1v2M1 5h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-                  Jun 5–6, 2026
-                </span>
-                <span class="ev-card__badge">60 days left</span>
+                <span class="ev-card__date">Jun 5–6, 2026</span>
+                <a href="#events" class="ev-card__cta">Explore More &rarr;</a>
               </div>
             </div>
           </article>
-          </div>
 
-          <div class="ev-card-tilt">
-          <article class="ev-card" data-index="3">
-            <div class="ev-card__shine"></div>
-            <div class="ev-card__frame">
-              <video class="ev-card__video" src="sports.mp4#t=0.1" muted loop playsinline preload="metadata"></video>
-              <div class="ev-card__video-overlay"></div>
-              <div class="ev-card__play-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 6l8 4-8 4V6z" fill="#E8500A" opacity="0.9"/></svg>
-              </div>
-            </div>
-            <div class="ev-card__body">
+          <article class="ev-card" data-ev="3">
+            <video class="ev-card__video" src="sports.mp4#t=0.1" autoplay muted loop playsinline></video>
+            <div class="ev-card__overlay"></div>
+            <div class="ev-card__content">
               <span class="ev-card__tag">Cultural Fest</span>
               <h3 class="ev-card__title">Navrat Naveli</h3>
               <p class="ev-card__sub">MLRIT's Annual Cultural Extravaganza</p>
               <div class="ev-card__meta">
-                <span class="ev-card__date">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="2" width="10" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4 1v2M8 1v2M1 5h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-                  Jul 18–19, 2026
-                </span>
-                <span class="ev-card__badge">Registrations open</span>
+                <span class="ev-card__date">Jul 18–19, 2026</span>
+                <a href="#events" class="ev-card__cta">Explore More &rarr;</a>
               </div>
             </div>
           </article>
-          </div>
 
         </div>
-      </div>
-
-      <!-- Dots + CTA row -->
-      <div class="ev-footer">
-        <div class="ev-dots" role="tablist" aria-label="Events">
-          <button class="ev-dot" data-dot="0" aria-label="Event 1"></button>
-          <button class="ev-dot" data-dot="1" aria-label="Event 2"></button>
-          <button class="ev-dot" data-dot="2" aria-label="Event 3"></button>
-          <button class="ev-dot" data-dot="3" aria-label="Event 4"></button>
-        </div>
-        <a href="#" class="ev-cta__btn">
-          <span>Explore All Events</span>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
       </div>
 
     </section>
@@ -797,9 +767,9 @@
       <div class="section-wrap">
         <div class="admissions-cta__inner">
           <div>
-            <p class="admissions-cta__label">Admissions 2025–26</p>
-            <h2 class="admissions-cta__heading">Your Engineering Journey Starts Here.</h2>
-            <p class="admissions-cta__sub">Applications are open for B.Tech, M.Tech, and MBA programmes. Seats are limited — secure yours before the deadline.</p>
+            <p class="admissions-cta__label reveal">Admissions 2025–26</p>
+            <h2 class="admissions-cta__heading reveal" data-delay="1">Your Engineering Journey Starts Here.</h2>
+            <p class="admissions-cta__sub reveal" data-delay="2">Applications are open for B.Tech, M.Tech, and MBA programmes. Seats are limited — secure yours before the deadline.</p>
           </div>
           <div class="admissions-cta__actions">
             <a href="#" class="btn btn-gold">Apply Now</a>
@@ -978,94 +948,7 @@
       });
     });
 
-    // ── Events Section — hover-to-play cards ──────────────────────────────
-    (function () {
-      const section = document.getElementById('events');
-      const track   = document.getElementById('evTrack');
-      const cards   = section ? section.querySelectorAll('.ev-card') : [];
-      const tilts   = section ? section.querySelectorAll('.ev-card-tilt') : [];
-      const dots    = section ? section.querySelectorAll('.ev-dot')  : [];
-      if (!section || !cards.length) return;
-
-      const COUNT = cards.length;
-      let current = 0;
-
-      // dot sync
-      function setActive(idx) {
-        current = ((idx % COUNT) + COUNT) % COUNT;
-        cards.forEach((c, i) => c.classList.toggle('is-active', i === current));
-        dots.forEach((d, i)  => d.classList.toggle('is-active', i === current));
-      }
-
-      dots.forEach((d, i) => d.addEventListener('click', () => setActive(i)));
-
-      // sync dot on native scroll
-      if (track) {
-        track.addEventListener('scroll', () => {
-          const cardW = (tilts[0] ? tilts[0].offsetWidth : 288) + 20;
-          const idx = Math.round(track.scrollLeft / cardW);
-          if (idx !== current && idx >= 0 && idx < COUNT) setActive(idx);
-        }, { passive: true });
-      }
-
-      // touch swipe
-      let tx = 0;
-      section.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
-      section.addEventListener('touchend', e => {
-        const dx = e.changedTouches[0].clientX - tx;
-        if (Math.abs(dx) > 44) {
-          const next = dx < 0 ? current + 1 : current - 1;
-          const target = cards[((next % COUNT) + COUNT) % COUNT];
-          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        }
-      });
-
-      // ── Hover-to-play video ──
-      cards.forEach(card => {
-        const vid = card.querySelector('.ev-card__video');
-        if (!vid) return;
-
-        card.addEventListener('mouseenter', () => {
-          vid.play().catch(() => {});
-        });
-
-        card.addEventListener('mouseleave', () => {
-          vid.pause();
-          vid.currentTime = 0;
-        });
-      });
-
-      // ── Edge-aware 3D tilt + shine ──
-      const MAX_TILT = 10;
-
-      cards.forEach(card => {
-        const shine = card.querySelector('.ev-card__shine');
-
-        card.addEventListener('mousemove', e => {
-          const r  = card.getBoundingClientRect();
-          const nx = (e.clientX - r.left)  / r.width  * 2 - 1;
-          const ny = (e.clientY - r.top)   / r.height * 2 - 1;
-          card.style.transform =
-            `perspective(700px) rotateX(${-ny * MAX_TILT}deg) rotateY(${nx * MAX_TILT}deg) translateZ(8px)`;
-          if (shine) {
-            shine.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
-            shine.style.setProperty('--my', ((e.clientY - r.top)  / r.height * 100).toFixed(1) + '%');
-          }
-        });
-
-        card.addEventListener('mouseleave', () => {
-          card.style.transition = 'transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.25s ease, box-shadow 0.3s ease';
-          card.style.transform  = '';
-          setTimeout(() => { card.style.transition = ''; }, 560);
-        });
-      });
-
-      // reveal on scroll into view
-      const io = new IntersectionObserver(entries => {
-        if (entries[0].isIntersecting) section.classList.add('is-visible');
-      }, { threshold: 0.15 });
-      io.observe(section);
-    })();
+    // (Events section JS moved to js/events.js)
 
     // ── Recruiter Band ──────────────────────────────
     (function () {
@@ -1343,5 +1226,49 @@
       counters.forEach(c => observer.observe(c));
     })();
   </script>
+
+  <script>
+    // ── Reveal on Scroll ─────────────────────────────────────────────────
+    (function () {
+      const els = document.querySelectorAll('.reveal');
+      if (!els.length) return;
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(el => io.observe(el));
+    })();
+  </script>
+
+  <script>
+    // ── Testimonial fan: play video on hover ─────────────────────────────
+    (function () {
+      const cards = document.querySelectorAll('.testi-card');
+      if (!cards.length) return;
+
+      cards.forEach(function (card) {
+        var video = card.querySelector('.testi-card__video');
+        if (!video) return;
+
+        card.addEventListener('mouseenter', function () {
+          // Pause all other videos
+          cards.forEach(function (c) {
+            var v = c.querySelector('.testi-card__video');
+            if (v && v !== video) { v.pause(); }
+            c.classList.remove('testi-card--active');
+          });
+          // Play this one
+          video.play();
+          card.classList.add('testi-card--active');
+        });
+      });
+    })();
+  </script>
+
+  <script src="js/events.js" defer></script>
 </body>
 </html>
