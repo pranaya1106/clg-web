@@ -6,7 +6,7 @@
   <title>MLRIT — Marri Laxman Reddy Institute of Technology</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&family=Raleway:wght@400;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/navbar.css" />
   <link rel="stylesheet" href="css/hero.css" />
   <link rel="stylesheet" href="css/main.css" />
@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="css/events-disc.css" />
   <link rel="stylesheet" href="css/rankings.css" />
   <link rel="stylesheet" href="css/placements-carousel.css" />
+  <link rel="stylesheet" href="css/departments.css" />
 </head>
 <body>
 
@@ -422,6 +423,79 @@
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <!-- =====================
+         DEPARTMENTS — Harmonium Accordion
+         ===================== -->
+    <section class="dept-section" id="departments">
+      <div class="dept-section__watermark">
+        <img src="mlrit-logo-transparent.png" alt="" aria-hidden="true" />
+      </div>
+
+      <div class="dept-sticky">
+        <div class="dept-header">
+          <span class="section-label">Programmes</span>
+          <h2 class="dept-heading">Explore Our Departments</h2>
+        </div>
+
+        <div class="dept-parents">
+          <div class="dept-parent dept-parent--ug">
+            <p class="dept-parent__label">Undergraduate Programmes</p>
+            <span class="dept-parent__count">7 B.Tech Programmes</span>
+          </div>
+          <div class="dept-parent dept-parent--pg">
+            <p class="dept-parent__label">Postgraduate Programmes</p>
+            <span class="dept-parent__count">2 Programmes</span>
+          </div>
+        </div>
+
+        <div class="dept-children" id="deptChildren">
+          <!-- UG column -->
+          <div class="dept-col dept-col--ug">
+            <div class="dept-child dept-child--ug-1" data-dept-index="0">
+              <p class="dept-child__name">B.Tech CSE</p>
+              <span class="dept-child__type">Computer Science &amp; Engineering</span>
+            </div>
+            <div class="dept-child dept-child--ug-2" data-dept-index="1">
+              <p class="dept-child__name">B.Tech EEE</p>
+              <span class="dept-child__type">Electrical &amp; Electronics Engineering</span>
+            </div>
+            <div class="dept-child dept-child--ug-3" data-dept-index="2">
+              <p class="dept-child__name">B.Tech ECE</p>
+              <span class="dept-child__type">Electronics &amp; Communication Engineering</span>
+            </div>
+            <div class="dept-child dept-child--ug-4" data-dept-index="3">
+              <p class="dept-child__name">B.Tech Mechanical</p>
+              <span class="dept-child__type">Mechanical Engineering</span>
+            </div>
+            <div class="dept-child dept-child--ug-5" data-dept-index="4">
+              <p class="dept-child__name">B.Tech Aeronautical</p>
+              <span class="dept-child__type">Aeronautical Engineering</span>
+            </div>
+            <div class="dept-child dept-child--ug-6" data-dept-index="5">
+              <p class="dept-child__name">B.Tech CSE (AI/ML)</p>
+              <span class="dept-child__type">Artificial Intelligence &amp; Machine Learning</span>
+            </div>
+            <div class="dept-child dept-child--ug-7" data-dept-index="6">
+              <p class="dept-child__name">B.Tech CSE (Data Science)</p>
+              <span class="dept-child__type">Data Science</span>
+            </div>
+          </div>
+
+          <!-- PG column -->
+          <div class="dept-col dept-col--pg">
+            <div class="dept-child dept-child--pg-1" data-dept-index="7">
+              <p class="dept-child__name">M.Tech</p>
+              <span class="dept-child__type">Master of Technology</span>
+            </div>
+            <div class="dept-child dept-child--pg-2" data-dept-index="8">
+              <p class="dept-child__name">MBA</p>
+              <span class="dept-child__type">Master of Business Administration</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1010,6 +1084,44 @@
 
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
+    })();
+
+    // ── Departments — scroll-driven progressive reveal ──────
+    (function () {
+      var section = document.getElementById('departments');
+      if (!section) return;
+      var cards = section.querySelectorAll('.dept-child');
+      var total = cards.length;
+      if (!total) return;
+      if (window.matchMedia('(max-width: 768px)').matches) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var lastRevealed = -1;
+
+      function update() {
+        var rect = section.getBoundingClientRect();
+        // Show/hide watermark when section is in viewport
+        var inView = rect.top < window.innerHeight && rect.bottom > 0;
+        section.classList.toggle('in-view', inView);
+        // How far the section top has scrolled above the viewport center
+        var scrolled = (window.innerHeight * 0.4) - rect.top;
+        // Each card reveals after 60px of scroll
+        var revealed = Math.max(0, Math.min(total, Math.floor(scrolled / 60)));
+
+        if (revealed === lastRevealed) return;
+        lastRevealed = revealed;
+
+        cards.forEach(function (card, i) {
+          if (i < revealed) {
+            card.classList.add('is-visible');
+          } else {
+            card.classList.remove('is-visible');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', update, { passive: true });
+      update();
     })();
   </script>
 </body>
