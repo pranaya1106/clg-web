@@ -6,7 +6,7 @@
   padding: 72px 80px;
   background: #fff;
   gap: 80px;
-  border-bottom: 1px solid #ebebeb;
+  border-bottom: 1px solid #E5E2DC;
 }
 
 /* ===== Left — Rankings ===== */
@@ -20,7 +20,7 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #18453B;
+  color: #1A5C3A;
   margin-bottom: 14px;
 }
 
@@ -58,7 +58,7 @@
 .rank-number {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #18453B;
+  color: #1A5C3A;
   font-family: Georgia, serif;
   min-width: 48px;
   line-height: 1;
@@ -67,7 +67,7 @@
 .rank-divider {
   width: 1px;
   height: 32px;
-  background: #e0e0e0;
+  background: #E5E2DC;
   flex-shrink: 0;
 }
 
@@ -97,7 +97,7 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #18453B;
+  color: #1A5C3A;
 }
 
 .mlrit-accred-strip {
@@ -118,7 +118,7 @@
   aspect-ratio: 3 / 2;
   background: #fff;
   border-radius: 14px;
-  border: 1px solid #e8e8e8;
+  border: 1px solid #E5E2DC;
   overflow: hidden;
   position: relative;
   display: grid;

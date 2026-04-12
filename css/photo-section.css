@@ -5,11 +5,11 @@
 
 /* Brand tokens */
 :root {
-  --ps-orange:       #E85D1F;
-  --ps-orange-light: #FDF0EA;
-  --ps-orange-dark:  #7A2E0B;
-  --ps-green:        #2E7D32;
-  --ps-green-light:  #EAF4EA;
+  --ps-orange:       #D4622B;
+  --ps-orange-light: #FBEADF;
+  --ps-orange-dark:  #7A3412;
+  --ps-green:        #2E8B57;
+  --ps-green-light:  #E5F1E9;
   --ps-black:        #111111;
   --ps-bg:           #F7F7F7;
   --ps-white:        #FFFFFF;

@@ -4,7 +4,7 @@
 .film-reel-section {
   background: #fff;
   padding: 88px 0;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid #E5E2DC;
   overflow: hidden;
 }
 
@@ -26,7 +26,7 @@
 }
 
 .film-reel-section__copy .section-label {
-  color: #E85D1F;
+  color: #D4622B;
 }
 
 .film-reel-section__copy h2 {
@@ -163,7 +163,7 @@
 }
 
 .film-frame:hover {
-  border-color: rgba(232,93,31,0.6);
+  border-color: rgba(212,98,43,0.6);
 }
 
 .film-frame img,
@@ -249,7 +249,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #E85D1F;
+  background: #D4622B;
   flex-shrink: 0;
 }
 

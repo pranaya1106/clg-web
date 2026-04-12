@@ -61,7 +61,7 @@
     transparent 0%,
     rgba(255,255,255,0.03) 20%,
     rgba(255,255,255,0.16) 46%,
-    rgba(232,93,31,0.20) 56%,
+    rgba(212,98,43,0.20) 56%,
     transparent 100%
   );
   transform: translateX(-220px);
@@ -104,7 +104,7 @@
 
 .ev-explore em {
   font-style: normal;
-  color: #E85D1F;
+  color: #D4622B;
 }
 
 .ev-explore.is-settled {
@@ -234,7 +234,7 @@
   font-family: 'Segoe Script', 'Brush Script MT', 'Dancing Script', cursive;
   font-size: 1.3rem;
   font-weight: 700;
-  color: #E85D1F;
+  color: #D4622B;
   line-height: 1.15;
   text-align: right;
 }
@@ -269,8 +269,8 @@
 }
 
 .ev-ctrl-btn:hover {
-  background: rgba(232,93,31,0.4);
-  border-color: rgba(232,93,31,0.7);
+  background: rgba(212,98,43,0.4);
+  border-color: rgba(212,98,43,0.7);
   transform: scale(1.1);
 }
 
@@ -329,8 +329,8 @@
 }
 
 .ev-mute-btn:hover {
-  background: rgba(232,93,31,0.4);
-  border-color: rgba(232,93,31,0.7);
+  background: rgba(212,98,43,0.4);
+  border-color: rgba(212,98,43,0.7);
   transform: scale(1.1);
 }
 

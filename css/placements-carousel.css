@@ -20,7 +20,7 @@
 }
 
 .placements-carousel__header .section-label {
-  color: #E85D1F;
+  color: #D4622B;
 }
 
 .placements-carousel__header .section-heading {
@@ -36,18 +36,18 @@
 .placements-carousel__view-all {
   font-size: 0.8rem;
   font-weight: 700;
-  color: #E85D1F;
+  color: #D4622B;
   text-decoration: none;
   white-space: nowrap;
-  border-bottom: 1px solid #E85D1F;
+  border-bottom: 1px solid #D4622B;
   padding-bottom: 2px;
   transition: color 0.2s, border-color 0.2s;
   flex-shrink: 0;
 }
 
 .placements-carousel__view-all:hover {
-  color: #ff7a3d;
-  border-color: #ff7a3d;
+  color: #E87A4A;
+  border-color: #E87A4A;
 }
 
 /* ── Track ── */
@@ -94,7 +94,7 @@
 }
 
 .placement-card:hover {
-  border-color: #E85D1F;
+  border-color: #D4622B;
   transform: translateY(-4px);
 }
 
