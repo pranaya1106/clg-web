@@ -2360,7 +2360,8 @@
 
       // Hook into tab clicks
       document.querySelectorAll('.dept-tab').forEach(function (tab) {
-        tab.addEventListener('click', function () {
+        tab.addEventListener('click', function (e) {
+          e.preventDefault();
           updateSidebar(tab.getAttribute('data-tab'));
           fireStreak();
         });
