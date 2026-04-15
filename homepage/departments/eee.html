@@ -362,16 +362,7 @@
     <a class="dept-tab" data-tab="academics">Academics</a>
     <a class="dept-tab" data-tab="achievements">Achievements</a>
   </nav>
-
-  <div class="qbar" id="qbar">
-    <a class="qbar__btn is-active" data-qtab="overview" title="Overview"><span class="qbar__abbr">OV</span><span class="qbar__label">Overview</span></a>
-    <a class="qbar__btn" data-qtab="objectives" title="Objectives"><span class="qbar__abbr">OB</span><span class="qbar__label">Objectives</span></a>
-    <a class="qbar__btn" data-qtab="faculty" title="Faculty"><span class="qbar__abbr">FA</span><span class="qbar__label">Faculty</span></a>
-    <a class="qbar__btn" data-qtab="academics" title="Academics"><span class="qbar__abbr">AC</span><span class="qbar__label">Academics</span></a>
-    <a class="qbar__btn" data-qtab="achievements" title="Achievements"><span class="qbar__abbr">AH</span><span class="qbar__label">Achievements</span></a>
-  </div>
-
-  <div class="streak" id="navStreak"></div>
+<div class="streak" id="navStreak"></div>
   <!-- TAB 1: Overview -->
   <div class="dept-panel is-active" id="panel-overview">
     <h2 id="about-dept" class="panel-heading">About the Department</h2>
@@ -1183,13 +1174,6 @@
           fireStreak();
         });
       });
-
-      // Hook into qbar clicks
-      document.querySelectorAll('.qbar__btn').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          updateSidebar(btn.getAttribute('data-qtab'));
-          fireStreak();
-        });
       });
 
       // Sidebar item click — mark active + fire streak + scroll to section

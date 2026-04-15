@@ -2362,13 +2362,6 @@
           fireStreak();
         });
       });
-
-      // Hook into qbar clicks
-      document.querySelectorAll('.qbar__btn').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          updateSidebar(btn.getAttribute('data-qtab'));
-          fireStreak();
-        });
       });
 
       // Sidebar item click — mark active + fire streak + scroll to section
