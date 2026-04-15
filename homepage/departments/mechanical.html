@@ -1065,27 +1065,7 @@
   </div>
 
   <script>
-    // Tab switching + quick sidebar
-    (function () {
-      var tabs = document.querySelectorAll('.dept-tab');
-      var panels = document.querySelectorAll('.dept-panel');
-      var qbtns = document.querySelectorAll('.qbar__btn');
-      function switchTab(id) {
-        tabs.forEach(function(t){t.classList.remove('is-active')});
-        panels.forEach(function(p){p.classList.remove('is-active')});
-        qbtns.forEach(function(q){q.classList.remove('is-active')});
-        var tab=document.querySelector('[data-tab="'+id+'"]');
-        var panel=document.getElementById('panel-'+id);
-        var qbtn=document.querySelector('[data-qtab="'+id+'"]');
-        if(tab)tab.classList.add('is-active');
-        if(panel)panel.classList.add('is-active');
-        if(qbtn)qbtn.classList.add('is-active');
-      }
-      tabs.forEach(function(t){t.addEventListener('click',function(){switchTab(t.getAttribute('data-tab'))});});
-      qbtns.forEach(function(b){b.addEventListener('click',function(){switchTab(b.getAttribute('data-qtab'))});});
-      var hash=window.location.hash.replace('#','');
-      if(hash)switchTab(hash);
-    })();
+
 
     // Syllabus selector
     (function () {

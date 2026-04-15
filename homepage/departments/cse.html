@@ -2090,42 +2090,6 @@
 
   <!-- ═══ JavaScript ═══ -->
   <script>
-    // Tab switching
-    (function () {
-      var tabs = document.querySelectorAll('.dept-tab');
-      var panels = document.querySelectorAll('.dept-panel');
-      var qbtns = document.querySelectorAll('.qbar__btn');
-
-      function switchTab(tabId) {
-        tabs.forEach(function (t) { t.classList.remove('is-active'); });
-        panels.forEach(function (p) { p.classList.remove('is-active'); });
-        qbtns.forEach(function (q) { q.classList.remove('is-active'); });
-
-        var tab = document.querySelector('[data-tab="' + tabId + '"]');
-        var panel = document.getElementById('panel-' + tabId);
-        var qbtn = document.querySelector('[data-qtab="' + tabId + '"]');
-        if (tab) tab.classList.add('is-active');
-        if (panel) panel.classList.add('is-active');
-        if (qbtn) qbtn.classList.add('is-active');
-      }
-
-      tabs.forEach(function (tab) {
-        tab.addEventListener('click', function () { switchTab(tab.getAttribute('data-tab')); });
-      });
-
-      // Quick-access sidebar
-      qbtns.forEach(function (btn) {
-        btn.addEventListener('click', function () { switchTab(btn.getAttribute('data-qtab')); });
-      });
-
-      // Mark first qbar button active
-      var firstQ = document.querySelector('.qbar__btn');
-      if (firstQ) firstQ.classList.add('is-active');
-
-      // Hash
-      var hash = window.location.hash.replace('#', '');
-      if (hash) switchTab(hash);
-    })();
 
     // Syllabus
     (function () {
