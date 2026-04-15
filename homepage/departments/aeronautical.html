@@ -304,6 +304,9 @@
       .fcard-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
       .fcard { height: 240px; }
     }
+
+    /* Hide non-overview sidebar items by default — JS will show correct ones */
+    .ds-item[data-ds-tab]:not([data-ds-tab="overview"]) { display: none; }
   </style>
 </head>
 <body>
