@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSE CS — Cyber Security | MLRIT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #E8500A;
+      --green: #2E7D32;
+      --dark: #111;
+      --text: #1a1a1a;
+      --muted: #666;
+      --light: #f8f7f5;
+      --border: #e8e4df;
+      --pad: clamp(20px, 5vw, 80px);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── Back nav ── */
+    .back-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 16px var(--pad);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .back-nav a {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .back-nav a:hover { color: var(--orange); }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--dark);
+      padding: 88px var(--pad) 72px;
+      color: #fff;
+    }
+
+    .hero__eyebrow {
+      display: block;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+
+    .hero__title {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+      margin: 0 0 20px;
+    }
+
+    .hero__sub {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.5);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* ── Stats bar ── */
+    .stats {
+      display: flex;
+      gap: 0;
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat {
+      flex: 1;
+      text-align: center;
+      padding: 28px 16px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat:last-child { border-right: none; }
+
+    .stat__num {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat__label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ═══════════════════════════
+       TIMELINE — Two-column layout
+       Left: sticky nav with titles
+       Right: scrolling content
+       ═══════════════════════════ */
+    .timeline {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 0;
+      max-width: 100%;
+      margin: 0;
+      padding: 0 var(--pad);
+      min-height: 100vh;
+    }
+
+    /* ── Left sidebar — sticky nav ── */
+    .tl-nav {
+      position: sticky;
+      top: 60px;
+      align-self: start;
+      padding: 64px 0 64px;
+      border-right: 2px solid var(--border);
+      height: fit-content;
+    }
+
+    /* Orange progress line over the border */
+    .tl-progress {
+      position: absolute;
+      right: -2px;
+      top: 64px;
+      width: 2px;
+      height: 0;
+      background: var(--orange);
+      z-index: 1;
+      transition: height 0.2s ease-out;
+    }
+
+    /* Nav link */
+    .tl-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px 14px 0;
+      cursor: pointer;
+      position: relative;
+      text-decoration: none;
+    }
+
+    /* Dot */
+    .tl-nav-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--border);
+      flex-shrink: 0;
+      position: relative;
+      right: -8px;
+      z-index: 2;
+      transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .tl-nav-item.is-active .tl-nav-dot {
+      background: var(--orange);
+      box-shadow: 0 0 0 4px rgba(232, 80, 10, 0.15);
+      transform: scale(1.2);
+    }
+
+    .tl-nav-item.is-current .tl-nav-dot {
+      animation: dot-pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes dot-pulse {
+      0%, 100% { box-shadow: 0 0 0 4px rgba(232, 80, 10, 0.15); }
+      50%      { box-shadow: 0 0 0 8px rgba(232, 80, 10, 0.08); }
+    }
+
+    /* Number */
+    .tl-nav-num {
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--border);
+      width: 16px;
+      text-align: right;
+      flex-shrink: 0;
+      transition: color 0.3s ease;
+    }
+
+    .tl-nav-item.is-active .tl-nav-num { color: var(--orange); }
+
+    /* Title in nav */
+    .tl-nav-label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--muted);
+      transition: color 0.3s ease;
+    }
+
+    .tl-nav-item.is-active .tl-nav-label { color: var(--text); }
+    .tl-nav-item.is-current .tl-nav-label { color: var(--orange); }
+
+    /* ── Right content panels ── */
+    .tl-panels {
+      padding: 64px 0 80px 32px;
+    }
+
+    .tl-panel {
+      padding-bottom: 64px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .tl-panel:last-child { padding-bottom: 0; }
+
+    .tl-panel.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .tl-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 14px;
+    }
+
+    .tl-content {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .tl-content p {
+      margin: 0 0 12px;
+    }
+
+    .tl-content p:last-child { margin-bottom: 0; }
+
+    /* ── Sub-list inside timeline (for faculty, POs, etc.) ── */
+    .tl-list {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 0;
+    }
+
+    .tl-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .tl-list li:last-child { border-bottom: none; }
+
+    .tl-list li span {
+      font-size: 0.72rem;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+
+    /* ── Cards grid inside timeline (for faculty) ── */
+    .faculty-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .faculty-card {
+      background: var(--light);
+      border-radius: 12px;
+      padding: 20px 16px;
+      text-align: center;
+    }
+
+    .faculty-card__avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--border);
+      margin: 0 auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .faculty-card__name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .faculty-card__role {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    /* ── Achievements tags ── */
+    .achievement-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .achievement-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--orange);
+      background: rgba(232, 80, 10, 0.08);
+      border: 1px solid rgba(232, 80, 10, 0.18);
+      border-radius: 999px;
+      padding: 6px 14px;
+    }
+
+    /* ── CTA ── */
+    .tl-cta {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 12px 28px;
+      background: var(--orange);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: background 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .tl-cta:hover {
+      background: #c9430a;
+      box-shadow: 0 8px 24px rgba(232, 80, 10, 0.3);
+    }
+
+    /* ── Footer ── */
+    .dept-footer {
+      text-align: center;
+      padding: 32px var(--pad);
+      font-size: 0.75rem;
+      color: #aaa;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .timeline {
+        grid-template-columns: 1fr;
+      }
+
+      .tl-nav {
+        position: relative;
+        top: 0;
+        border-right: none;
+        border-bottom: 2px solid var(--border);
+        padding: 24px 0 16px;
+        display: flex;
+        overflow-x: auto;
+        gap: 0;
+        scrollbar-width: none;
+      }
+
+      .tl-nav::-webkit-scrollbar { display: none; }
+
+      .tl-progress { display: none; }
+
+      .tl-nav-item {
+        flex-direction: column;
+        gap: 6px;
+        padding: 8px 16px;
+        flex-shrink: 0;
+      }
+
+      .tl-nav-dot {
+        right: 0;
+      }
+
+      .tl-panels {
+        padding: 32px 0 48px;
+      }
+
+      .stats { flex-wrap: wrap; }
+      .stat { flex: 1 1 50%; }
+
+      .faculty-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="back-nav">
+    <a href="../index.html">&larr; Back to Home</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <span class="hero__eyebrow">Department of</span>
+    <h1 class="hero__title">CSE — Cyber Security</h1>
+    <p class="hero__sub">Defending digital infrastructure through ethical hacking, cryptography, and security engineering.</p>
+  </section>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat__num">93%</div>
+      <div class="stat__label">Placement Rate</div>
+    </div>
+    <div class="stat">
+      <div class="stat__num">16+</div>
+      <div class="stat__label">Faculty</div>
+    </div>
+    <div class="stat">
+      <div class="stat__num">360+</div>
+      <div class="stat__label">Students</div>
+    </div>
+    <div class="stat">
+      <div class="stat__num">6+</div>
+      <div class="stat__label">Labs</div>
+    </div>
+  </div>
+
+  <!-- Timeline: left nav + right content -->
+  <div class="timeline" id="timeline">
+
+    <!-- Left sticky nav -->
+    <nav class="tl-nav" id="tlNav">
+      <div class="tl-progress" id="tlProgress"></div>
+      <a class="tl-nav-item" data-target="sec-overview">
+        <span class="tl-nav-num">01</span>
+        <span class="tl-nav-dot"></span>
+        <span class="tl-nav-label">Overview</span>
+      </a>
+      <a class="tl-nav-item" data-target="sec-vision">
+        <span class="tl-nav-num">02</span>
+        <span class="tl-nav-dot"></span>
+        <span class="tl-nav-label">Vision &amp; Mission</span>
+      </a>
+      <a class="tl-nav-item" data-target="sec-copos">
+        <span class="tl-nav-num">03</span>
+        <span class="tl-nav-dot"></span>
+        <span class="tl-nav-label">COs &amp; POs</span>
+      </a>
+      <a class="tl-nav-item" data-target="sec-syllabus">
+        <span class="tl-nav-num">04</span>
+        <span class="tl-nav-dot"></span>
+        <span class="tl-nav-label">Syllabus</span>
+      </a>
+      <a class="tl-nav-item" data-target="sec-faculty">
+        <span class="tl-nav-num">05</span>
+        <span class="tl-nav-dot"></span>
+        <span class="tl-nav-label">Faculty Profiles</span>
+      </a>
+      <a class="tl-nav-item" data-target="sec-handbook">
+        <span class="tl-nav-num">06</span>
+        <span class="tl-nav-dot"></span>
+        <span class="tl-nav-label">Handbook</span>
+      </a>
+      <a class="tl-nav-item" data-target="sec-achievements">
+        <span class="tl-nav-num">07</span>
+        <span class="tl-nav-dot"></span>
+        <span class="tl-nav-label">Achievements</span>
+      </a>
+      <a class="tl-nav-item" data-target="sec-research">
+        <span class="tl-nav-num">08</span>
+        <span class="tl-nav-dot"></span>
+        <span class="tl-nav-label">Research</span>
+      </a>
+    </nav>
+
+    <!-- Right content panels -->
+    <div class="tl-panels">
+
+      <div class="tl-panel" id="sec-overview">
+        <h2 class="tl-title">Overview</h2>
+        <div class="tl-content">
+          <p>The Department of Computer Science &amp; Engineering was established in 2005 and has grown into one of the largest departments at MLRIT. With NBA accreditation and autonomous status, the department offers a rigorous curriculum blending theoretical foundations with practical, industry-relevant skills.</p>
+          <p>What sets us apart is our emphasis on project-based learning, industry collaborations with companies like TCS, Infosys, and Wipro, and a dedicated placement cell that ensures students are career-ready from day one.</p>
+        </div>
+      </div>
+
+      <div class="tl-panel" id="sec-vision">
+        <h2 class="tl-title">Vision &amp; Mission</h2>
+        <div class="tl-content">
+          <p><strong>Vision:</strong> To be a centre of excellence in Computer Science &amp; Engineering education and research, producing globally competent professionals who contribute to the advancement of technology and society.</p>
+          <p><strong>Mission:</strong> To impart quality education through innovative teaching methodologies, foster research aptitude, develop industry-ready skills, and instil ethical values and social responsibility in students.</p>
+        </div>
+      </div>
+
+      <div class="tl-panel" id="sec-copos">
+        <h2 class="tl-title">COs &amp; POs</h2>
+        <div class="tl-content">
+          <p><strong>Program Outcomes (POs):</strong></p>
+          <ul class="tl-list">
+            <li>PO1 — Engineering Knowledge <span>Apply knowledge of mathematics, science &amp; engineering</span></li>
+            <li>PO2 — Problem Analysis <span>Identify, formulate &amp; analyse complex engineering problems</span></li>
+            <li>PO3 — Design &amp; Development <span>Design solutions for complex problems with societal consideration</span></li>
+            <li>PO4 — Modern Tool Usage <span>Create, select &amp; apply appropriate tools and techniques</span></li>
+            <li>PO5 — Ethics &amp; Professionalism <span>Apply ethical principles and professional responsibilities</span></li>
+          </ul>
+          <p style="margin-top:16px;"><strong>Course Outcomes (COs):</strong></p>
+          <ul class="tl-list">
+            <li>CO1 — Data Structures &amp; Algorithms <span>Implement efficient solutions using DSA concepts</span></li>
+            <li>CO2 — Database Management <span>Design and query relational databases effectively</span></li>
+            <li>CO3 — Operating Systems <span>Understand process management, memory &amp; file systems</span></li>
+            <li>CO4 — Machine Learning <span>Build and evaluate ML models for real-world problems</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-panel" id="sec-syllabus">
+        <h2 class="tl-title">Syllabus</h2>
+        <div class="tl-content">
+          <ul class="tl-list">
+            <li>Semester 1–2 <span>Engineering Mathematics, Physics, C Programming, English</span></li>
+            <li>Semester 3–4 <span>Data Structures, DBMS, Computer Organisation, OOP with Java</span></li>
+            <li>Semester 5–6 <span>Operating Systems, Computer Networks, Software Engineering, AI/ML</span></li>
+            <li>Semester 7–8 <span>Cloud Computing, Cyber Security, Major Project, Electives</span></li>
+          </ul>
+          <p style="margin-top:12px;">Full syllabus available on the JNTUH autonomous curriculum portal. Updated annually to align with industry trends.</p>
+        </div>
+      </div>
+
+      <div class="tl-panel" id="sec-faculty">
+        <h2 class="tl-title">Faculty Profiles</h2>
+        <div class="tl-content">
+          <p>Our faculty includes experienced professors, industry practitioners, and active researchers with publications in top-tier journals.</p>
+          <div class="faculty-grid">
+            <div class="faculty-card">
+              <div class="faculty-card__avatar">AK</div>
+              <div class="faculty-card__name">Dr. Ajmeera Kiran</div>
+              <div class="faculty-card__role">HOD &amp; Associate Professor</div>
+            </div>
+            <div class="faculty-card">
+              <div class="faculty-card__avatar">RS</div>
+              <div class="faculty-card__name">Dr. R. Srinivas</div>
+              <div class="faculty-card__role">Associate Professor</div>
+            </div>
+            <div class="faculty-card">
+              <div class="faculty-card__avatar">PM</div>
+              <div class="faculty-card__name">Prof. P. Madhavi</div>
+              <div class="faculty-card__role">Assistant Professor</div>
+            </div>
+            <div class="faculty-card">
+              <div class="faculty-card__avatar">VK</div>
+              <div class="faculty-card__name">Dr. V. Krishna</div>
+              <div class="faculty-card__role">Associate Professor</div>
+            </div>
+            <div class="faculty-card">
+              <div class="faculty-card__avatar">SN</div>
+              <div class="faculty-card__name">Prof. S. Nagaraju</div>
+              <div class="faculty-card__role">Assistant Professor</div>
+            </div>
+            <div class="faculty-card">
+              <div class="faculty-card__avatar">LD</div>
+              <div class="faculty-card__name">Prof. L. Deepika</div>
+              <div class="faculty-card__role">Assistant Professor</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-panel" id="sec-handbook">
+        <h2 class="tl-title">Handbook &amp; Roll of Honours</h2>
+        <div class="tl-content">
+          <p>The department handbook outlines academic policies, examination rules, grading criteria, attendance requirements, and code of conduct for all CSE students.</p>
+          <ul class="tl-list">
+            <li>Gold Medal — B.Tech CSE 2024 <span>Pranay Kumar · 9.62 CGPA</span></li>
+            <li>Gold Medal — B.Tech CSE 2023 <span>Sneha Reddy · 9.58 CGPA</span></li>
+            <li>Best Outgoing Student 2024 <span>Arjun Verma · Academic + Extra-curricular</span></li>
+            <li>Chancellor's Award 2023 <span>Kavitha Rao · Research Excellence</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-panel" id="sec-achievements">
+        <h2 class="tl-title">Achievements</h2>
+        <div class="tl-content">
+          <p>Students and faculty from the CSE department have consistently excelled in national and international competitions, hackathons, and research publications.</p>
+          <div class="achievement-tags">
+            <span class="achievement-tag">Smart India Hackathon Winners 2024</span>
+            <span class="achievement-tag">ACM ICPC Regionalists</span>
+            <span class="achievement-tag">IEEE Paper Publications — 50+</span>
+            <span class="achievement-tag">Cyient Innovation Award 2026</span>
+            <span class="achievement-tag">Google Summer of Code — 3 Selections</span>
+            <span class="achievement-tag">TCS CodeVita Finalists</span>
+            <span class="achievement-tag">Junicorn Global Summit Dubai 2026</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-panel" id="sec-research">
+        <h2 class="tl-title">Research &amp; Faculty Activities</h2>
+        <div class="tl-content">
+          <p>The department actively engages in funded research projects, faculty development programs, industry consultancy, and organises national-level conferences and workshops.</p>
+          <ul class="tl-list">
+            <li>Funded Research Projects <span>12 ongoing · AICTE, DST, UGC grants</span></li>
+            <li>Faculty Development Programs <span>8 FDPs conducted in 2025–26</span></li>
+            <li>Conference: IGNITE 2K26 <span>National-level technical symposium</span></li>
+            <li>Industry MoUs <span>TCS, Infosys, Wipro, IBM, AWS</span></li>
+            <li>Patents Filed <span>6 patents · AI, IoT, Blockchain domains</span></li>
+          </ul>
+          <a href="../index.html#admissions" class="tl-cta">Apply Now &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="dept-footer">
+    &copy; 2026 MLRIT — Marri Laxman Reddy Institute of Technology. All rights reserved.
+  </footer>
+
+  <script>
+    (function () {
+      var nav      = document.getElementById('tlNav');
+      var progress = document.getElementById('tlProgress');
+      var navItems = nav.querySelectorAll('.tl-nav-item');
+      var panels   = document.querySelectorAll('.tl-panel');
+      var TRIGGER  = 0.4;
+
+      // Click nav item → smooth scroll to panel
+      navItems.forEach(function (item) {
+        item.addEventListener('click', function () {
+          var target = document.getElementById(item.dataset.target);
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      function update() {
+        var viewY = window.scrollY + window.innerHeight * TRIGGER;
+        var currentIdx = -1;
+
+        panels.forEach(function (panel, i) {
+          var panelTop = panel.getBoundingClientRect().top + window.scrollY;
+
+          if (viewY >= panelTop) {
+            panel.classList.add('is-visible');
+            navItems[i].classList.add('is-active');
+            currentIdx = i;
+          } else {
+            panel.classList.remove('is-visible');
+            navItems[i].classList.remove('is-active');
+          }
+          navItems[i].classList.remove('is-current');
+        });
+
+        if (currentIdx >= 0) {
+          navItems[currentIdx].classList.add('is-current');
+        }
+
+        // Progress line: map to nav item positions within the nav
+        if (currentIdx < 0) {
+          progress.style.height = '0px';
+        } else {
+          // Get the active nav item's position relative to the nav container
+          var activeItem = navItems[currentIdx];
+          var navRect    = nav.getBoundingClientRect();
+          var itemRect   = activeItem.getBoundingClientRect();
+          // Line goes from nav top to the center of the active dot
+          var lineH = (itemRect.top - navRect.top) + (itemRect.height / 2);
+          progress.style.height = Math.max(lineH, 0) + 'px';
+        }
+      }
+
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+</body>
+</html>

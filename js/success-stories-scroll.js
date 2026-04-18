@@ -1,71 +1,16 @@
-// ── Success Stories: scroll-driven horizontal reveal ──────────────────
+// ── Success Stories: reveal cards on scroll ───────────────────────────
 (function () {
-  var runway = document.getElementById('ssRunway');
-  var track  = document.getElementById('ssTrack');
-  var blob   = document.getElementById('ssBlob');
-  if (!runway || !track) return;
+  var section = document.querySelector('.ss-section');
+  if (!section) return;
 
-  runway.style.height = '250vh';
-
-  var maxTravel = 0;
-
-  function measure() {
-    maxTravel = Math.max(track.scrollWidth - window.innerWidth, 0);
-  }
-  measure();
-  window.addEventListener('resize', measure);
-
-  var target  = 0;
-  var current = 0;
-  var LERP    = 0.05;
-
-  function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
-
-  function easeInOut(t) {
-    return t < 0.5
-      ? 4 * t * t * t
-      : 1 - Math.pow(-2 * t + 2, 3) / 2;
-  }
-
-  function computeTarget() {
-    var scrolled    = -runway.getBoundingClientRect().top;
-    var totalScroll = runway.offsetHeight - window.innerHeight;
-    target = clamp01(scrolled / totalScroll);
-  }
-
-  function render() {
-    var eased = easeInOut(current);
-    track.style.transform = 'translateX(' + (-eased * maxTravel).toFixed(1) + 'px)';
-
-    if (blob) {
-      var rot = current * 180;
-      var sc  = 1 + Math.sin(current * Math.PI) * 0.15;
-      blob.style.transform = 'translate(-50%, -50%) rotate(' + rot.toFixed(1) + 'deg) scale(' + sc.toFixed(3) + ')';
-    }
-  }
-
-  var rafId = null;
-
-  function tick() {
-    computeTarget();
-    var diff = target - current;
-    if (Math.abs(diff) > 0.0003) {
-      current += diff * LERP;
-    } else {
-      current = target;
-    }
-    render();
-    rafId = requestAnimationFrame(tick);
-  }
-
-  rafId = requestAnimationFrame(tick);
-
-  var obs = new IntersectionObserver(function (entries) {
+  var observer = new IntersectionObserver(function (entries) {
     if (entries[0].isIntersecting) {
-      if (!rafId) rafId = requestAnimationFrame(tick);
-    } else {
-      if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+      section.querySelectorAll('.ss-card').forEach(function (card) {
+        card.classList.add('is-revealed');
+      });
+      observer.disconnect();
     }
-  }, { threshold: 0 });
-  obs.observe(runway);
+  }, { threshold: 0.1 });
+
+  observer.observe(section);
 })();
