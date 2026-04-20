@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Placements — Training &amp; Placement Cell | MLRIT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --teal:   #003d3d;
+      --teal2:  #005050;
+      --gold:   #F3AB35;
+      --gold2:  #FDC830;
+      --dark:   #14213D;
+      --gray:   #ececec;
+      --text:   #1a1a1a;
+      --muted:  #555;
+      --white:  #ffffff;
+      --pad:    clamp(20px, 6vw, 90px);
+      --radius: 14px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Urbanist", sans-serif;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── SITE HEADER ── */
+    .site-header {
+      background: var(--teal);
+      padding: 0 var(--pad);
+    }
+    .site-header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      height: 68px;
+    }
+    .site-header__logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .site-header__logo img {
+      height: 42px;
+      width: auto;
+    }
+    .site-header__name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.01em;
+    }
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .site-nav a {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+    .site-nav a:hover,
+    .site-nav a.active { color: var(--gold); }
+    .site-nav a.active { color: var(--gold); }
+
+    /* ── HERO BANNER ── */
+    .hero {
+      position: relative;
+      min-height: 420px;
+      display: flex;
+      align-items: flex-end;
+      background: var(--teal);
+      overflow: hidden;
+    }
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(0,61,61,0.88) 0%, rgba(0,80,80,0.72) 50%, rgba(20,33,61,0.80) 100%),
+        url('') center/cover no-repeat;
+      z-index: 0;
+    }
+    /* Decorative shapes */
+    .hero__shape1 {
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 340px; height: 340px;
+      border-radius: 50%;
+      background: rgba(243,171,53,0.10);
+      z-index: 1;
+    }
+    .hero__shape2 {
+      position: absolute;
+      bottom: -80px; left: 40%;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: rgba(243,171,53,0.07);
+      z-index: 1;
+    }
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      padding: 80px var(--pad) 60px;
+      max-width: 800px;
+    }
+    .hero__eyebrow {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .hero__title {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 900;
+      line-height: 1.08;
+      color: var(--white);
+      margin-bottom: 18px;
+      letter-spacing: -0.02em;
+    }
+    .hero__title span { color: var(--gold); }
+    .hero__sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.62);
+      max-width: 600px;
+      line-height: 1.75;
+    }
+
+    /* ── STATS BARS ── */
+    .stats-bars {
+      padding: 48px var(--pad) 12px;
+      background: var(--white);
+    }
+    .stats-bars__track {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .sbar {
+      position: relative;
+      height: 56px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 22px;
+      overflow: hidden;
+    }
+    /* Gold bar — full width */
+    .sbar--gold {
+      background: var(--gold);
+      width: 100%;
+    }
+    .sbar--gold .sbar__label { color: var(--teal); }
+    .sbar--gold .sbar__val   { color: var(--teal); }
+    /* Teal bar — on gray track */
+    .sbar-wrap {
+      position: relative;
+      background: #e4e4e4;
+      border-radius: 4px;
+      height: 56px;
+    }
+    .sbar--teal {
+      background: var(--teal);
+      width: 98%;
+      height: 100%;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 22px;
+    }
+    .sbar--teal .sbar__label { color: var(--white); }
+    .sbar--teal .sbar__val   { color: var(--white); }
+    /* Dark bar — on gray track */
+    .sbar--dark {
+      background: #1a1a1a;
+      width: 74%;
+      height: 100%;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 22px;
+    }
+    .sbar--dark .sbar__label { color: var(--white); }
+    .sbar--dark .sbar__val   { color: var(--white); }
+    .sbar__label {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+    .sbar__val {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .stats-bars__caption {
+      margin-top: 10px;
+      font-size: 0.72rem;
+      color: #888;
+      font-style: italic;
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section { padding: 72px var(--pad); }
+    .section--gray { background: var(--gray); }
+    .section--teal { background: var(--teal); }
+    .section__label {
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .section__title {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    .section__title--white { color: var(--white); }
+    .section__desc {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 680px;
+      line-height: 1.75;
+      margin-bottom: 48px;
+    }
+    .section__desc--white { color: rgba(255,255,255,0.65); }
+
+    /* ── LEADERSHIP ── */
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .leader-card {
+      background: var(--white);
+      border: 1px solid #e0e0e0;
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      box-shadow: 0 4px 20px rgba(0,61,61,0.06);
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .leader-card:hover {
+      box-shadow: 0 12px 36px rgba(0,61,61,0.12);
+      transform: translateY(-3px);
+    }
+    .leader-card__avatar {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--white);
+      flex-shrink: 0;
+      border: 3px solid var(--gold);
+    }
+    .leader-card__name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+    .leader-card__role {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .leader-card__contact {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .leader-card__contact a {
+      color: var(--teal);
+      text-decoration: none;
+    }
+    .leader-card__contact a:hover { color: var(--gold); }
+
+    /* ── HIGHLIGHTS GRID ── */
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .highlight-card {
+      background: var(--white);
+      border: 1px solid #ddd;
+      border-radius: var(--radius);
+      padding: 32px 26px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .highlight-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(243,171,53,0.14);
+    }
+    .highlight-card__icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      background: rgba(243,171,53,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    .highlight-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+    .highlight-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* ── RECRUITERS SECTION ── */
+    .recruiters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 16px;
+    }
+    .recruiter-item {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 20px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .recruiter-item:hover {
+      transform: scale(1.12);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    .recruiter-item img {
+      max-width: 100%;
+      max-height: 48px;
+      object-fit: contain;
+    }
+
+    /* ── PDF STATS ── */
+    .pdf-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .pdf-card {
+      background: var(--white);
+      border: 1.5px solid #e0e0e0;
+      border-radius: var(--radius);
+      padding: 24px 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+    .pdf-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 8px 24px rgba(243,171,53,0.15);
+      transform: translateY(-2px);
+    }
+    .pdf-card__icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: rgba(0,61,61,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .pdf-card__icon svg { color: var(--teal); }
+    .pdf-card__batch {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .pdf-card__name {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* ── SKILLS SECTIONS ── */
+    .skills-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .skills-block__title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--teal);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 3px solid var(--gold);
+    }
+    .skill-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .skill-item:last-child { border-bottom: none; }
+    .skill-item__dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+    .skill-item__name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+    .skill-item__desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── CTA SECTION ── */
+    .cta-section {
+      background: var(--teal);
+      padding: 80px var(--pad);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 50%, rgba(243,171,53,0.12) 0%, transparent 65%);
+    }
+    .cta-section h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
+      position: relative;
+    }
+    .cta-section p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 36px;
+      position: relative;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 44px;
+      background: var(--gold);
+      color: var(--dark);
+      font-family: "Figtree", sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 10px;
+      position: relative;
+      transition: background 0.25s, box-shadow 0.25s, transform 0.25s;
+    }
+    .cta-btn:hover {
+      background: var(--gold2);
+      box-shadow: 0 12px 36px rgba(243,171,53,0.4);
+      transform: translateY(-2px);
+    }
+
+    /* ── SITE FOOTER ── */
+    .site-footer {
+      background: var(--white);
+      border-top: 1px solid #e8e8e8;
+      padding: 32px var(--pad);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .site-footer p {
+      font-size: 0.78rem;
+      color: #999;
+    }
+    .site-footer a {
+      font-size: 0.78rem;
+      color: var(--teal);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .site-footer a:hover { color: var(--gold); }
+
+    /* ── DIVIDER LINE ── */
+    .gold-line {
+      width: 56px;
+      height: 4px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin-bottom: 32px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .leadership-grid { grid-template-columns: 1fr; }
+      .skills-wrap { grid-template-columns: 1fr; gap: 32px; }
+      .sbar__label { font-size: 0.82rem; }
+      .sbar__val   { font-size: 0.82rem; }
+    }
+    @media (max-width: 640px) {
+      .site-nav { display: none; }
+      .hero__content { padding: 60px var(--pad) 48px; }
+      .highlights-grid { grid-template-columns: 1fr; }
+      .recruiters-grid { grid-template-columns: repeat(3, 1fr); }
+      .pdf-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── SITE HEADER ── -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="index.html" class="site-header__logo">
+        <img src="mlrit-logo.png" alt="MLRIT Logo">
+        <span class="site-header__name">MLR Institute of Technology</span>
+      </a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="#">Academics</a>
+        <a href="#">Admissions</a>
+        <a href="#">Research</a>
+        <a href="placements.html" class="active">Placements</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── HERO BANNER ── -->
+  <section class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__shape1"></div>
+    <div class="hero__shape2"></div>
+    <div class="hero__content">
+      <span class="hero__eyebrow">Training &amp; Placement Cell</span>
+      <h1 class="hero__title">Financial <span>Independence</span></h1>
+      <p class="hero__sub">Beyond securing job offers, our placement program focuses on helping students find roles that align with their long-term career goals. We equip every student with the skills, confidence, and mindset needed for a successful career journey.</p>
+    </div>
+  </section>
+
+  <!-- ── STATS BARS ── -->
+  <div class="stats-bars">
+    <div class="stats-bars__track">
+
+      <!-- Row 1: Gold full bar -->
+      <div class="sbar sbar--gold">
+        <span class="sbar__label">Highest Package Placed</span>
+        <span class="sbar__val">(44 LPA)</span>
+      </div>
+
+      <!-- Row 2: Teal bar ~98% -->
+      <div class="sbar-wrap">
+        <div class="sbar--teal">
+          <span class="sbar__label">Percentage of Students Placed</span>
+          <span class="sbar__val">~98%</span>
+        </div>
+      </div>
+
+      <!-- Row 3: Dark bar ~74% -->
+      <div class="sbar-wrap">
+        <div class="sbar--dark">
+          <span class="sbar__label">Avg. Base Salary</span>
+          <span class="sbar__val">(18 LPA)</span>
+        </div>
+      </div>
+
+    </div>
+    <p class="stats-bars__caption">Statistics According to 2025 Placements.</p>
+  </div>
+
+  <!-- ── ABOUT + LEADERSHIP ── -->
+  <section class="section">
+    <div class="section__label">Placement Cell</div>
+    <h2 class="section__title">Meet Our Leadership</h2>
+    <div class="gold-line"></div>
+    <p class="section__desc">The Training &amp; Placement Cell at MLRIT is led by experienced professionals dedicated to bridging the gap between academia and industry. Our team works year-round to forge strong corporate relationships and open doors for every student.</p>
+    <div class="leadership-grid">
+      <div class="leader-card">
+        <div class="leader-card__avatar">KR</div>
+        <div>
+          <div class="leader-card__name">Dr. K. Ramesh Reddy</div>
+          <div class="leader-card__role">Dean, Placements &amp; Corporate Relations</div>
+          <div class="leader-card__contact">
+            <a href="mailto:dean.placements@mlrit.ac.in">dean.placements@mlrit.ac.in</a><br>
+            +91 40 2956 5800
+          </div>
+        </div>
+      </div>
+      <div class="leader-card">
+        <div class="leader-card__avatar">SR</div>
+        <div>
+          <div class="leader-card__name">Prof. S. Ravi Kumar</div>
+          <div class="leader-card__role">Training &amp; Placement Officer</div>
+          <div class="leader-card__contact">
+            <a href="mailto:placements@mlrit.ac.in">placements@mlrit.ac.in</a><br>
+            +91 70956 62777
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PLACEMENT HIGHLIGHTS ── -->
+  <section class="section section--gray">
+    <div class="section__label">Why Recruit at MLRIT</div>
+    <h2 class="section__title">Placement Highlights</h2>
+    <div class="gold-line"></div>
+    <div class="highlights-grid">
+      <div class="highlight-card">
+        <div class="highlight-card__icon">🤝</div>
+        <h3>Strong Industry Connections</h3>
+        <p>MoUs with Microsoft, Deloitte, Infosys, TCS, IBM, AWS, and 30+ industry partners for training and placement support.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-card__icon">🏢</div>
+        <h3>Diverse Recruiter Range</h3>
+        <p>From Fortune 500 giants to high-growth startups — Accenture, Capgemini, Wipro, L&amp;T, and many more visit every year.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-card__icon">📊</div>
+        <h3>Impressive Placement Records</h3>
+        <p>Consistently strong results with 98% annual placement rate and 44 LPA highest package across graduating batches.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-card__icon">🎓</div>
+        <h3>Industrial Training &amp; Internships</h3>
+        <p>Internship tie-ups with PwC, Apple, Micron, CISCO, and leading tech companies for real-world industry experience.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-card__icon">🎯</div>
+        <h3>Comprehensive Pre-Placement Training</h3>
+        <p>Structured aptitude, technical, soft-skills, and interview preparation starting from 2nd year onwards — well before placement season.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── OUR RECRUITERS ── -->
+  <section class="section">
+    <div class="section__label">Recruiting Partners</div>
+    <h2 class="section__title">Our Recruiters</h2>
+    <div class="gold-line"></div>
+    <p class="section__desc">Each year, MLRIT attracts top-tier companies from diverse industries who recognise the quality of our graduates and offer competitive roles across software, data, cybersecurity, finance, and more.</p>
+    <div class="recruiters-grid">
+      <div class="recruiter-item"><img src="placements/p1.jpg" alt="Recruiter"></div>
+      <div class="recruiter-item"><img src="placements/p2.jpg" alt="Recruiter"></div>
+      <div class="recruiter-item"><img src="placements/p3.jpg" alt="Recruiter"></div>
+      <div class="recruiter-item"><img src="placements/p4.jpg" alt="Recruiter"></div>
+      <div class="recruiter-item"><img src="placements/p5.jpg" alt="Recruiter"></div>
+      <div class="recruiter-item"><img src="placements/p6.jpg" alt="Recruiter"></div>
+      <div class="recruiter-item"><img src="placements/p7.png" alt="Recruiter"></div>
+      <div class="recruiter-item"><img src="placements/p8.png" alt="Recruiter"></div>
+      <div class="recruiter-item"><img src="placements/p9.png" alt="Recruiter"></div>
+      <div class="recruiter-item"><img src="placements/p10.png" alt="Recruiter"></div>
+      <div class="recruiter-item"><img src="placements/p11.png" alt="Recruiter"></div>
+      <div class="recruiter-item"><img src="placements/p12.png" alt="Recruiter"></div>
+      <div class="recruiter-item"><img src="placements/p13.png" alt="Recruiter"></div>
+      <div class="recruiter-item"><img src="placements/p14.png" alt="Recruiter"></div>
+      <div class="recruiter-item"><img src="placements/p15.png" alt="Recruiter"></div>
+      <div class="recruiter-item"><img src="placements/p16.png" alt="Recruiter"></div>
+    </div>
+  </section>
+
+  <!-- ── PLACEMENT STATISTICS ── -->
+  <section class="section section--gray">
+    <div class="section__label">Placement Reports</div>
+    <h2 class="section__title">Placement Statistics</h2>
+    <div class="gold-line"></div>
+    <p class="section__desc">Download batch-wise placement statistics reports for transparency and reference.</p>
+    <div class="pdf-grid">
+      <a href="#" class="pdf-card">
+        <div class="pdf-card__icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h10l4 4v12H4V3z"/><path d="M14 3v4h4"/><path d="M8 13h6M8 10h4"/></svg>
+        </div>
+        <div>
+          <div class="pdf-card__batch">2021 – 25 Batch</div>
+          <div class="pdf-card__name">Placement Statistics</div>
+        </div>
+      </a>
+      <a href="#" class="pdf-card">
+        <div class="pdf-card__icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h10l4 4v12H4V3z"/><path d="M14 3v4h4"/><path d="M8 13h6M8 10h4"/></svg>
+        </div>
+        <div>
+          <div class="pdf-card__batch">2020 – 24 Batch</div>
+          <div class="pdf-card__name">Placement Statistics</div>
+        </div>
+      </a>
+      <a href="#" class="pdf-card">
+        <div class="pdf-card__icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h10l4 4v12H4V3z"/><path d="M14 3v4h4"/><path d="M8 13h6M8 10h4"/></svg>
+        </div>
+        <div>
+          <div class="pdf-card__batch">2019 – 23 Batch</div>
+          <div class="pdf-card__name">Placement Statistics</div>
+        </div>
+      </a>
+      <a href="#" class="pdf-card">
+        <div class="pdf-card__icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h10l4 4v12H4V3z"/><path d="M14 3v4h4"/><path d="M8 13h6M8 10h4"/></svg>
+        </div>
+        <div>
+          <div class="pdf-card__batch">2018 – 22 Batch</div>
+          <div class="pdf-card__name">Placement Statistics</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── SKILLS SECTIONS ── -->
+  <section class="section">
+    <div class="section__label">Student Competencies</div>
+    <h2 class="section__title">What We Build in Our Students</h2>
+    <div class="gold-line"></div>
+    <div class="skills-wrap">
+
+      <div class="skills-block">
+        <div class="skills-block__title">Placement Preparation</div>
+        <div class="skill-item">
+          <div class="skill-item__dot"></div>
+          <div>
+            <div class="skill-item__name">Academic Excellence</div>
+            <div class="skill-item__desc">Strong fundamentals across core engineering subjects, CGPA-driven shortlisting support, and remedial academic programmes.</div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__dot"></div>
+          <div>
+            <div class="skill-item__name">Technical Proficiency</div>
+            <div class="skill-item__desc">DSA, DBMS, OS, Networking, coding bootcamps on LeetCode, HackerRank, and company-specific technical preparation.</div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__dot"></div>
+          <div>
+            <div class="skill-item__name">Problem-Solving</div>
+            <div class="skill-item__desc">Regular hackathons, competitive programming contests, and case study challenges to sharpen analytical thinking.</div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__dot"></div>
+          <div>
+            <div class="skill-item__name">Adaptability</div>
+            <div class="skill-item__desc">Cross-domain exposure, internship diversity, and industry workshops to build flexible, future-ready professionals.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skills-block">
+        <div class="skills-block__title">Graduate Competencies</div>
+        <div class="skill-item">
+          <div class="skill-item__dot"></div>
+          <div>
+            <div class="skill-item__name">Ethical Responsibility</div>
+            <div class="skill-item__desc">Professional ethics, workplace conduct, and integrity training integrated across all placement preparation programmes.</div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__dot"></div>
+          <div>
+            <div class="skill-item__name">Communication Skills</div>
+            <div class="skill-item__desc">Group discussions, mock interviews, presentation skills, email writing, and public speaking workshops throughout all four years.</div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__dot"></div>
+          <div>
+            <div class="skill-item__name">Leadership &amp; Teamwork</div>
+            <div class="skill-item__desc">Team-based projects, student placement committees, and leadership bootcamps to develop collaborative professionals.</div>
+          </div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__dot"></div>
+          <div>
+            <div class="skill-item__name">Global Perspective</div>
+            <div class="skill-item__desc">International company tie-ups, MS abroad guidance, and exposure to global industry trends and practices.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-section">
+    <h2>Join MLRIT</h2>
+    <p>Become part of a community that transforms careers. Admissions open for 2026–27.</p>
+    <a href="index.html#admissions" class="cta-btn">Apply Now &rarr;</a>
+  </section>
+
+  <!-- ── SITE FOOTER ── -->
+  <footer class="site-footer">
+    <p>&copy; 2026 MLRIT &mdash; Marri Laxman Reddy Institute of Technology. All rights reserved.</p>
+    <a href="index.html">&larr; Back to Home</a>
+  </footer>
+
+</body>
+</html>
