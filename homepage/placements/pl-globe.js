@@ -272,10 +272,17 @@
     /* ── Animation loop ── */
     let rafId   = null;
     let running = false;
+    let lastTs  = null;   /* tracks previous frame timestamp for time-delta rotation */
 
-    function frame() {
-      /* Very slow rotation — full revolution ≈ 165s at 60fps */
-      autoAngle += 0.00038;
+    /* Full revolution in ~165 s → 0.02280 rad/s → 0.00002280 rad/ms */
+    const ROT_RAD_MS = 0.00002280;
+    const TAU        = Math.PI * 2;
+
+    function frame(ts) {
+      /* Time-delta rotation — immune to pause/resume and frame-rate variation */
+      const dt  = lastTs !== null ? ts - lastTs : 0;
+      lastTs    = ts;
+      autoAngle = (autoAngle + dt * ROT_RAD_MS) % TAU;
 
       /* Smooth tilt towards mouse target */
       tiltX = lerp(tiltX, myNorm * 0.07,  0.028);
@@ -287,8 +294,8 @@
       rafId = requestAnimationFrame(frame);
     }
 
-    function start() { if (!running) { running = true;  frame(); } }
-    function stop()  { running = false; cancelAnimationFrame(rafId); rafId = null; }
+    function start() { if (!running) { running = true;  requestAnimationFrame(frame); } }
+    function stop()  { running = false; cancelAnimationFrame(rafId); rafId = null; lastTs = null; }
 
     /* Pause when off-screen (performance) */
     new IntersectionObserver(([e]) => {
