@@ -243,25 +243,20 @@
         const active = hov || sel;
 
         /* Target visual properties based on depth + state */
-        const tgtScale   = active ? 1.05                       : lerp(0.50, 1.0, depth);
+        const tgtScale   = active ? 1.28                       : lerp(0.50, 1.0, depth);
         const tgtOpacity = active ? 0.96                       : lerp(0.08, 0.84, depth);
         const tgtBlur    = active ? 0                          : lerp(2.8, 0, depth);
         const tgtGray    = active ? 0                          : lerp(0.95, 0.78, depth);
 
-        /* Smooth towards targets */
-        node.scale   = lerp(node.scale,   tgtScale,   SMOOTH);
+        /* Hover uses faster lerp for snappy scale; depth transitions stay slow */
+        const scaleSpeed = active ? 0.14 : SMOOTH;
+        node.scale   = lerp(node.scale,   tgtScale,   scaleSpeed);
         node.opacity = lerp(node.opacity, tgtOpacity, SMOOTH);
         node.blur    = lerp(node.blur,    tgtBlur,    SMOOTH);
         node.gray    = lerp(node.gray,    tgtGray,    SMOOTH);
 
         /* z-index: depth order, active always on top */
         const zIdx = Math.round(depth * 100) + (active ? 60 : 0);
-
-        /* Box-shadow: orange glow on hover/select */
-        let shadow;
-        if (sel)      shadow = '0 0 0 2px rgba(255,122,24,0.85), 0 0 36px rgba(255,122,24,0.45), 0 8px 40px rgba(255,122,24,0.22)';
-        else if (hov) shadow = '0 0 0 1.5px rgba(255,122,24,0.55), 0 0 24px rgba(255,122,24,0.32), 0 6px 28px rgba(255,122,24,0.16)';
-        else          shadow = 'none';
 
         /* Apply — transform is set directly (no CSS transition, lerp handles smoothness) */
         const el = node.el;
@@ -271,7 +266,6 @@
         el.style.opacity   = node.opacity.toFixed(3);
         el.style.filter    = `grayscale(${node.gray.toFixed(2)}) blur(${node.blur.toFixed(2)}px)`;
         el.style.zIndex    = zIdx;
-        el.style.boxShadow = shadow;
       });
     }
 

@@ -1424,10 +1424,6 @@
 
 /* Gallery hover handled by .pl-gs__cap transition above */
 
-/* Globe nodes: very faint orange backdrop on hover (complements the white glow) */
-.pl-globe-node:hover {
-  background: rgba(255, 120, 0, 0.06);
-}
 
 
 /* ============================================================
@@ -1608,7 +1604,7 @@
   position: absolute;
   bottom: 0; left: 0; right: 0;
   padding: 16px 6px 5px;
-  background: linear-gradient(to top, rgba(180,60,0,0.94) 0%, rgba(255,122,24,0.72) 55%, transparent 100%);
+  background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.45) 55%, transparent 100%);
   color: #fff;
   font-family: var(--sans);
   font-size: 0.54rem;
