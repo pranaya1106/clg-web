@@ -47,6 +47,12 @@
   color: #ffffff;
   line-height: 0.85;
   will-change: transform;
+  pointer-events: auto;
+  cursor: default;
+  transition: color 500ms ease;
+}
+.pl-wall__ghost:hover {
+  color: rgba(var(--orange-raw), 1);
 }
 
 .pl-wall__ghost--1 {

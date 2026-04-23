@@ -9,13 +9,14 @@
   if (!wall) return;
 
   const ghosts = Array.from(wall.querySelectorAll('.pl-wall__ghost[data-parallax]'));
-  const state  = ghosts.map(() => ({ mx: 0, my: 0, sy: 0 }));
+  const state  = ghosts.map(() => ({ mx: 0, my: 0, sy: 0, bright: 1.0 }));
   let raf = false;
 
   function flush() {
     ghosts.forEach((g, i) => {
       const s = state[i];
       g.style.translate = `${s.mx.toFixed(1)}px ${(s.my + s.sy).toFixed(1)}px`;
+      g.style.filter = s.bright > 1.02 ? `brightness(${s.bright.toFixed(2)})` : '';
     });
     raf = false;
   }
@@ -27,18 +28,29 @@
 
   wall.addEventListener('mousemove', (e) => {
     const r  = wall.getBoundingClientRect();
-    const nx = (e.clientX - r.left - r.width  * 0.5) / (r.width  * 0.5);
-    const ny = (e.clientY - r.top  - r.height * 0.5) / (r.height * 0.5);
+    const cx = e.clientX - r.left;
+    const cy = e.clientY - r.top;
+    const nx = (cx - r.width  * 0.5) / (r.width  * 0.5);
+    const ny = (cy - r.height * 0.5) / (r.height * 0.5);
+
     ghosts.forEach((g, i) => {
-      const sp   = parseFloat(g.dataset.parallax) || 0.06;
-      state[i].mx = nx * sp * 120;
-      state[i].my = ny * sp * 80;
+      const sp = parseFloat(g.dataset.parallax) || 0.06;
+      state[i].mx = nx * sp * 280;
+      state[i].my = ny * sp * 180;
+
+      /* Proximity brightness — ghost glows as cursor approaches its center */
+      const gr   = g.getBoundingClientRect();
+      const gCx  = gr.left + gr.width  / 2 - r.left;
+      const gCy  = gr.top  + gr.height / 2 - r.top;
+      const dist = Math.hypot(cx - gCx, cy - gCy);
+      const prox = Math.max(0, 1 - dist / (Math.hypot(r.width, r.height) * 0.55));
+      state[i].bright = 1 + prox * 7;
     });
     queue();
   }, { passive: true });
 
   wall.addEventListener('mouseleave', () => {
-    state.forEach(s => { s.mx = 0; s.my = 0; });
+    state.forEach(s => { s.mx = 0; s.my = 0; s.bright = 1.0; });
     queue();
   });
 
@@ -48,7 +60,7 @@
     const depth = 1 - rect.bottom / (wallH + window.innerHeight);
     ghosts.forEach((g, i) => {
       const sp     = parseFloat(g.dataset.parallax) || 0.06;
-      state[i].sy  = depth * sp * wallH * 0.3;
+      state[i].sy  = depth * sp * wallH * 0.5;
     });
     wall.style.opacity = rect.top < 0
       ? (1 - Math.max(0, Math.min(1, -rect.top / wallH)) * 0.15).toFixed(3)
