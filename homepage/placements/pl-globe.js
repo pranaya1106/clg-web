@@ -30,6 +30,8 @@
         </p>
       </div>
       <div class="pl-globe-stage" id="pl-globe-stage">
+        <div  class="pl-globe-glow"   aria-hidden="true"></div>
+        <div  class="pl-globe-mlr"    aria-hidden="true">MLR</div>
         <canvas class="pl-globe-canvas" id="pl-globe-canvas"></canvas>
         <div  class="pl-globe-field"  id="pl-globe-field"></div>
         <div  class="pl-globe-tip"    id="pl-globe-tip"></div>
@@ -48,7 +50,7 @@
     function resize() {
       W = stage.clientWidth;
       H = Math.max(Math.min(W * 0.66, 580), 340);
-      R = Math.min(W, H) * 0.34;
+      R = Math.min(W, H) * 0.50;
       stage.style.height = H + 'px';
 
       const dpr = Math.min(devicePixelRatio, 2);
@@ -59,26 +61,37 @@
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
 
-    /* ── Fibonacci sphere distribution (even spread, no clustering) ── */
+    /* ── Fibonacci sphere positions sorted so prominent companies start front ── */
     const GOLDEN = Math.PI * (3 - Math.sqrt(5));
-    const nodes  = recruiters.map((rec, i) => {
-      const t   = recruiters.length > 1 ? i / (recruiters.length - 1) : 0;
-      const phi = Math.acos(1 - 2 * t);           /* polar inclination */
-      const θ   = GOLDEN * i;                      /* azimuth */
-      return {
-        rec,
-        lat: Math.PI / 2 - phi,
-        lon: θ,
-        el:  null,
-        /* Smoothed per-frame values (lerped — no CSS transition conflict) */
-        opacity: 0.1,
-        scale:   0.55,
-        blur:    1.5,
-        gray:    0.9,
-        /* Screen position */
-        sx: 0, sy: 0, sz: 0
-      };
-    });
+    const n      = recruiters.length;
+
+    /* Compute all sphere positions and their initial z (at autoAngle=0) */
+    const positions = Array.from({ length: n }, (_, i) => {
+      const t   = n > 1 ? i / (n - 1) : 0;
+      const phi = Math.acos(1 - 2 * t);
+      const lat = Math.PI / 2 - phi;
+      const lon = GOLDEN * i;
+      const z   = Math.cos(lat) * Math.cos(lon);  /* initial front-facing depth */
+      return { lat, lon, z };
+    }).sort((a, b) => b.z - a.z);                  /* front-facing first */
+
+    /* Sort recruiters: prominent names first so they get front positions */
+    const FRONT = ['Tata', 'Cognizant', 'Amazon', 'JPMorgan', 'JP Morgan', 'JPM',
+                   'Virtusa', 'Capgemini', 'Tech Mahindra'];
+    const priority = (name) => {
+      const i = FRONT.findIndex(k => name.includes(k));
+      return i === -1 ? 999 : i;
+    };
+    const sorted = [...recruiters].sort((a, b) => priority(a.name) - priority(b.name));
+
+    const nodes = sorted.map((rec, i) => ({
+      rec,
+      lat: positions[i].lat,
+      lon: positions[i].lon,
+      el:  null,
+      opacity: 0.1, scale: 0.55, blur: 1.5, gray: 0.9,
+      sx: 0, sy: 0, sz: 0
+    }));
 
     /* ── Create DOM nodes ── */
     let hovIdx = -1;
@@ -117,20 +130,50 @@
       });
     });
 
-    /* ── Mouse state ── */
-    let mxNorm = 0, myNorm = 0;         /* normalised -1 → 1 */
-    let tiltX  = 0, tiltY  = 0;         /* smoothed camera tilt */
+    /* ── Mouse / drag state ── */
+    let mxNorm = 0, myNorm = 0;
+    let tiltX  = 0, tiltY  = 0;
 
-    stage.addEventListener('mousemove', e => {
+    let dragging  = false;
+    let dragX     = 0, dragY = 0;       /* last pointer position while dragging */
+    let velAngle  = 0, velTilt = 0;     /* drag velocity for momentum           */
+
+    stage.addEventListener('mousedown', e => {
+      dragging = true;
+      dragX    = e.clientX;
+      dragY    = e.clientY;
+      velAngle = 0; velTilt = 0;
+      stage.style.cursor = 'grabbing';
+    });
+
+    window.addEventListener('mousemove', e => {
       const r = stage.getBoundingClientRect();
-      mxNorm = (e.clientX - r.left - W * 0.5) / (W * 0.5);
-      myNorm = (e.clientY - r.top  - H * 0.5) / (H * 0.5);
       tip.style.left = (e.clientX - r.left + 16) + 'px';
       tip.style.top  = (e.clientY - r.top  -  8) + 'px';
+
+      if (dragging) {
+        const dx = e.clientX - dragX;
+        const dy = e.clientY - dragY;
+        dragX = e.clientX;
+        dragY = e.clientY;
+
+        velAngle = dx * 0.004;          /* horizontal drag → spin              */
+        velTilt  = dy * 0.003;          /* vertical drag   → tilt              */
+        autoAngle += velAngle;
+        tiltX     = Math.max(-1.1, Math.min(1.1, tiltX + velTilt));
+      } else {
+        mxNorm = (e.clientX - r.left - W * 0.5) / (W * 0.5);
+        myNorm = (e.clientY - r.top  - H * 0.5) / (H * 0.5);
+      }
     }, { passive: true });
 
-    stage.addEventListener('mouseleave', () => {
-      mxNorm = 0; myNorm = 0;
+    window.addEventListener('mouseup', () => {
+      dragging = false;
+      stage.style.cursor = '';
+    });
+
+    stage.addEventListener('mouseleave', e => {
+      if (!dragging) { mxNorm = 0; myNorm = 0; }
       hovIdx = -1;
       tip.classList.remove('is-on');
     });
@@ -275,7 +318,7 @@
     let lastTs  = null;   /* tracks previous frame timestamp for time-delta rotation */
 
     /* Full revolution in ~165 s → 0.02280 rad/s → 0.00002280 rad/ms */
-    const ROT_RAD_MS = 0.00002280;
+    const ROT_RAD_MS = 0.00005500;
     const TAU        = Math.PI * 2;
 
     function frame(ts) {
@@ -284,9 +327,20 @@
       lastTs    = ts;
       autoAngle = (autoAngle + dt * ROT_RAD_MS) % TAU;
 
-      /* Smooth tilt towards mouse target */
-      tiltX = lerp(tiltX, myNorm * 0.07,  0.028);
-      tiltY = lerp(tiltY, mxNorm * 0.10,  0.028);
+      if (dragging) {
+        velAngle *= 0.80;
+        velTilt  *= 0.80;
+      } else {
+        /* Momentum coast */
+        autoAngle += velAngle;
+        tiltX     += velTilt;
+        tiltX      = Math.max(-1.0, Math.min(1.0, tiltX));
+        velAngle  *= 0.90;
+        velTilt   *= 0.90;
+        /* Gentle hover parallax — lerp toward a fixed target, not a delta */
+        tiltX = lerp(tiltX, myNorm * 0.20, 0.025);
+        tiltY = lerp(tiltY, mxNorm * 0.22, 0.025);
+      }
 
       drawWire();
       updateNodes();
