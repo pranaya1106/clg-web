@@ -1627,8 +1627,8 @@
 
 .pl-globe-node img {
   display: block;
-  width: 180px;
-  height: 90px;
+  width: 130px;
+  height: 58px;
   object-fit: contain;
   padding: 10px 14px;
 }
@@ -1638,11 +1638,13 @@
   position: absolute;
   bottom: 0; left: 0; right: 0;
   padding: 16px 6px 5px;
-  background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.45) 55%, transparent 100%);
-  color: #fff;
+  background: linear-gradient(to top, rgba(0,0,0,0.90) 0%, rgba(0,0,0,0.55) 55%, transparent 100%);
+  color: #ffffff;
   font-family: var(--sans);
-  font-size: 0.54rem;
+  font-size: 0.62rem;
   font-weight: 700;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
   letter-spacing: 0.07em;
   text-transform: uppercase;
   text-align: center;

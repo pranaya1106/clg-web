@@ -49,8 +49,8 @@
 
     function resize() {
       W = stage.clientWidth;
-      H = Math.max(Math.min(W * 0.66, 580), 340);
-      R = Math.min(W, H) * 0.50;
+      H = Math.max(Math.min(W * 0.75, 680), 420);
+      R = Math.min(W, H) * 0.44;
       stage.style.height = H + 'px';
 
       const dpr = Math.min(devicePixelRatio, 2);
@@ -272,9 +272,10 @@
       const cx     = W / 2, cy = H / 2;
       const SMOOTH = 0.05;    /* lerp speed — controls how fast depth transitions */
 
+      const Rx = R * 1.38;   /* wider than tall — like Earth's oblate shape  */
       nodes.forEach(node => {
         const p   = project(node.lat, node.lon);
-        node.sx   = cx + p.x * R;
+        node.sx   = cx + p.x * Rx;
         node.sy   = cy - p.y * R;
         node.sz   = p.z;
       });
@@ -286,10 +287,10 @@
         const active = hov || sel;
 
         /* Target visual properties based on depth + state */
-        const tgtScale   = active ? 1.28                       : lerp(0.50, 1.0, depth);
-        const tgtOpacity = active ? 0.96                       : lerp(0.08, 0.84, depth);
-        const tgtBlur    = active ? 0                          : lerp(2.8, 0, depth);
-        const tgtGray    = active ? 0                          : lerp(0.95, 0.78, depth);
+        const tgtScale   = active ? 1.28                       : lerp(0.50, 1.0,  depth);
+        const tgtOpacity = active ? 0.96                       : lerp(0.10, 0.92, depth);
+        const tgtBlur    = active ? 0                          : lerp(0.8,  0,    depth);
+        const tgtGray    = active ? 0                          : lerp(0.70, 0.05, depth);
 
         /* Hover uses faster lerp for snappy scale; depth transitions stay slow */
         const scaleSpeed = active ? 0.14 : SMOOTH;
