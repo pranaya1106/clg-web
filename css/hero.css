@@ -1,5 +1,5 @@
-﻿/* =============================================
-   HERO â€” simple full-viewport video hero
+/* =============================================
+   HERO — simple full-viewport video hero
    ============================================= */
 
 :root {
@@ -18,7 +18,7 @@
   margin-top: var(--header-h);
 }
 
-/* â”€â”€ Background video â”€â”€ */
+/* ── Background video ── */
 .hero__bg {
   position: absolute;
   inset: 0;
@@ -38,7 +38,7 @@
   opacity: 1;
 }
 
-/* â”€â”€ Gradient overlay â”€â”€ */
+/* ── Gradient overlay ── */
 .hero::after {
   content: '';
   position: absolute;
@@ -54,7 +54,7 @@
   pointer-events: none;
 }
 
-/* â”€â”€ Content â”€â”€ */
+/* ── Content ── */
 .hero__content {
   position: relative;
   z-index: 2;
@@ -80,7 +80,7 @@
   gap: 0.05em;
 }
 
-/* â”€â”€ Staggered line animation â”€â”€ */
+/* ── Staggered line animation ── */
 .hero__line {
   display: block;
   opacity: 0;
@@ -92,7 +92,7 @@
 .hero__line--2 { animation-delay: 0.32s; }
 .hero__line--3 { animation-delay: 0.50s; }
 
-/* â”€â”€ Metallic gold on "Excellence" â”€â”€ */
+/* ── Metallic gold on "Excellence" ── */
 .hero__gold {
   font-style: normal;
   background: linear-gradient(
@@ -109,7 +109,7 @@
   filter: drop-shadow(0 2px 12px rgba(200,150,12,0.45));
 }
 
-/* â”€â”€ Subheading â”€â”€ */
+/* ── Subheading ── */
 .hero__sub {
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 0.9rem;
@@ -134,7 +134,7 @@
   }
 }
 
-/* â”€â”€ CTA buttons â”€â”€ */
+/* ── CTA buttons ── */
 .hero__ctas {
   display: flex;
   gap: 0.75rem;
@@ -163,7 +163,7 @@
 
 .btn-primary:hover { background: #e0b000; }
 
-/* â”€â”€ Scroll indicator â”€â”€ */
+/* ── Scroll indicator ── */
 .hero__scroll {
   position: absolute;
   bottom: 2rem;
@@ -201,7 +201,7 @@
   100% { top: 100%;  opacity: 0; }
 }
 
-/* â”€â”€ Responsive â”€â”€ */
+/* ── Responsive ── */
 @media (max-width: 768px) {
   :root { --header-h: 0px; }
   .hero__headline h1 { font-size: 2.4rem; letter-spacing: -0.02em; }

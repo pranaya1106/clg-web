@@ -1,17 +1,17 @@
-﻿/* ============================================================
-   MLRIT Placements â€” placements-data.js
+/* ============================================================
+   MLRIT Placements — placements-data.js
    All content sourced from mlrit.ac.in/placements/
    ============================================================ */
 
 const placementContent = {
-  overview: `MLR Institute of Technology, in its journey of 20 years, has become a locus yielding academic excellence â€” consistently achieving 80% and above placements every year in various reputed MNCs across the globe. The Training &amp; Placement Cell transforms an amateur engineering student into a self-motivated professional with versatile domain expertise and multi-tasking abilities, ensuring every graduate is career-ready for the demands of modern industry.`,
+  overview: `MLR Institute of Technology, in its journey of 20 years, has become a locus yielding academic excellence — consistently achieving 80% and above placements every year in various reputed MNCs across the globe. The Training &amp; Placement Cell transforms an amateur engineering student into a self-motivated professional with versatile domain expertise and multi-tasking abilities, ensuring every graduate is career-ready for the demands of modern industry.`,
 
   training: {
     general: [
-      "Aptitude â€” Quantitative reasoning, logical analysis, and data interpretation",
-      "Verbal Ability â€” English proficiency, comprehension, and business communication",
-      "Soft Skills â€” Group discussions, interview techniques, and professional etiquette",
-      "Technical Skills â€” Domain-specific programming, tools, and frameworks"
+      "Aptitude — Quantitative reasoning, logical analysis, and data interpretation",
+      "Verbal Ability — English proficiency, comprehension, and business communication",
+      "Soft Skills — Group discussions, interview techniques, and professional etiquette",
+      "Technical Skills — Domain-specific programming, tools, and frameworks"
     ],
     cse: "C &amp; C++, Java, Data Structures, MySQL, Agile Practices, Android, Web Programming",
     ece: "C &amp; C++, Java, Data Structures, MySQL, Agile Practices, ARM &amp; Cortex Processor, Robotics Applications",
@@ -30,8 +30,8 @@ const placementContent = {
 const mous = [
   {
     name: "Virtusa",
-    domain: "Talend Data Integration and AWS â€” hands-on training with live industry projects through a dedicated on-campus Centre of Excellence.",
-    package: "5.5 â€“ 7 LPA",
+    domain: "Talend Data Integration and AWS — hands-on training with live industry projects through a dedicated on-campus Centre of Excellence.",
+    package: "5.5 – 7 LPA",
     type: "Centre of Excellence",
     logo: null,
     docs: [
@@ -43,15 +43,15 @@ const mous = [
   },
   {
     name: "EPAM Systems",
-    domain: "Fullstack Development and Cloud Engineering â€” specialised curriculum delivered by EPAM practitioners at our on-campus CoE.",
-    package: "8 â€“ 12 LPA",
+    domain: "Fullstack Development and Cloud Engineering — specialised curriculum delivered by EPAM practitioners at our on-campus CoE.",
+    package: "8 – 12 LPA",
     type: "Centre of Excellence",
     logo: null,
     docs: []
   },
   {
     name: "Boeing",
-    domain: "Aerospace Design and Manufacturing â€” formal partnership enabling internships, research collaboration, and direct recruitment.",
+    domain: "Aerospace Design and Manufacturing — formal partnership enabling internships, research collaboration, and direct recruitment.",
     package: null,
     type: "MoU Partner",
     logo: null,
@@ -59,7 +59,7 @@ const mous = [
   },
   {
     name: "Cyient",
-    domain: "Engineering and Technology Services â€” strategic MoU covering campus recruitment, joint technical training, and faculty development.",
+    domain: "Engineering and Technology Services — strategic MoU covering campus recruitment, joint technical training, and faculty development.",
     package: null,
     type: "MoU Partner",
     logo: null,
@@ -69,7 +69,7 @@ const mous = [
   },
   {
     name: "Tata Technologies",
-    domain: "PLM and Engineering Design â€” dedicated Tata Technologies Centre of Excellence for advanced product lifecycle and manufacturing skills.",
+    domain: "PLM and Engineering Design — dedicated Tata Technologies Centre of Excellence for advanced product lifecycle and manufacturing skills.",
     package: null,
     type: "Centre of Excellence",
     logo: null,
@@ -77,7 +77,7 @@ const mous = [
   },
   {
     name: "Infosys",
-    domain: "Campus Connect Programme â€” structured industry partnership providing students with Infosys-designed curriculum, certification pathways, and direct campus recruitment.",
+    domain: "Campus Connect Programme — structured industry partnership providing students with Infosys-designed curriculum, certification pathways, and direct campus recruitment.",
     package: null,
     type: "MoU Partner",
     logo: null,
@@ -87,7 +87,7 @@ const mous = [
   },
   {
     name: "Revature",
-    domain: "Technology staffing and training partnership â€” placing graduates directly into software development roles at Fortune 500 clients through Revature's workforce development model.",
+    domain: "Technology staffing and training partnership — placing graduates directly into software development roles at Fortune 500 clients through Revature's workforce development model.",
     package: null,
     type: "MoU Partner",
     logo: null,
@@ -144,7 +144,7 @@ const gallery = [
   { src: "assets/images/overall-placements.jpg", alt: "MLRIT Placement Drive",     featured: true },
   { src: "assets/images/drive-1.jpg",            alt: "Campus Placement Drive 2024"               },
   { src: "assets/images/drive-2.jpg",            alt: "Pre-Placement Talk"                        },
-  { src: "assets/images/drive-3.jpg",            alt: "Placement Drive â€” Batch 2024"              },
+  { src: "assets/images/drive-3.jpg",            alt: "Placement Drive — Batch 2024"              },
   { src: "assets/images/drive-4.jpg",            alt: "Interview Session"                         },
   { src: "assets/images/drive-5.jpg",            alt: "Placement Ceremony"                        }
 ];
