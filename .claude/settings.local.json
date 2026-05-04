@@ -1,3 +1,39 @@
 {
+<<<<<<< HEAD
   "enableAllProjectMcpServers": true
+=======
+  "permissions": {
+    "allow": [
+      "Bash(file /c/mlr/departments/images/cse/*.jpg)",
+      "Bash(curl -sL --max-time 15 \"https://mlrit.ac.in/electronics-communication-engineering/\")",
+      "Bash(curl -sL --max-time 15 \"https://mlrit.ac.in/electrical-electronics-engineering/\")",
+      "Bash(curl -sL --max-time 15 \"https://mlrit.ac.in/mechanical-engineering/\")",
+      "Bash(curl -sL --max-time 15 \"https://mlrit.ac.in/aeronautical-engineering/\")",
+      "Bash(curl -sL --max-time 15 \"https://mlrit.ac.in/mba/\")",
+      "Bash(curl -sL --max-time 15 \"https://mlrit.ac.in/cse-aiml/\")",
+      "Bash(curl -sL --max-time 15 \"https://mlrit.ac.in/cse-data-science/\")",
+      "Bash(curl -sL --max-time 15 \"https://mlrit.ac.in/ece/\")",
+      "Bash(curl -sL --max-time 15 \"https://mlrit.ac.in/eee/\")",
+      "Bash(curl -sL --max-time 15 \"https://mlrit.ac.in/faculty_categories/mechanical/\")",
+      "Bash(curl -sL --max-time 15 \"https://mlrit.ac.in/faculty_categories/aeronautical/\")",
+      "Bash(curl -sL --max-time 15 \"https://mlrit.ac.in/faculty_categories/mba/\")",
+      "Bash(ls -d /c/mlr/*/)",
+      "Bash(ls /c/mlr/departments/*.html)",
+      "Bash(python3 download_faculty.py)",
+      "WebFetch(domain:www.iare.ac.in)",
+      "Bash(sed '1d;$d')",
+      "Bash(node --check c:/mlr/test_js.js)",
+      "WebFetch(domain:mlrit.ac.in)",
+      "Bash(curl -s -o ediko.jpg \"https://mlrit.ac.in/wp-content/uploads/2022/08/ediko.jpg\")",
+      "Bash(curl -s -o deutsche-bank.jpg \"https://mlrit.ac.in/wp-content/uploads/2022/08/DB.jpeg\")",
+      "Bash(curl -s -o power-bridge.jpg \"https://mlrit.ac.in/wp-content/uploads/2022/08/POWER-BRIDGE.jpg\")",
+      "Bash(curl -s -o icrisat.jpg \"https://mlrit.ac.in/wp-content/uploads/2022/08/Icrisat.jpeg\")",
+      "Bash(curl -s -o drive-1.jpg \"https://mlrit.ac.in/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-05-at-2.57.46-PM.jpeg\")",
+      "Bash(curl -s -o drive-2.jpg \"https://mlrit.ac.in/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-05-at-2.57.48-PM-1.jpeg\")",
+      "Bash(curl -s -o drive-3.jpg \"https://mlrit.ac.in/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-05-at-2.57.49-PM.jpeg\")",
+      "Bash(curl -s -o drive-4.jpg \"https://mlrit.ac.in/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-05-at-2.57.50-PM.jpeg\")",
+      "Bash(curl -s -o drive-5.jpg \"https://mlrit.ac.in/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-05-at-2.57.51-PM.jpeg\")"
+    ]
+  }
+>>>>>>> upstream/main
 }

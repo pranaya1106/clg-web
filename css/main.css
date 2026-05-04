@@ -1,7 +1,12 @@
-/* ===== Global tokens ===== */
+﻿/* ===== Global tokens ===== */
 :root {
+<<<<<<< HEAD
   --green:       #2E7D32;
   --green-light: #e8f2ee;
+=======
+  --green:       #1F6B24;
+  --green-light: #e8f2e8;
+>>>>>>> upstream/main
   --gold:        #C8960C;
   --orange:      #E8500A;
   --text-dark:   #0f0f0f;
@@ -9,6 +14,7 @@
   --text-muted:  #888;
   --border:      #e8e8e8;
   --radius:      14px;
+<<<<<<< HEAD
   --serif:       'Poppins', sans-serif;
   --sans:        'Inter', 'Segoe UI', Arial, sans-serif;
   --display:     'Poppins', 'Segoe UI', Arial, sans-serif;
@@ -17,6 +23,15 @@
   --page-pad: clamp(1.5rem, 5vw, 5rem);
 
   /* ── Type scale ── */
+=======
+  --heading:     'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  --sans:        'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* â”€â”€ Side padding â€” matches utexas.edu feel â”€â”€ */
+  --page-pad: clamp(1.5rem, 5vw, 5rem);
+
+  /* â”€â”€ Type scale â”€â”€ */
+>>>>>>> upstream/main
   --fs-h1:      clamp(3rem, 5.5vw, 3.5rem);
   --fs-h2:      clamp(2rem, 3.5vw, 2.25rem);
   --fs-h3:      clamp(1.5rem, 2.5vw, 1.75rem);
@@ -28,10 +43,24 @@
 
   --lh-body:    1.6;
   --ls-label:   0.03em;
+<<<<<<< HEAD
+=======
+
+  /* â”€â”€ Footer tokens â”€â”€ */
+  --accent:       #E8500A;
+  --primary:      #1F6B24;
+  --primary-dark: #155218;
+  --ease-smooth:  cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out:     cubic-bezier(0.25, 0.46, 0.45, 0.94);
+>>>>>>> upstream/main
 }
 
 /* ===== Base ===== */
 html {
+<<<<<<< HEAD
+=======
+  zoom: 0.9;
+>>>>>>> upstream/main
   scroll-behavior: smooth;
   overflow-x: clip;
   max-width: 100%;
@@ -57,7 +86,11 @@ body {
 
 .section-label {
   display: inline-block;
+<<<<<<< HEAD
   font-family: var(--display);
+=======
+  font-family: var(--heading);
+>>>>>>> upstream/main
   font-size: var(--fs-label);
   font-weight: 700;
   letter-spacing: var(--ls-label);
@@ -67,7 +100,11 @@ body {
 }
 
 .section-heading {
+<<<<<<< HEAD
   font-family: var(--display);
+=======
+  font-family: var(--heading);
+>>>>>>> upstream/main
   font-size: var(--fs-h2);
   font-weight: 700;
   color: var(--text-dark);
@@ -115,7 +152,11 @@ body {
 }
 
 /* ===========================
+<<<<<<< HEAD
    2. STATS STRIP — redesigned minimal & dynamic
+=======
+   2. STATS STRIP â€” redesigned minimal & dynamic
+>>>>>>> upstream/main
    =========================== */
 .stats-strip {
   background: linear-gradient(135deg, #0a0a0a 0%, #111111 50%, #0d0d0d 100%);
@@ -200,7 +241,11 @@ body {
 
 /* Number */
 .stat-item__number {
+<<<<<<< HEAD
   font-family: var(--display);
+=======
+  font-family: var(--heading);
+>>>>>>> upstream/main
   font-size: clamp(2.2rem, 4vw, 3rem);
   font-weight: 900;
   color: #fff;
@@ -284,7 +329,11 @@ body {
 
 
 /* ===========================
+<<<<<<< HEAD
    3. ACHIEVEMENTS / RANKINGS — styles in rankings.css
+=======
+   3. ACHIEVEMENTS / RANKINGS â€” styles in rankings.css
+>>>>>>> upstream/main
    =========================== */
 
 .rank-row {
@@ -320,10 +369,17 @@ body {
 }
 
 .rank-row__num {
+<<<<<<< HEAD
   font-family: var(--display);
   font-size: 1.9rem;
   font-weight: 900;
   color: #2e7d32;
+=======
+  font-family: var(--heading);
+  font-size: 1.9rem;
+  font-weight: 900;
+  color: #1F6B24;
+>>>>>>> upstream/main
   line-height: 1;
   letter-spacing: -0.03em;
   margin-bottom: 10px;
@@ -440,12 +496,20 @@ body {
 }
 
 /* ===========================
+<<<<<<< HEAD
    5. PLACEMENTS — Premium Dark
+=======
+   5. PLACEMENTS â€” Premium Dark
+>>>>>>> upstream/main
    =========================== */
 .placements {
   position: relative;
   padding: 60px 0 0;
+<<<<<<< HEAD
   background: linear-gradient(145deg, #0d2b14 0%, #0f2010 35%, #141414 100%);
+=======
+  background: #111111;
+>>>>>>> upstream/main
   overflow: hidden;
 }
 
@@ -488,7 +552,11 @@ body {
 }
 
 .placements__title {
+<<<<<<< HEAD
   font-family: var(--display, 'Poppins', sans-serif);
+=======
+  font-family: var(--heading, 'Montserrat', sans-serif);
+>>>>>>> upstream/main
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
   color: #fff;
@@ -548,7 +616,11 @@ body {
   align-items: baseline;
   justify-content: center;
   gap: 0;
+<<<<<<< HEAD
   font-family: var(--display, 'Poppins', sans-serif);
+=======
+  font-family: var(--heading, 'Montserrat', sans-serif);
+>>>>>>> upstream/main
   font-size: clamp(2.2rem, 3.5vw, 3rem);
   font-weight: 800;
   color: #c59b53;
@@ -691,7 +763,11 @@ body {
 }
 
 /* ===========================
+<<<<<<< HEAD
    6. TESTIMONIALS — Story Deck
+=======
+   6. TESTIMONIALS â€” Story Deck
+>>>>>>> upstream/main
    =========================== */
 .testimonials {
   padding: 80px 0;
@@ -709,7 +785,11 @@ body {
   margin: 10px auto 0;
 }
 
+<<<<<<< HEAD
 /* ── Desktop deck wrapper ── */
+=======
+/* â”€â”€ Desktop deck wrapper â”€â”€ */
+>>>>>>> upstream/main
 .desktop-deck {
   display: flex;
   flex-direction: column;
@@ -726,7 +806,11 @@ body {
   cursor: pointer;
 }
 
+<<<<<<< HEAD
 /* ── Stack (collapsed state) ── */
+=======
+/* â”€â”€ Stack (collapsed state) â”€â”€ */
+>>>>>>> upstream/main
 .stack-wrapper {
   position: relative;
   width: 240px;
@@ -738,7 +822,11 @@ body {
   top: 0; left: 0;
 }
 
+<<<<<<< HEAD
 /* ── Scattered row ── */
+=======
+/* â”€â”€ Scattered row â”€â”€ */
+>>>>>>> upstream/main
 .scatter-row {
   display: flex;
   align-items: center;
@@ -747,7 +835,11 @@ body {
   flex-wrap: nowrap;
 }
 
+<<<<<<< HEAD
 /* ── Card base ── */
+=======
+/* â”€â”€ Card base â”€â”€ */
+>>>>>>> upstream/main
 .sv-card {
   width: 240px;
   height: 360px;
@@ -842,6 +934,7 @@ body {
   transition: opacity 0.22s ease 0.1s, transform 0.22s ease 0.1s;
 }
 
+<<<<<<< HEAD
 /* ── Hover: scattered cards ── */
 .scatter-row .sv-card:hover {
   transform: scale(1.07) translateY(-6px) !important;
@@ -859,6 +952,13 @@ body {
 }
 
 /* ── Hint label ── */
+=======
+/* Cards are static â€” always show badge & batch */
+.scatter-row .sv-card__badge { opacity: 1; transform: translateY(0); }
+.scatter-row .sv-card__batch { opacity: 1; transform: translateY(0); }
+
+/* â”€â”€ Hint label â”€â”€ */
+>>>>>>> upstream/main
 .deck-hint {
   position: absolute;
   bottom: -32px;
@@ -876,7 +976,11 @@ body {
 
 .deck-hint.hidden { opacity: 0; }
 
+<<<<<<< HEAD
 /* ── Dots ── */
+=======
+/* â”€â”€ Dots â”€â”€ */
+>>>>>>> upstream/main
 .deck-dots {
   display: flex;
   align-items: center;
@@ -904,7 +1008,11 @@ body {
   cursor: pointer;
 }
 
+<<<<<<< HEAD
 /* ── Mobile scroll ── */
+=======
+/* â”€â”€ Mobile scroll â”€â”€ */
+>>>>>>> upstream/main
 .mobile-deck {
   display: none;
   gap: 16px;
@@ -928,7 +1036,11 @@ body {
   transform: none;
 }
 
+<<<<<<< HEAD
 /* ── Responsive ── */
+=======
+/* â”€â”€ Responsive â”€â”€ */
+>>>>>>> upstream/main
 @media (pointer: coarse), (max-width: 640px) {
   .desktop-deck { display: none; }
   .mobile-deck  { display: flex; }
@@ -1037,7 +1149,11 @@ body {
 }
 
 .event-featured__title {
+<<<<<<< HEAD
   font-family: var(--serif);
+=======
+  font-family: var(--heading);
+>>>>>>> upstream/main
   font-size: var(--fs-h3);
   font-weight: 700;
   color: var(--text-dark);
@@ -1075,7 +1191,11 @@ body {
 }
 
 .event-item__date .day {
+<<<<<<< HEAD
   font-family: var(--serif);
+=======
+  font-family: var(--heading);
+>>>>>>> upstream/main
   font-size: var(--fs-h3);
   font-weight: 700;
   color: var(--green);
@@ -1142,7 +1262,11 @@ body {
 }
 
 .admissions-cta__heading {
+<<<<<<< HEAD
   font-family: var(--display);
+=======
+  font-family: var(--heading);
+>>>>>>> upstream/main
   font-size: var(--fs-h1);
   font-weight: 800;
   color: #fff;
@@ -1174,16 +1298,17 @@ body {
 .btn-gold:hover { background: #a87a08; }
 
 /* ===========================
-   10. FOOTER
+   10. STICKY FOOTER
    =========================== */
-.site-footer {
-  background: #0a0a0a;
-  color: rgba(255,255,255,0.6);
-  padding: 64px 0 0;
-  font-size: 0.875rem;
+
+/* Outer shell â€” clip-path creates the reveal window */
+.sticky-footer {
   position: relative;
+  height: 820px;
+  clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0 100%);
 }
 
+<<<<<<< HEAD
 /* Gradient top border — green → orange */
 .site-footer::before {
   content: '';
@@ -1290,29 +1415,236 @@ body {
 .footer__col ul li a:hover::after { width: 100%; }
 
 .footer__bottom {
+=======
+/* Sticky inner â€” rises from bottom of viewport as you scroll */
+.sticky-footer__inner {
+  position: sticky;
+  top: calc(100vh - 820px);
+  height: 820px;
+  overflow: hidden;
+}
+
+/* Content wrapper */
+.sticky-footer__content {
+  position: relative;
+  height: 100%;
+>>>>>>> upstream/main
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+<<<<<<< HEAD
   align-items: center;
   padding: 20px 0;
   font-size: var(--fs-meta);
   color: rgba(255,255,255,0.3);
+=======
+  background: #0a0a0a;
+  padding: 2.5rem 3rem 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  gap: 1.5rem;
+  overflow: hidden;
+>>>>>>> upstream/main
 }
 
-.footer__bottom a {
-  color: rgba(255,255,255,0.3);
+/* Radial gradient decorations */
+.sticky-footer__bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.sfbg { position: absolute; border-radius: 50%; }
+.sfbg--1 {
+  top: 0; left: 0; width: 560px; height: 560px;
+  background: radial-gradient(68.54% 68.72% at 55.02% 31.46%,
+    rgba(255,255,255,0.04) 0%, rgba(140,140,140,0.015) 50%, rgba(255,255,255,0.005) 80%);
+  transform: translateY(-35%) rotate(-45deg);
+}
+.sfbg--2 {
+  top: 0; left: 0; width: 240px; height: 560px;
+  background: radial-gradient(50% 50% at 50% 50%,
+    rgba(255,255,255,0.025) 0%, rgba(255,255,255,0.005) 80%, transparent 100%);
+  transform: translate(5%, -50%) rotate(-45deg);
+}
+.sfbg--3 {
+  top: 0; left: 0; width: 240px; height: 560px;
+  background: radial-gradient(50% 50% at 50% 50%,
+    rgba(0,143,49,0.06) 0%, rgba(0,143,49,0.01) 80%, transparent 100%);
+  transform: translateY(-35%) rotate(-45deg);
+}
+
+/* Top CTA bar */
+.sf-cta {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.5rem; flex-wrap: wrap;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.sf-cta__text h3 {
+  font-family: var(--heading); font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+  font-weight: 700; color: #fff; line-height: 1.2; letter-spacing: -0.02em;
+}
+.sf-cta__text p {
+  font-family: var(--sans); font-size: 0.92rem; color: rgba(255,255,255,0.45);
+  margin-top: 4px; font-weight: 300;
+}
+.sf-cta__right { display: flex; flex-direction: column; gap: 10px; flex-shrink: 0; align-items: flex-end; }
+.sf-cta__actions { display: flex; gap: 10px; flex-shrink: 0; }
+.sf-newsletter--cta { max-width: 300px; width: 100%; }
+.sf-cta__actions .btn.btn--primary,
+.sf-cta__actions .btn.btn--white {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 6px; height: 42px; font-size: 0.9rem; padding: 0 1.6rem;
+  border-radius: 10px; font-weight: 600; text-decoration: none;
+  transition: all 0.25s ease; cursor: pointer;
+  position: relative; overflow: visible;
+}
+.sf-cta__actions .btn.btn--primary {
+  background: var(--primary); color: #fff; border: none;
+}
+.sf-cta__actions .btn.btn--primary:hover { background: var(--primary-dark); }
+.sf-cta__actions .btn.btn--white {
+  background: transparent; color: #fff;
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: none;
+}
+.sf-cta__actions .btn.btn--white:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.4);
+  box-shadow: none;
+}
+
+/* Main grid */
+.sf-grid {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr 1.2fr;
+  gap: 2rem;
+  flex: 1;
+}
+
+/* Brand column */
+.sf-brand__logo {
+  height: 44px; width: auto;
+  filter: brightness(0) invert(1); opacity: 0.7;
+  margin-bottom: 12px; display: block;
+}
+.sf-brand__desc {
+  font-family: var(--sans); font-size: 0.9rem; line-height: 1.75;
+  color: rgba(255,255,255,0.7); max-width: 260px; margin-bottom: 14px; font-weight: 300;
+}
+.sf-brand__contact { display: flex; flex-direction: column; gap: 4px; margin-bottom: 14px; }
+.sf-brand__contact a {
+  font-family: var(--sans); font-size: 0.88rem; color: rgba(255,255,255,0.7);
+  text-decoration: none; transition: color 0.3s ease;
+}
+.sf-brand__contact a:hover { color: #E8500A; }
+
+.sf-brand__socials { display: flex; gap: 6px; }
+.sf-social-btn {
+  width: 34px; height: 34px; border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.15);
+  display: grid; place-items: center;
+  color: rgba(255,255,255,0.7);
+  transition: all 0.3s var(--ease-smooth);
   text-decoration: none;
-  transition: color 0.2s;
+}
+.sf-social-btn svg { width: 15px; height: 15px; }
+.sf-social-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(234,122,3,0.08); }
+
+/* Link columns */
+.sf-col h5 {
+  font-family: var(--sans); font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.13em; text-transform: uppercase; color: rgba(255,255,255,0.9);
+  margin-bottom: 14px;
+}
+.sf-col ul { list-style: none; padding: 0; margin: 0; }
+.sf-col ul li { margin-bottom: 9px; }
+.sf-col ul li a {
+  font-family: var(--sans); color: rgba(255,255,255,0.7); text-decoration: none;
+  font-size: 0.9rem; font-weight: 300; transition: color 0.25s ease;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.sf-col ul li a:hover { color: #E8500A; }
+
+/* Newsletter */
+.sf-newsletter-label {
+  font-family: var(--sans); font-size: 0.72rem; color: rgba(255,255,255,0.3);
+  margin: 14px 0 8px; font-weight: 300;
+}
+.sf-newsletter {
+  display: flex; align-items: center;
+  border-radius: 8px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.03);
+}
+.sf-newsletter input {
+  flex: 1; background: transparent; border: none;
+  padding: 0.55rem 0.9rem; font-family: var(--sans); font-size: 0.88rem;
+  color: #fff; outline: none; min-width: 0;
+}
+.sf-newsletter input::placeholder { color: rgba(255,255,255,0.2); }
+.sf-newsletter button {
+  background: var(--primary); color: #fff; border: none;
+  width: 38px; height: 38px; display: grid; place-items: center;
+  cursor: pointer; transition: background 0.3s ease; flex-shrink: 0;
+}
+.sf-newsletter button svg { width: 16px; height: 16px; }
+.sf-newsletter button:hover { background: var(--primary-dark); }
+
+/* Bottom bar */
+.sf-bottom {
+  position: relative; z-index: 1;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  font-family: var(--sans); font-size: 0.82rem;
+  color: rgba(255,255,255,0.18); font-weight: 300;
+}
+.sf-legal { display: flex; gap: 16px; }
+.sf-legal a, .sf-bottom a { color: rgba(255,255,255,0.18); text-decoration: none; transition: color 0.3s ease; }
+.sf-legal a:hover, .sf-bottom a:hover { color: rgba(255,255,255,0.55); }
+
+/* Big MLRIT watermark at bottom */
+.sf-watermark {
+  position: relative; z-index: 1;
+  font-family: var(--heading);
+  font-size: clamp(6rem, 14vw, 14rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-align: center;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.10), rgba(255,255,255,0.02));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 0.85;
+  margin-top: -0.5rem;
+  padding-bottom: 0;
+  user-select: none;
+  pointer-events: none;
 }
 
-.footer__bottom a:hover { color: rgba(255,255,255,0.7); }
+/* Column reveal animation */
+.sf-col-reveal {
+  opacity: 0;
+  transform: translateY(-10px);
+  filter: blur(4px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out), filter 0.7s var(--ease-out);
+  transition-delay: var(--delay, 0s);
+}
+.sf-col-reveal.is-visible {
+  opacity: 1; transform: translateY(0); filter: blur(0);
+}
 
 /* ===========================
    RESPONSIVE
    =========================== */
+@media (max-width: 1100px) {
+  .sticky-footer { height: auto; clip-path: none; }
+  .sticky-footer__inner { position: static; top: auto; height: auto; }
+  .sticky-footer__content { height: auto; padding: 2rem; overflow: visible; }
+  .sf-grid { grid-template-columns: 1.4fr 1fr 1fr; gap: 1.5rem; }
+}
+
 @media (max-width: 1024px) {
   .achievements__grid,
   .events__grid { grid-template-columns: 1fr; }
-  .footer__grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 768px) {
@@ -1323,12 +1655,31 @@ body {
   .campus-life__grid { grid-template-columns: 1fr; }
   .accred-grid { grid-template-columns: repeat(3, 1fr); }
   .admissions-cta__inner { grid-template-columns: 1fr; }
-  .footer__grid { grid-template-columns: 1fr; }
-  .footer__bottom { flex-direction: column; gap: 8px; text-align: center; }
+  .sf-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem 1rem; }
+  .sf-brand { grid-column: 1 / -1; }
+  .sf-cta { flex-direction: column; align-items: flex-start; }
+  .sf-cta__right { align-items: flex-start; width: 100%; }
+  .sf-newsletter--cta { max-width: 100%; }
+  .sf-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  .sf-legal { flex-wrap: wrap; justify-content: center; }
+  .sticky-footer__content { padding: 1.5rem 1.5rem 0; gap: 1rem; }
+}
+
+<<<<<<< HEAD
+/* ===========================
+   RANKING CARDS — top-right corner reveal
+=======
+@media (max-width: 480px) {
+  .sf-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+  .sf-brand { grid-column: auto; }
+  .sticky-footer__content { padding: 1.2rem 1.2rem 0; }
+  .sf-cta__actions { width: 100%; }
+  .sf-cta__actions .btn { flex: 1; justify-content: center; }
 }
 
 /* ===========================
-   RANKING CARDS — top-right corner reveal
+   RANKING CARDS â€” top-right corner reveal
+>>>>>>> upstream/main
    =========================== */
 .rank-cards {
   display: flex;
@@ -1351,7 +1702,11 @@ body {
   transition: border-color 0.4s ease;
 }
 
+<<<<<<< HEAD
 /* fill — tiny circle at top-right, expands to cover the whole card */
+=======
+/* fill â€” tiny circle at top-right, expands to cover the whole card */
+>>>>>>> upstream/main
 .rank-card::before {
   content: '';
   position: absolute;
@@ -1384,7 +1739,11 @@ body {
 }
 
 .rank-card__num {
+<<<<<<< HEAD
   font-family: 'Poppins', sans-serif;
+=======
+  font-family: 'Montserrat', sans-serif;
+>>>>>>> upstream/main
   font-size: var(--fs-h2);
   font-weight: 800;
   color: var(--green);
@@ -1404,7 +1763,11 @@ body {
 
 .rank-card__body strong {
   display: block;
+<<<<<<< HEAD
   font-family: 'Poppins', sans-serif;
+=======
+  font-family: 'Montserrat', sans-serif;
+>>>>>>> upstream/main
   font-size: var(--fs-caption);
   font-weight: 700;
   color: var(--text-dark);
@@ -1413,7 +1776,11 @@ body {
 }
 
 .rank-card__body span {
+<<<<<<< HEAD
   font-family: 'Inter', sans-serif;
+=======
+  font-family: 'Poppins', sans-serif;
+>>>>>>> upstream/main
   font-size: var(--fs-meta);
   color: var(--text-muted);
   line-height: 1.5;
@@ -1432,7 +1799,11 @@ body {
    REVEAL ON SCROLL
    =========================== */
 
+<<<<<<< HEAD
 /* Hidden state — sits 28px below, invisible */
+=======
+/* Hidden state â€” sits 28px below, invisible */
+>>>>>>> upstream/main
 .reveal {
   opacity: 0;
   transform: translateY(28px);
@@ -1442,7 +1813,11 @@ body {
   will-change: opacity, transform;
 }
 
+<<<<<<< HEAD
 /* Visible state — JS adds this class */
+=======
+/* Visible state â€” JS adds this class */
+>>>>>>> upstream/main
 .reveal.is-revealed {
   opacity: 1;
   transform: translateY(0);
@@ -1462,3 +1837,9 @@ body {
     transition: none;
   }
 }
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> upstream/main

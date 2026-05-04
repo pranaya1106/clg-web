@@ -1,5 +1,5 @@
-/* ===========================
-   WHY MLRIT — Editorial Cinematic
+﻿/* ===========================
+   WHY MLRIT â€” Editorial Cinematic
    =========================== */
 
 .why-section {
@@ -10,7 +10,11 @@
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
+<<<<<<< HEAD
 /* ── Premium orange gradient layer ── */
+=======
+/* â”€â”€ Premium orange gradient layer â”€â”€ */
+>>>>>>> upstream/main
 .why-section::before {
   content: '';
   position: absolute;
@@ -23,7 +27,11 @@
   z-index: 0;
 }
 
+<<<<<<< HEAD
 /* ── Subtle football field background ── */
+=======
+/* â”€â”€ Subtle football field background â”€â”€ */
+>>>>>>> upstream/main
 .why-section__bg {
   position: absolute;
   inset: 0;
@@ -34,7 +42,7 @@
   pointer-events: none;
 }
 
-/* ── Inner two-column layout ── */
+/* â”€â”€ Inner two-column layout â”€â”€ */
 .why-section__inner {
   position: relative;
   z-index: 1;
@@ -47,7 +55,7 @@
   margin: 0 auto;
 }
 
-/* ── Left — text ── */
+/* â”€â”€ Left â€” text â”€â”€ */
 .why-section__left {
   display: flex;
   flex-direction: column;
@@ -64,7 +72,11 @@
 }
 
 .why-section__heading {
+<<<<<<< HEAD
   font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+=======
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+>>>>>>> upstream/main
   font-size: var(--fs-h2);
   font-weight: 700;
   color: #fff;
@@ -73,7 +85,11 @@
   margin: 0;
 }
 
+<<<<<<< HEAD
 /* Drop cap — removed, I is now normal */
+=======
+/* Drop cap â€” removed, I is now normal */
+>>>>>>> upstream/main
 .why-section__dropcap {
   font-size: inherit;
   font-weight: inherit;
@@ -91,7 +107,11 @@
 }
 
 .why-section__body {
+<<<<<<< HEAD
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+=======
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+>>>>>>> upstream/main
   font-size: var(--fs-body);
   font-weight: 400;
   color: rgba(255,255,255,0.58);
@@ -100,7 +120,7 @@
   margin: 0;
 }
 
-/* ── Right — video ── */
+/* â”€â”€ Right â€” video â”€â”€ */
 .why-section__right {
   display: flex;
   align-items: center;
@@ -139,7 +159,7 @@
     0 0 80px rgba(232,80,10,0.22);
 }
 
-/* ── Responsive ── */
+/* â”€â”€ Responsive â”€â”€ */
 @media (max-width: 900px) {
   .why-section__inner {
     grid-template-columns: 1fr;
@@ -149,3 +169,6 @@
   .why-section__body { max-width: 100%; }
   .why-section__video { max-width: 100%; }
 }
+
+
+

@@ -1,10 +1,10 @@
-/* ===========================
+﻿/* ===========================
    FILM REEL SECTION
    =========================== */
 .film-reel-section {
   background: #fff;
   padding: 88px 0;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid #E5E2DC;
   overflow: hidden;
 }
 
@@ -19,14 +19,18 @@
 }
 
 /* ===========================
-   LEFT — copy
+   LEFT â€” copy
    =========================== */
 .film-reel-section__copy {
   max-width: 420px;
 }
 
 .film-reel-section__copy .section-label {
+<<<<<<< HEAD
   color: #E8500A;
+=======
+  color: #D4622B;
+>>>>>>> upstream/main
 }
 
 .film-reel-section__copy h2 {
@@ -47,7 +51,7 @@
 }
 
 /* ===========================
-   RIGHT — scene
+   RIGHT â€” scene
    =========================== */
 .film-scene {
   display: flex;
@@ -70,7 +74,7 @@
   flex-shrink: 0;
 }
 
-/* Viewport — the film strip window */
+/* Viewport â€” the film strip window */
 .film-viewport {
   height: 440px;
   width: 320px;
@@ -163,7 +167,7 @@
 }
 
 .film-frame:hover {
-  border-color: rgba(232,93,31,0.6);
+  border-color: rgba(212,98,43,0.6);
 }
 
 .film-frame img,
@@ -249,7 +253,11 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
+<<<<<<< HEAD
   background: #E8500A;
+=======
+  background: #D4622B;
+>>>>>>> upstream/main
   flex-shrink: 0;
 }
 
@@ -274,3 +282,6 @@
   .film-frame { width: 172px; height: 140px; }
   .film-connector { display: none; }
 }
+
+
+

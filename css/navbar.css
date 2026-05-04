@@ -1,5 +1,11 @@
-/* ===== Reset & Base ===== */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+﻿/* ===== Reset & Base ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 html { scroll-behavior: smooth; }
 body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; }
 a { text-decoration: none; color: inherit; }
@@ -25,11 +31,18 @@ ul { list-style: none; }
    ===================== */
 .masthead {
   background: #fff;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #E5E2DC;
   padding: 0.75rem 0;
 }
 
+<<<<<<< HEAD
 .masthead .container { padding-left: var(--page-pad); padding-right: var(--page-pad); }
+=======
+.masthead .container {
+  padding-left: 0.5rem;
+  padding-right: 1.5rem;
+}
+>>>>>>> upstream/main
 
 .masthead__inner {
   display: flex;
@@ -64,6 +77,26 @@ ul { list-style: none; }
   transform: translateY(-1px);
 }
 
+.masthead__eapcet {
+  margin-left: auto;
+  padding: 7px 18px;
+  background: #D4622B;
+  color: #fff;
+  font-family: var(--heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  white-space: nowrap;
+  transition: background 0.3s ease;
+}
+
+.masthead__eapcet:hover {
+  background: #B34F1E;
+}
+
 .masthead__logo img {
   height: 64px;
   width: auto;
@@ -71,10 +104,17 @@ ul { list-style: none; }
 }
 
 .masthead__tagline span {
+<<<<<<< HEAD
   font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
   font-size: 1rem;
   font-weight: 600;
   color: #2E7D32;
+=======
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1F6B24;
+>>>>>>> upstream/main
   line-height: 1.3;
 }
 
@@ -82,7 +122,11 @@ ul { list-style: none; }
    MAIN NAV BAR
    ===================== */
 .main-nav {
+<<<<<<< HEAD
   background: #2E7D32;
+=======
+  background: #1F6B24;
+>>>>>>> upstream/main
   position: relative;
   top: 0;
   z-index: 500;
@@ -162,11 +206,57 @@ ul { list-style: none; }
   /* hide old chevron */
 }
 
+<<<<<<< HEAD
 .main-nav__link .chevron { display: none; }
+=======
+/* Animated underline on hover â€” orange streak */
+.main-nav__link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 80%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #E85D1F, transparent);
+  border-radius: 2px 2px 0 0;
+  transition: transform 0.25s ease;
+}
+
+.main-nav__item:hover > .main-nav__link::before,
+.main-nav__item:focus-within > .main-nav__link::before,
+.main-nav__item.is-open > .main-nav__link::before {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* Chevron icon */
+.main-nav__link .chevron {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid rgba(255,255,255,0.65);
+  border-bottom: 2px solid rgba(255,255,255,0.65);
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+  flex-shrink: 0;
+}
+
+.main-nav__item:hover > .main-nav__link .chevron,
+.main-nav__item:focus-within > .main-nav__link .chevron,
+.main-nav__item.is-open > .main-nav__link .chevron {
+  transform: rotate(-135deg) translateY(-2px);
+  border-color: #fff;
+}
+
+.main-nav__item--right:not(:has(.dropdown)) .main-nav__link .chevron {
+  display: none;
+}
+>>>>>>> upstream/main
 
 .main-nav__item:hover > .main-nav__link,
 .main-nav__item:focus-within > .main-nav__link,
 .main-nav__item.is-open > .main-nav__link {
+<<<<<<< HEAD
   color: #fff;
 }
 
@@ -174,6 +264,23 @@ ul { list-style: none; }
    MEGA DROPDOWN PANEL
    Full-width, slides down from nav bar
    ===================== */
+=======
+  background: rgba(232,93,31,0.08);
+}
+
+/* Active press â€” orange streak flash */
+.main-nav__link:active {
+  background: rgba(232,93,31,0.15);
+}
+
+.main-nav__link:active::before {
+  transform: translateX(-50%) scaleX(1);
+  background: #E85D1F;
+  height: 3px;
+}
+
+/* ===== Dropdown â€” smooth fade + slide ===== */
+>>>>>>> upstream/main
 .dropdown {
   /* full-width panel anchored to .main-nav */
   position: fixed;
@@ -182,10 +289,19 @@ ul { list-style: none; }
   right: 0;
   width: 100%;
   background: #fff;
+<<<<<<< HEAD
   box-shadow: 0 16px 48px rgba(0,0,0,0.14);
   border-top: 3px solid #2E7D32;
   padding: 2rem var(--page-pad);
   display: flex;
+=======
+  min-width: 560px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.14);
+  border-top: 3px solid transparent;
+  border-image: linear-gradient(90deg, #1F6B24, #E85D1F, #1F6B24) 1;
+  padding: 1.75rem;
+  gap: 2rem;
+>>>>>>> upstream/main
   flex-direction: row;
   gap: 2.5rem;
   z-index: 490;
@@ -201,7 +317,8 @@ ul { list-style: none; }
 }
 
 .main-nav__item:hover > .dropdown,
-.main-nav__item:focus-within > .dropdown {
+.main-nav__item:focus-within > .dropdown,
+.main-nav__item.is-open > .dropdown {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -219,11 +336,19 @@ ul { list-style: none; }
   font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
+<<<<<<< HEAD
   letter-spacing: 0.1em;
   color: #2E7D32;
   border-bottom: 2px solid #2E7D32;
   padding-bottom: 0.45rem;
   margin-bottom: 0.75rem;
+=======
+  letter-spacing: 0.09em;
+  color: #1F6B24;
+  border-bottom: 2px solid #1F6B24;
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.7rem;
+>>>>>>> upstream/main
 }
 
 .dropdown__col a {
@@ -244,25 +369,104 @@ ul { list-style: none; }
   position: absolute;
   left: 0; top: 50%;
   transform: translateY(-50%) scaleY(0);
+<<<<<<< HEAD
   width: 2px; height: 60%;
   background: #2E7D32;
+=======
+  width: 2px;
+  height: 60%;
+  background: #1F6B24;
+>>>>>>> upstream/main
   border-radius: 2px;
   transition: transform 0.18s ease;
 }
 
 .dropdown__col a:hover {
+<<<<<<< HEAD
   color: #2E7D32;
   padding-left: 0.65rem;
+=======
+  color: #1F6B24;
+  padding-left: 0.6rem;
+>>>>>>> upstream/main
 }
 
 .dropdown__col a:hover::before { transform: translateY(-50%) scaleY(1); }
 
+<<<<<<< HEAD
 /* right-aligned panel (Chronicles) */
 .dropdown--right { justify-content: flex-end; }
 
 /* =====================
    SUPPORT TAB & PANEL
    ===================== */
+=======
+.dropdown__col a:active {
+  color: #E85D1F;
+}
+
+.dropdown__col a:active::before {
+  transform: translateY(-50%) scaleY(1);
+  background: #E85D1F;
+}
+
+/* Right-aligned dropdown (Chronicles) */
+.dropdown--right {
+  left: auto;
+  right: 0;
+}
+
+.dropdown__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
+  min-width: 220px;
+}
+
+.dropdown__cta img {
+  width: 100%;
+  border-radius: 4px;
+  transition: transform 0.2s ease;
+}
+
+.dropdown__cta img:hover {
+  transform: scale(1.02);
+}
+
+.cta-link {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #1F6B24;
+  border-bottom: 2px solid #1F6B24;
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.cta-link:hover {
+  color: #12412A;
+  border-color: #12412A;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .masthead__tagline { display: none; }
+  .main-nav__list { flex-wrap: wrap; }
+  .main-nav__link { padding: 0 0.7rem; font-size: 0.82rem; }
+  .dropdown { min-width: 90vw; flex-wrap: wrap; }
+}
+
+/* ===== Support Tab ===== */
+.main-nav__item--support {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+>>>>>>> upstream/main
 .main-nav__link--support {
   display: flex;
   align-items: center;
@@ -273,10 +477,22 @@ ul { list-style: none; }
   display: flex;
   align-items: center;
   justify-content: center;
+<<<<<<< HEAD
   width: 26px; height: 26px;
+=======
+  width: 30px;
+  height: 30px;
+>>>>>>> upstream/main
   border-radius: 50%;
-  background: rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.13);
+  border: 1px solid rgba(255,255,255,0.18);
   flex-shrink: 0;
+  transition: background 0.22s ease, border-color 0.22s ease;
+}
+
+.main-nav__item--support:hover .support-avatar {
+  background: rgba(232,93,31,0.18);
+  border-color: rgba(232,93,31,0.45);
 }
 
 .support-panel {
@@ -399,3 +615,6 @@ ul { list-style: none; }
   .support-panel__socials { gap: 14px; }
   .support-panel__social svg { width: 44px; height: 44px; }
 }
+
+
+

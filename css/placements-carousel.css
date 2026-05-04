@@ -1,4 +1,4 @@
-/* ===========================
+﻿/* ===========================
    PLACEMENTS CAROUSEL
    Purdue news-and-events pattern
    =========================== */
@@ -50,7 +50,7 @@
   border-color: #ff7a3d;
 }
 
-/* ── Track ── */
+/* â”€â”€ Track â”€â”€ */
 .placements-carousel__track-wrap {
   max-width: 1280px;
   margin: 0 auto;
@@ -79,7 +79,7 @@
   width: 1px;
 }
 
-/* ── Card ── */
+/* â”€â”€ Card â”€â”€ */
 .placement-card {
   flex: 0 0 300px;
   scroll-snap-align: start;
@@ -102,3 +102,9 @@
   width: 100%;
   aspect-ratio: 16/9;
   overflow: hidden
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> upstream/main

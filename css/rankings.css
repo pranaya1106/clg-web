@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 /* ===================================================
    Accreditations — Premium Design
+=======
+﻿/* ===================================================
+   Accreditations â€” Premium Design
+>>>>>>> upstream/main
    =================================================== */
 
 .achievements {
@@ -10,7 +15,11 @@
   isolation: isolate;
 }
 
+<<<<<<< HEAD
 /* ── Top / bottom fade transitions ── */
+=======
+/* â”€â”€ Top / bottom fade transitions â”€â”€ */
+>>>>>>> upstream/main
 .accred-fade {
   position: absolute;
   left: 0; right: 0;
@@ -27,7 +36,11 @@
   background: linear-gradient(to top, #fafafa, transparent);
 }
 
+<<<<<<< HEAD
 /* ── Subtle grid texture ── */
+=======
+/* â”€â”€ Subtle grid texture â”€â”€ */
+>>>>>>> upstream/main
 .accred-grid-bg {
   position: absolute;
   inset: 0;
@@ -39,7 +52,11 @@
   z-index: 0;
 }
 
+<<<<<<< HEAD
 /* ── Blurred color blobs — clipped to section ── */
+=======
+/* â”€â”€ Blurred color blobs â€” clipped to section â”€â”€ */
+>>>>>>> upstream/main
 .achievements::after {
   content: '';
   position: absolute;
@@ -73,7 +90,11 @@
   top: 30%; right: 30%;
 }
 
+<<<<<<< HEAD
 /* ── Two-column layout ── */
+=======
+/* â”€â”€ Two-column layout â”€â”€ */
+>>>>>>> upstream/main
 .achievements__grid {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -83,7 +104,11 @@
   z-index: 2;
 }
 
+<<<<<<< HEAD
 /* ── Ranking cards ── */
+=======
+/* â”€â”€ Ranking cards â”€â”€ */
+>>>>>>> upstream/main
 .achievements__ranks {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -125,10 +150,17 @@
 }
 
 .rank-row__num {
+<<<<<<< HEAD
   font-family: var(--display);
   font-size: 1.9rem;
   font-weight: 900;
   color: #2e7d32;
+=======
+  font-family: var(--heading);
+  font-size: 1.9rem;
+  font-weight: 900;
+  color: #1F6B24;
+>>>>>>> upstream/main
   line-height: 1;
   letter-spacing: -0.03em;
   margin-bottom: 10px;
@@ -152,7 +184,11 @@
   line-height: 1.4;
 }
 
+<<<<<<< HEAD
 /* ── Constellation SVG ── */
+=======
+/* â”€â”€ Constellation SVG â”€â”€ */
+>>>>>>> upstream/main
 .logo-cluster-wrap {
   position: relative;
   width: 380px;
@@ -180,6 +216,7 @@
 .accred-constellation line:nth-child(2n) {
   animation-duration: 12s;
   animation-direction: reverse;
+<<<<<<< HEAD
 }
 
 .accred-constellation line:nth-child(3n) {
@@ -280,4 +317,109 @@
   .lc-bubble--md      { width: 80px;  height: 80px;  }
   .lc-bubble--sm      { width: 64px;  height: 64px;  }
   .achievements__ranks { grid-template-columns: 1fr; }
+=======
+>>>>>>> upstream/main
 }
+
+.accred-constellation line:nth-child(3n) {
+  stroke: rgba(245,197,24,0.2);
+  animation-duration: 10s;
+}
+
+@keyframes dashMove {
+  to { stroke-dashoffset: -40; }
+}
+
+/* â”€â”€ Logo cluster â”€â”€ */
+.logo-cluster {
+  position: absolute;
+  inset: 0;
+  animation: clusterIn 0.9s cubic-bezier(0.22,1,0.36,1) both;
+  z-index: 2;
+}
+
+@keyframes clusterIn {
+  from { opacity: 0; transform: scale(0.75); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.lc-bubble {
+  position: absolute;
+  top: 50%; left: 50%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.8);
+  /* NO transition on transform â€” fully static */
+  transition: box-shadow 0.25s ease, opacity 0.25s ease;
+  will-change: auto;
+}
+
+/* All non-center bubbles use --lx/--ly for fixed offset */
+.lc-bubble:not(.lc-bubble--center) {
+  transform: translate(calc(-50% + var(--lx, 0px)), calc(-50% + var(--ly, 0px)));
+}
+
+.lc-bubble--center {
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+/* Size variants */
+.lc-bubble--center { width: 140px; height: 140px; box-shadow: 0 12px 48px rgba(0,0,0,0.14), 0 2px 8px rgba(0,0,0,0.08); }
+.lc-bubble--md     { width: 110px; height: 110px; z-index: 4; box-shadow: 0 8px 32px rgba(0,0,0,0.10); }
+.lc-bubble--sm     { width: 88px;  height: 88px;  z-index: 3; box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+.lc-bubble--xs     { width: 70px;  height: 70px;  z-index: 2; box-shadow: 0 4px 14px rgba(0,0,0,0.07); }
+
+.lc-bubble img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.12));
+}
+
+/* Hover â€” scale only, no position change */
+.lc-bubble:hover {
+  z-index: 10 !important;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.18), 0 0 0 2px rgba(255,255,255,0.9);
+}
+
+.lc-bubble--center:hover {
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.lc-bubble:not(.lc-bubble--center):hover {
+  transform: translate(calc(-50% + var(--lx, 0px)), calc(-50% + var(--ly, 0px))) scale(1.08);
+}
+
+/* Dim siblings on hover */
+.logo-cluster:has(.lc-bubble:hover) .lc-bubble:not(:hover) {
+  opacity: 0.3;
+}
+
+/* â”€â”€ Responsive â”€â”€ */
+@media (max-width: 1100px) {
+  .logo-cluster-wrap { width: 340px; height: 340px; }
+  .lc-bubble--center { width: 120px; height: 120px; }
+  .lc-bubble--md     { width: 96px;  height: 96px;  }
+  .lc-bubble--sm     { width: 76px;  height: 76px;  }
+  .lc-bubble--xs     { width: 60px;  height: 60px;  }
+}
+
+@media (max-width: 900px) {
+  .achievements__grid { grid-template-columns: 1fr; gap: 48px; }
+  .logo-cluster-wrap  { width: 300px; height: 300px; margin: 0 auto; }
+  .lc-bubble--center  { width: 100px; height: 100px; }
+  .lc-bubble--md      { width: 80px;  height: 80px;  }
+  .lc-bubble--sm      { width: 64px;  height: 64px;  }
+  .achievements__ranks { grid-template-columns: 1fr; }
+}
+
+
+

@@ -1,6 +1,6 @@
-/* ===========================
+﻿/* ===========================
    STRUCTURED PHOTO SECTION
-   PRD v1.0 — Orange + Green
+   PRD v1.0 â€” Orange + Green
    =========================== */
 
 /* Brand tokens */
@@ -8,7 +8,7 @@
   --ps-orange:       #E8500A;
   --ps-orange-light: #FDF0EA;
   --ps-orange-dark:  #7A2E0B;
-  --ps-green:        #2E7D32;
+  --ps-green:        #1F6B24;
   --ps-green-light:  #EAF4EA;
   --ps-black:        #111111;
   --ps-bg:           #F7F7F7;
@@ -34,7 +34,11 @@
 
 /* Section heading */
 .photo-section__heading {
+<<<<<<< HEAD
   font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+=======
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+>>>>>>> upstream/main
   font-size: var(--fs-h2);
   font-weight: 700;
   color: var(--ps-orange);
@@ -111,10 +115,10 @@
   transform: scale(1.03);
 }
 
-/* Hero tile — fixed height */
+/* Hero tile â€” fixed height */
 .tile--hero { height: 520px; }
 
-/* Secondary tiles — equal halves */
+/* Secondary tiles â€” equal halves */
 .tile--secondary-a,
 .tile--secondary-b { height: 254px; }
 
@@ -232,7 +236,7 @@
   width: fit-content;
 }
 
-/* Hero badge sits on orange bg — use white outline style */
+/* Hero badge sits on orange bg â€” use white outline style */
 .tile--hero .tile__badge {
   background: rgba(255,255,255,0.2);
   border: 1px solid rgba(255,255,255,0.5);
@@ -328,3 +332,6 @@
 
   .tile::before { animation: none; }
 }
+
+
+
